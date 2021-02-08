@@ -193,7 +193,7 @@ $config['email_config'] = [
 	'smtp_port' => 465,
 	'mailtype'  => 'html',
 	'charset'   => 'utf-8',
-	'crlf' => "\r\n",
+	'crlf' 		=> "\r\n",
 	'newline' 	=> "\r\n"
 ];
 

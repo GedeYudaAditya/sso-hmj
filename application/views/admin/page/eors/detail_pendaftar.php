@@ -426,6 +426,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Kondisikan disini agar ketika dia file pdf maka akan menampilkan flip me, ketika tidak maka akan mendownload -->
                     <?php if ($pendaftar[0]['file_dokumen'] != null) { ?>
                     <div class="col-lg-12 mb-3">
                         <div class="card border-left-primary shadow h-100 py-2">

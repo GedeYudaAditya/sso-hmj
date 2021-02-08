@@ -123,8 +123,8 @@
                     <tr>
                         <td bgcolor="#ffffff" align="center" valign="top"
                             style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Hallo Infinity</h1> <img
-                                src="https://debly.cc/assets/images/logo/debly.png" alt="sso-hmj" width="125"
+                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">HMJ Teknik Informatika</h1>
+                            <img src="https://debly.cc/assets/images/logo/debly.png" alt="sso-hmj" width="125"
                                 height="120" style="display: block; border: 0px;" />
                         </td>
                     </tr>
@@ -147,7 +147,7 @@
                     <tr>
                         <td bgcolor="#ffc75f" align="left"
                             style="padding: 10px 30px 10px 30px; color: #fff; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
-                            <i style="margin: 0;">Kode bersifat uniq, jangan berikan Username dan Token kepada
+                            <i style="margin: 0;">Kode bersifat unik, jangan berikan Username dan Token kepada
                                 siapapun</i>
                         </td>
                     </tr>
@@ -216,7 +216,7 @@
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td align="center" style="border-radius: 3px;" bgcolor="#2c91fb"><a
-                                                        href="<?php echo site_url('etika/voting_kegiatan/' .base64_encode(base64_encode($id_kegiatan))) ?>"
+                                                        href="<?php echo site_url('etika/voting_kegiatan/' . base64_encode(base64_encode($id_kegiatan))) ?>"
                                                         target="_blank"
                                                         style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Voting
                                                         Kegiatan</a></td>
@@ -237,8 +237,14 @@
                     <tr>
                         <td bgcolor="#ffffff" align="left"
                             style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;"><a
-                                    href="<?php echo site_url('etika/voting_kegiatan/' . $id_kegiatan) ?>"><?php echo site_url('etika/voting_kegiatan/' . base64_encode(base64_encode($id_kegiatan))) ?></a>
+                            <p style="margin: 0;">
+                                <?php echo sprintf(
+                                    // lang('email_forgot_password_subheading'),
+                                    anchor(
+                                        'etika/voting_kegiatan/' . base64_encode(base64_encode($id_kegiatan))
+                                        // lang('email_forgot_password_link')
+                                    )
+                                ); ?>
                             </p>
                         </td>
                     </tr>
@@ -253,7 +259,7 @@
                     <tr>
                         <td bgcolor="#ffffff" align="left"
                             style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">Salam Hangat :<br><br><br>Electronic Voting System Teknik Informatika
+                            <p style="margin: 0;">Salam Hangat :<br><br><br>HMJ Teknik Informatika
                             </p>
                         </td>
                     </tr>

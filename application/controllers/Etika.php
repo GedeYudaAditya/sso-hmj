@@ -833,13 +833,14 @@ class Etika extends CI_Controller
     // Function Send Mail Token
     public function send_mail($data = "", $template = "", $to_email = "")
     {
+        $this->load->library('encrypt');
         $message = $this->load->view($this->config->item('email_templates', 'ion_auth') . $template, $data, TRUE);
         $this->email->clear();
         $this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
         $this->email->to($to_email);
         $this->email->subject($this->config->item('site_title', 'ion_auth') . ' - Username dan Token Pemilihan');
         $this->email->message($message);
-
+        $this->email->set_newline("\r\n");
         if ($this->email->send()) {
             return TRUE;
         } else {
@@ -868,6 +869,21 @@ class Etika extends CI_Controller
     }
     public function voting_kegiatan($id_kegiatan = "")
     {
-        show_404();
+        $id_kegiatan = (int)base64_decode(base64_decode($id_kegiatan));
+        $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
+        $id = $_SESSION['user_id'];
+        $group =  $this->ion_auth_model->getGroup($id);
+        // Send Data
+        $this->data['group'] = $group;
+        $this->data['title'] = "ETIKA - Administrator Kandidat ETIKA";
+        $this->data['active'] = "10";
+        $this->data['kegiatan'] = $cari;
+        $this->data['ckeditor'] = "etika";
+        $this->data['flip'] = "false";
+        $this->data['pemilih'] =  $this->All_model->getAllPemilih($id_kegiatan);
+        $this->data['id_kegiatan'] = $id_kegiatan;
+        $this->load->view('admin/master/header', $this->data);
+        $this->load->view('admin/page/etika/manajemen_evote', $this->data);
+        $this->load->view('admin/master/footer', $this->data);
     }
 }
