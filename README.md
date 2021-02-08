@@ -9,7 +9,7 @@ Untuk menggunakan sistem di local server, berikut cara instalasinya
 
 Note :
 - Pastikan sudah terinstal git di laptop
-- Pastikan anda mengclone dari gitlab, gunakan perintah "git clone https://gitlab.com/jeprikusuma/integer.git" untuk mengclone file ini
+- Pastikan anda mengclone dari gitlab, gunakan perintah "https://github.com/deyan-ardi/sso-hmj.git" untuk mengclone file ini
 - Jangan pernah mengutak ngatik folder bagian system
 - Setelah program yang dikerjakan jadi, silahkan buat brench baru agar mempermudah dalam melakukan merge
 
@@ -20,5 +20,5 @@ Perhatian !!
 Terdapat dua sistem yang berbeda didalamnya, hati-hati dalam mengubah informasi pada EORS, WEB HMJ, serta Model
 
 Update by Deyan
-EORS : 80% FINISH (Front End on Progress)
+ETIKA : 50% FINISH (Front End on Progress)
 
