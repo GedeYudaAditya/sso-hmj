@@ -968,4 +968,26 @@ class Etika extends CI_Controller
             var_dump($_POST);
         }
     }
+    public function verifikasi_akun($id_kegiatan = "")
+    {
+        $id_kegiatan = (int)base64_decode(base64_decode($id_kegiatan));
+        $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
+        $this->data['title'] = "Verifikasi Akun ETIKA";
+        $this->data['kegiatan'] = $cari;
+        $this->data['body'] = 4;
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('nim', 'NIM', 'required|integer');
+        $this->form_validation->set_rules('semester', 'Semester', 'required|integer');
+        if ($this->form_validation->run() == FALSE) {
+            if (!empty($cari)) {
+                $this->load->view('guest/etika/master/header', $this->data);
+                $this->load->view('guest/etika/page/verifikasi-akun', $this->data);
+                $this->load->view('guest/etika/master/footer', $this->data);
+            } else {
+                show_404();
+            }
+        } else {
+            var_dump($_POST);
+        }
+    }
 }

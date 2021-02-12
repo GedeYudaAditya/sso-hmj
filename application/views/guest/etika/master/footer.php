@@ -9,7 +9,8 @@
 
 <!-- Plugins js -->
 <script src="<?= base_url() ?>assets/js/plugins/plugins.min.js"></script>
-
+<!-- Input Costume -->
+<script src="<?= base_url() ?>assets/js/inputCostumJs.js"></script>
 <!-- Active js -->
 <script src="<?= base_url() ?>assets/js/active.js"></script>
 </body>

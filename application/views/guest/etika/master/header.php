@@ -30,67 +30,70 @@
         <?php elseif ($body == 3) : ?>
 
         <body class="homepage-5 accounts">
-            <?php endif; ?>
-            <!--====== Scroll To Top Area Start ======-->
-            <div id="scrollUp" title="Scroll To Top">
-                <i class="fas fa-arrow-up"></i>
-            </div>
-            <!--====== Scroll To Top Area End ======-->
+            <?php elseif ($body == 4) : ?>
 
-            <div class="main">
-                <!-- ***** Header Start ***** -->
-                <header class="navbar navbar-sticky navbar-expand-lg navbar-dark">
-                    <div class="container position-relative">
-                        <a class="navbar-brand" href="<?= base_url() ?>etika/home">
-                            <img class="navbar-brand-regular" src="<?= base_url() ?>assets/img/logo/NAV.png"
-                                alt="brand-logo">
-                            <img class="navbar-brand-sticky" src="<?= base_url() ?>assets/img/logo/NAV.png"
-                                alt="sticky brand-logo">
-                        </a>
-                        <button class="navbar-toggler d-lg-none" type="button" data-toggle="navbarToggler"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+            <body class="accounts">
+                <?php endif; ?>
+                <!--====== Scroll To Top Area Start ======-->
+                <div id="scrollUp" title="Scroll To Top">
+                    <i class="fas fa-arrow-up"></i>
+                </div>
+                <!--====== Scroll To Top Area End ======-->
 
-                        <div class="navbar-inner">
-                            <!--  Mobile Menu Toggler -->
+                <div class="main">
+                    <!-- ***** Header Start ***** -->
+                    <header class="navbar navbar-sticky navbar-expand-lg navbar-dark">
+                        <div class="container position-relative">
+                            <a class="navbar-brand" href="<?= base_url() ?>etika/home">
+                                <img class="navbar-brand-regular" src="<?= base_url() ?>assets/img/logo/NAV.png"
+                                    alt="brand-logo">
+                                <img class="navbar-brand-sticky" src="<?= base_url() ?>assets/img/logo/NAV.png"
+                                    alt="sticky brand-logo">
+                            </a>
                             <button class="navbar-toggler d-lg-none" type="button" data-toggle="navbarToggler"
                                 aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <nav>
-                                <ul class="navbar-nav" id="navbar-nav">
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link" href="<?= base_url() ?>etika/home">
-                                            Beranda
-                                        </a>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?= base_url() ?>etika/voting_kegiatan">Daftar
-                                            Kegiatan</a>
-                                    </li>
-                                </ul>
-                            </nav>
+
+                            <div class="navbar-inner">
+                                <!--  Mobile Menu Toggler -->
+                                <button class="navbar-toggler d-lg-none" type="button" data-toggle="navbarToggler"
+                                    aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <nav>
+                                    <ul class="navbar-nav" id="navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link" href="<?= base_url() ?>etika/home">
+                                                Beranda
+                                            </a>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?= base_url() ?>etika/voting_kegiatan">Daftar
+                                                Kegiatan</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
                         </div>
-                    </div>
-                </header>
-                <!-- ***** Header End ***** -->
-                <div class="ditemukan" data-ditemukan="<?php
-                                                        $datas = $this->session->flashdata('ditemukan');
-                                                        $i = 0;
-                                                        $id_key = 0;
-                                                        if (!empty($datas)) {
-                                                            foreach ($datas as $key => $value) {
-                                                                if ($i > $id_key) {
-                                                                    echo "Kegiatan " . $value['nama_kegiatan'];
-                                                                } else {
-                                                                    echo "Kegiatan " . $value['nama_kegiatan'] . ", ";
+                    </header>
+                    <!-- ***** Header End ***** -->
+                    <div class="ditemukan" data-ditemukan="<?php
+                                                            $datas = $this->session->flashdata('ditemukan');
+                                                            $i = 0;
+                                                            $id_key = 0;
+                                                            if (!empty($datas)) {
+                                                                foreach ($datas as $key => $value) {
+                                                                    if ($i > $id_key) {
+                                                                        echo "Kegiatan " . $value['nama_kegiatan'];
+                                                                    } else {
+                                                                        echo "Kegiatan " . $value['nama_kegiatan'] . ", ";
+                                                                    }
+                                                                    $id_key = $key;
+                                                                    $i++;
                                                                 }
-                                                                $id_key = $key;
-                                                                $i++;
                                                             }
-                                                        }
-                                                        ?>"></div>
-                <div class="tidak-ditemukan"
-                    data-tidak-ditemukan="<?= $this->session->flashdata('tidak-ditemukan'); ?>">
-                    <div class="berhasil" data-berhasil="<?= $this->session->flashdata('berhasil'); ?>">
-                        <div class="gagal" data-gagal="<?= $this->session->flashdata('gagal'); ?>">
+                                                            ?>"></div>
+                    <div class="tidak-ditemukan"
+                        data-tidak-ditemukan="<?= $this->session->flashdata('tidak-ditemukan'); ?>">
+                        <div class="berhasil" data-berhasil="<?= $this->session->flashdata('berhasil'); ?>">
+                            <div class="gagal" data-gagal="<?= $this->session->flashdata('gagal'); ?>">

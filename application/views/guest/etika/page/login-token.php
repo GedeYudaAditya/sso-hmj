@@ -163,7 +163,8 @@
                             </div>
                             <div class="col-12">
                                 <span class="d-block pt-2 ">Belum Memiliki Token? <a
-                                        href="verifikasi-akun.html">Verifikasi Akun</a></span>
+                                        href="<?= base_url() ?>etika/verifikasi_akun/<?= base64_encode(base64_encode($kegiatan[0]['id_kegiatan'])) ?>">Verifikasi
+                                        Akun</a></span>
                                 <button class="btn btn-bordered w-100 mt-3 mt-sm-4" type="submit">Masuk</button>
                             </div>
                             <div class="col-12">
