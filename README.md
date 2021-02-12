@@ -17,7 +17,7 @@ Note :
 ========================================================================================
 
 Perhatian !! 
-Terdapat dua sistem yang berbeda didalamnya, hati-hati dalam mengubah informasi pada EORS, WEB HMJ, serta Model
+Terdapat 3 sistem yang berbeda didalamnya, hati-hati dalam mengubah informasi pada EORS, WEB HMJ, INTEGER, serta Model
 
 Update by Deyan
 ETIKA : 50% FINISH (Front End on Progress)

@@ -1,1 +1,1 @@
-Gunakan db_hmj_baru.sql
+Gunakan db_hmj_baru_revisi.sql
