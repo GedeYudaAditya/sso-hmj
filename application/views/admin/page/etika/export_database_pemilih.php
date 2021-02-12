@@ -25,6 +25,12 @@
             <th style="vertical-align: middle;">
                 <center>Email</center>
             </th>
+            <th style="vertical-align: middle;">
+                <center>Prodi</center>
+            </th>
+            <th style="vertical-align: middle;">
+                <center>Semester</center>
+            </th>
     </thead>
     <tbody>
         <?php
@@ -35,6 +41,8 @@
             <td><?= $data['nim'] ?></td>
             <td><?= $data['nama_pemilih'] ?></td>
             <td><?= $data['email'] ?></td>
+            <td><?= $data['prodi'] ?></td>
+            <td><?= $data['semester'] ?></td>
         </tr>
         <?php endforeach ?>
     </tbody>

@@ -70,6 +70,8 @@
                                     <th>Nama Pemilih</th>
                                     <th>Email</th>
                                     <th>Username</th>
+                                    <th>Prodi</th>
+                                    <th>Semester</th>
                                     <th>Status</th>
                                     <th>Handle By</th>
                                     <th>Fitur</th>
@@ -87,6 +89,8 @@
                                     <td><?= $data['nama_pemilih'] ?></td>
                                     <td><?= $data['email'] ?></td>
                                     <td><?= $data['username'] ?></td>
+                                    <td><?= $data['prodi'] ?></td>
+                                    <td><?= $data['semester'] ?></td>
                                     <td><?php if ($data['has_voting'] == 0) : ?>
                                         <a href="#" class="btn btn-warning btn-sm mb-2">
                                             <span class=" text">Belum memilih</span>

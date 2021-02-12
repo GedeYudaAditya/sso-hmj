@@ -27,6 +27,12 @@
                 <center>Email</center>
             </th>
             <th style="vertical-align: middle;">
+                <center>Prodi</center>
+            </th>
+            <th style="vertical-align: middle;">
+                <center>Semester</center>
+            </th>
+            <th style="vertical-align: middle;">
                 <center>Username</center>
             </th>
             <th style="vertical-align: middle;">
@@ -42,6 +48,8 @@
             <td><?= $data['nim'] ?></td>
             <td><?= $data['nama_pemilih'] ?></td>
             <td><?= $data['email'] ?></td>
+            <td><?= $data['prodi'] ?></td>
+            <td><?= $data['semester'] ?></td>
             <td><?= $data['username'] ?></td>
             <td><?= $data['token'] ?></td>
         </tr>

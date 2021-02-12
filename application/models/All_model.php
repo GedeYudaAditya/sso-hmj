@@ -1355,6 +1355,8 @@ class All_model extends CI_Model
 			'email' => $this->input->post('email_pemilih', true),
 			'nim' => $this->input->post('nim_pemilih', true),
 			'username' => $this->input->post('nim_pemilih', true) . '@evote.com',
+			'prodi' => $this->input->post('prodi', true),
+			'semester'	=> $this->input->post('semester', true),
 		);
 		return $this->db->insert('s5_pemilih', $query);
 	}
@@ -1366,6 +1368,8 @@ class All_model extends CI_Model
 			'email' => $email_baru,
 			'nim' => $nim_baru,
 			'username' => $nim_baru.'@evote.com',
+			'prodi' => $this->input->post('prodi', true),
+			'semester'	=> $this->input->post('semester', true),
 		);
 		return $this->db->where('id_pemilih='.$id_pemilih)->update('s5_pemilih', $query);
 	}
@@ -1431,6 +1435,16 @@ class All_model extends CI_Model
 	}
 	public function createAllToken($data){
 		return $this->db->update_batch('s5_pemilih',$data, 'id_pemilih');
+	}
+
+	public function getUserCekHakPilih($prodi, $nim)
+	{
+		$this->db->select('s5_pemilih.*,s5_kegiatan.nama_kegiatan');
+		$this->db->from('s5_pemilih');
+		$this->db->where('s5_pemilih.nim=' . "'$nim'");
+		$this->db->where('s5_pemilih.prodi=' . "'$prodi'");
+		$this->db->join('s5_kegiatan', 's5_kegiatan.id_kegiatan = s5_pemilih.id_kegiatan');
+		return $this->db->get()->result_array();
 	}
 	// **************************************************************
 	// End ETIKA

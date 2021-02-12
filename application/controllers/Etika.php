@@ -9,6 +9,9 @@
 // Halaman Administrator
 class Etika extends CI_Controller
 {
+    // Email Help Desk
+    private $email_admin = array('riyan@undiksha.ac.id');
+
     function __construct()
     {
         parent::__construct();
@@ -393,6 +396,8 @@ class Etika extends CI_Controller
                                         'email' => $row['B'], // Insert data email dari kolom B di excel          
                                         'nim' => (int)$row['C'], // Insert data nim dari kolom C di excel
                                         'username' => (int)$row['C'] . '@evote.com',
+                                        'prodi' => $row['D'],
+                                        'semester' => $row['E']
                                     ));
                                 }
                                 $numrow++;
@@ -511,9 +516,10 @@ class Etika extends CI_Controller
                 $this->data['ckeditor'] = "etika";
                 $this->data['flip'] = "false";
                 // Form Validation
-                $this->form_validation->set_rules('nim_pemilih', 'Nomor Urut', 'required|integer');
-                $this->form_validation->set_rules('nama_pemilih', 'Nama Ketua', 'required|max_length[100]');
-                $this->form_validation->set_rules('email_pemilih', 'Nama Wakil Ketua', 'required|max_length[100]|valid_email');
+                $this->form_validation->set_rules('nim_pemilih', 'Nim Pemilih', 'required|integer');
+                $this->form_validation->set_rules('nama_pemilih', 'Nama Pemilih', 'required|max_length[100]');
+                $this->form_validation->set_rules('prodi', 'Prodi Pemilih', 'required');
+                $this->form_validation->set_rules('semester', 'Nim Pemilih', 'required|integer');
                 // If Validation False, return view
                 if ($this->form_validation->run() == FALSE) {
                     if (!empty($cari)) {
@@ -560,9 +566,10 @@ class Etika extends CI_Controller
                 $this->data['ckeditor'] = "etika";
                 $this->data['flip'] = "false";
                 // Form Validation
-                $this->form_validation->set_rules('nim_pemilih', 'Nomor Urut', 'required|integer');
-                $this->form_validation->set_rules('nama_pemilih', 'Nama Ketua', 'required|max_length[100]');
-                $this->form_validation->set_rules('email_pemilih', 'Nama Wakil Ketua', 'required|max_length[100]|valid_email');
+                $this->form_validation->set_rules('nim_pemilih', 'Nim Pemilih', 'required|integer');
+                $this->form_validation->set_rules('nama_pemilih', 'Nama Pemilih', 'required|max_length[100]');
+                $this->form_validation->set_rules('prodi', 'Prodi Pemilih', 'required');
+                $this->form_validation->set_rules('semester', 'Nim Pemilih', 'required|integer');
                 // If Validation False, return view
                 if ($this->form_validation->run() == FALSE) {
                     if (!empty($cari) || !empty($pemilih)) {
@@ -723,7 +730,7 @@ class Etika extends CI_Controller
                 if (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($cari[0]['waktu_mulai'])  && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
                     $string = "0123456789bcdfghjklmnpqrstvwxyz";
                     $token = substr(str_shuffle($string), 0, 12);
-                    $time = date('Y-m-d H:i:s', time() + (60 * 60));
+                    $time = date('Y-m-d H:i:s', time() + (60 * 120));
                     if ($cari[0]['mode'] == "1") {
                         if (empty($pemilih[0]['token'])) {
                             if ($this->All_model->createTokenManualMode($token, $id_pemilih, $user[0]['first_name'])) {
@@ -755,7 +762,7 @@ class Etika extends CI_Controller
                             echo "Tidak dapat mengenerate ulang token, silahkan Reset Token";
                         }
                     }
-                }else{
+                } else {
                     show_404();
                 }
             } else {
@@ -862,28 +869,103 @@ class Etika extends CI_Controller
 
 
 
+
     // Halaman User
+    // Method Getter Email
+    public function getEmailAdmin()
+    {
+        return $this->email_admin;
+    }
     public function home()
     {
-        echo "Halaman Home ETIKA";
+        $this->data['title'] = "Beranda";
+        $this->data['kegiatan'] = $this->All_model->getAllKegiatanEtika();
+        $this->data['body'] = 1;
+        if (isset($_POST['submit'])) {
+            $this->form_validation->set_rules('nim', 'NIM', 'required|integer');
+            $this->form_validation->set_rules('prodi', 'Prodi', 'required');
+        }
+        if (isset($_POST['send'])) {
+            $this->form_validation->set_rules('name', 'Nama', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('subject', 'Subject Pesan', 'required|max_length[250]');
+            $this->form_validation->set_rules('message', 'Pesan Kamu', 'required|max_length[600]');
+        }
+        // If Validation False, return view
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('guest/etika/master/header', $this->data);
+            $this->load->view('guest/etika/page/index', $this->data);
+            $this->load->view('guest/etika/master/footer-home', $this->data);
+        } else {
+            if (isset($_POST['submit'])) {
+                if ($_POST['prodi'] == "05") {
+                    $prodi = "Pendidikan Teknik Informatika";
+                } else if ($_POST['prodi'] == "02") {
+                    $prodi = "Manajemen Informatika";
+                } else if ($_POST['prodi'] == "09") {
+                    $prodi = "Sistem Informasi";
+                } else {
+                    $prodi = "Ilmu Komputer";
+                }
+                $cek_hak_pilih = $this->All_model->getUserCekHakPilih($prodi, $_POST['nim']);
+                $this->data['cek'] = $cek_hak_pilih;
+                if (!empty($cek_hak_pilih)) {
+                    $this->session->set_flashdata('ditemukan', $this->data['cek']);
+                    return redirect('etika/home', 'refresh');
+                } else {
+                    $this->session->set_flashdata('tidak-ditemukan', "Anda Tidak Terdaftar Pada Kegiatan Manapun");
+                    return redirect('etika/home', 'refresh');
+                }
+            }
+            if (isset($_POST['send'])) {
+                $ip = $this->input->ip_address();
+                $message = "[ Email Pengirim : " . $_POST['email'] . ", IP Address : " . $ip . " ] ~ " . $_POST['message'];
+                $this->load->library('encrypt');
+                $this->email->clear();
+                $this->email->from($_POST['email'], "Dari [ " . $_POST['name'] . " ]");
+                $this->email->to($this->getEmailAdmin());
+                $this->email->subject($_POST['subject'] . ' - Help Desk SSO HMJ TI Undiksha');
+                $this->email->message($message);
+                $this->email->set_newline("\r\n");
+                if ($this->email->send()) {
+                    $this->session->set_flashdata('berhasil', "Dikirim");
+                    return redirect('etika/home', 'refresh');
+                } else {
+                    $this->session->set_flashdata('gagal', 'Dikirim');
+                    echo $this->email->print_debugger();
+                    return redirect('admin', 'refresh');
+                }
+            }
+        }
     }
-    public function voting_kegiatan($id_kegiatan = "")
+    public function voting_kegiatan()
+    {
+        $this->data['title'] = "Daftar Kegiatan";
+        $this->data['body'] = 2;
+        $this->data['kegiatan'] = $this->All_model->getAllKegiatanEtika();
+        $this->load->view('guest/etika/master/header', $this->data);
+        $this->load->view('guest/etika/page/kegiatan', $this->data);
+        $this->load->view('guest/etika/master/footer', $this->data);
+    }
+    public function login_kegiatan($id_kegiatan = "")
     {
         $id_kegiatan = (int)base64_decode(base64_decode($id_kegiatan));
         $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
-        $id = $_SESSION['user_id'];
-        $group =  $this->ion_auth_model->getGroup($id);
-        // Send Data
-        $this->data['group'] = $group;
-        $this->data['title'] = "ETIKA - Administrator Kandidat ETIKA";
-        $this->data['active'] = "10";
+        $this->data['title'] = "Login Kegiatan ETIKA";
         $this->data['kegiatan'] = $cari;
-        $this->data['ckeditor'] = "etika";
-        $this->data['flip'] = "false";
-        $this->data['pemilih'] =  $this->All_model->getAllPemilih($id_kegiatan);
-        $this->data['id_kegiatan'] = $id_kegiatan;
-        $this->load->view('admin/master/header', $this->data);
-        $this->load->view('admin/page/etika/manajemen_evote', $this->data);
-        $this->load->view('admin/master/footer', $this->data);
+        $this->data['body'] = 3;
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('token', 'Token', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            if (!empty($cari)) {
+                $this->load->view('guest/etika/master/header', $this->data);
+                $this->load->view('guest/etika/page/login-token', $this->data);
+                $this->load->view('guest/etika/master/footer', $this->data);
+            } else {
+                show_404();
+            }
+        } else {
+            var_dump($_POST);
+        }
     }
 }

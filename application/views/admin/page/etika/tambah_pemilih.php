@@ -23,7 +23,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Nim Pemilih</div>
-                                                <input type="number" min="1800000000" max="2199999999"
+                                                <input type="text" pattern="[0-9]*" minlength="10" maxlength="10"
                                                     class="form-control form-control-user" id="ketua"
                                                     aria-describedby="nim_pemilih" placeholder="Masukkan Nim Pemilih"
                                                     name="nim_pemilih" required value="<?= set_value('nim_pemilih') ?>">
@@ -58,11 +58,52 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Email Pemilih</div>
+                                                    Email Pemilih (Kosongkan Jika Tidak Ada)</div>
                                                 <input type="email" class="form-control form-control-user" id="ketua"
                                                     aria-describedby="email_pemilih"
-                                                    placeholder="Masukkan Email Pemilih" name="email_pemilih" required
+                                                    placeholder="Masukkan Email Pemilih" name="email_pemilih"
                                                     value="<?= set_value('email_pemilih') ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12 mb-3">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    Nama Pemilih</div>
+                                                <select name="prodi" id="prodi"
+                                                    class="form-control form-control-select">
+                                                    <option value="">Pilih Prodi Pemilih</option>
+                                                    <option value="Pendidikan Teknik Informatika">Pendidikan Teknik
+                                                        Informatika</option>
+                                                    <option value="Sistem Informasi">Sistem Informasi</option>
+                                                    <option value="Manajemen Informatika">Manajemen Informatika</option>
+                                                    <option value="Ilmu Komputer">Ilmu Komputer</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12 mb-3">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    Semester</div>
+                                                <input type="number" min="1" max="16"
+                                                    class="form-control form-control-user" id="semester"
+                                                    aria-describedby="semester" placeholder="Masukkan Nama Pemilih"
+                                                    name="semester" required value="<?= set_value('semester') ?>">
                                             </div>
                                         </div>
                                     </div>

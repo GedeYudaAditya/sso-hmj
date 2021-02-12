@@ -76,6 +76,8 @@
                                     <th>Nim</th>
                                     <th>Nama Pemilih</th>
                                     <th>Email</th>
+                                    <th>Prodi</th>
+                                    <th>Semester</th>
                                     <?php if ($group[0]['group_id'] == "1") { ?>
                                     <th>Fitur</th>
                                     <?php } ?>
@@ -91,6 +93,8 @@
                                     <td><?= $data['nim'] ?></td>
                                     <td><?= $data['nama_pemilih'] ?></td>
                                     <td><?= $data['email'] ?></td>
+                                    <td><?= $data['prodi'] ?></td>
+                                    <td><?= $data['semester'] ?></td>
                                     <?php if ($group[0]['group_id'] == "1") { ?>
                                     <td>
                                         <?php if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($kegiatan[0]['waktu_selesai'])) : ?>
