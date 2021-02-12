@@ -30,9 +30,12 @@ defined('FILE_READ_MODE')  or define('FILE_READ_MODE', 0644);
 defined('FILE_WRITE_MODE') or define('FILE_WRITE_MODE', 0666);
 defined('DIR_READ_MODE')   or define('DIR_READ_MODE', 0755);
 defined('DIR_WRITE_MODE')  or define('DIR_WRITE_MODE', 0755);
+// Beberapa Konstanta Yang Dapat Digunakan
 const group = array(1, 2, 4, 5, 6);
 const eors = array(1, 4, 5);
 const etika =  array(1, 6);
+const lama_token = 120; //dalam menit
+const lama_blokir = "300 seconds"; //dalam detik;
 
 /*
 |--------------------------------------------------------------------------

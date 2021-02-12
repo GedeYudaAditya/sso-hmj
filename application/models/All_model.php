@@ -1398,10 +1398,11 @@ class All_model extends CI_Model
 		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
 	}
-	public function createTokenManualMode($token, $id_pemilih, $admin)
+	public function createTokenManualMode($token, $id_pemilih, $admin, $time)
 	{
 		$query = array(
 			'token' => $token,
+			'token_valid_until' => $time,
 			'manage_by' => $admin,
 		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
@@ -1433,6 +1434,31 @@ class All_model extends CI_Model
 		);
 		return $this->db->where('id_kegiatan=' . $id_kegiatan)->update('s5_pemilih', $query);
 	}
+	public function loginAttempt($id_pemilih, $login_attempt)
+	{
+		$query = array(
+			'login_attempt' => $login_attempt,
+		);
+		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
+	}
+	public function blockPemilih($id_pemilih, $time)
+	{
+		$query = array(
+				'block_time' => $time,
+				'login_attempt' => 0,
+			);
+		return $this->db->where('id_pemilih=' . $id_pemilih)->update(
+			's5_pemilih',
+			$query
+		);
+	}
+	public function unblockPemilih($id_pemilih)
+	{
+		$query = array(
+				'block_time' => "0000-00-00 00:00:00",
+			);
+		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
+	}
 	public function createAllToken($data){
 		return $this->db->update_batch('s5_pemilih',$data, 'id_pemilih');
 	}
@@ -1445,6 +1471,10 @@ class All_model extends CI_Model
 		$this->db->where('s5_pemilih.prodi=' . "'$prodi'");
 		$this->db->join('s5_kegiatan', 's5_kegiatan.id_kegiatan = s5_pemilih.id_kegiatan');
 		return $this->db->get()->result_array();
+	}
+	public function cekEmailLoginPemilih($email, $id_kegiatan)
+	{
+		return $this->db->where("username=" . "'$email'")->where("id_kegiatan=" . $id_kegiatan)->get('s5_pemilih')->result_array();
 	}
 	// **************************************************************
 	// End ETIKA

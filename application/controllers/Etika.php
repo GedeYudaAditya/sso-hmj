@@ -730,10 +730,11 @@ class Etika extends CI_Controller
                 if (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($cari[0]['waktu_mulai'])  && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
                     $string = "0123456789bcdfghjklmnpqrstvwxyz";
                     $token = substr(str_shuffle($string), 0, 12);
-                    $time = date('Y-m-d H:i:s', time() + (60 * 120));
+                    // Token Akan Aktif selama 2 jam, jika ingin mengganti, ganti 120 menjadi menit yang diinginkan
+                    $time = date('Y-m-d H:i:s', time() + (60 * lama_token));
                     if ($cari[0]['mode'] == "1") {
                         if (empty($pemilih[0]['token'])) {
-                            if ($this->All_model->createTokenManualMode($token, $id_pemilih, $user[0]['first_name'])) {
+                            if ($this->All_model->createTokenManualMode($token, $id_pemilih, $user[0]['first_name'], $time)) {
                                 echo "Token Berhasil di Generate";
                             }
                         } else {
@@ -884,8 +885,7 @@ class Etika extends CI_Controller
         if (isset($_POST['submit'])) {
             $this->form_validation->set_rules('nim', 'NIM', 'required|integer');
             $this->form_validation->set_rules('prodi', 'Prodi', 'required');
-        }
-        if (isset($_POST['send'])) {
+        } else if (isset($_POST['send'])) {
             $this->form_validation->set_rules('name', 'Nama', 'required');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
             $this->form_validation->set_rules('subject', 'Subject Pesan', 'required|max_length[250]');
@@ -916,8 +916,7 @@ class Etika extends CI_Controller
                     $this->session->set_flashdata('tidak-ditemukan', "Anda Tidak Terdaftar Pada Kegiatan Manapun");
                     return redirect('etika/home', 'refresh');
                 }
-            }
-            if (isset($_POST['send'])) {
+            } else if (isset($_POST['send'])) {
                 $ip = $this->input->ip_address();
                 $message = "[ Email Pengirim : " . $_POST['email'] . ", IP Address : " . $ip . " ] ~ " . $_POST['message'];
                 $this->load->library('encrypt');
@@ -965,7 +964,51 @@ class Etika extends CI_Controller
                 show_404();
             }
         } else {
-            var_dump($_POST);
+            if (isset($_POST['submit'])) {
+                $pemilih = $this->All_model->cekEmailLoginPemilih($_POST['email'], $id_kegiatan);
+                if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
+                    if (!empty($pemilih)) {
+                        if ($pemilih[0]['login_attempt'] > 4) {
+                            $time = date('Y-m-d H:i:s');
+                            // Jika user salah masuk sebanyak lebih dari 4 kali, maka block
+                            $this->All_model->blockPemilih($pemilih[0]['id_pemilih'], $time);
+                            echo "Anda Terblokir, Tunggu Beberapa Menit Lagi";
+                        } else {
+                            $date = date_create(date($pemilih[0]['block_time']));
+                            // Set block selama 300 detik atau 5 menit
+                            date_add($date, date_interval_create_from_date_string(lama_blokir));
+                            $cek_block = new Datetime(date_format($date, 'Y-m-d H:i:s'));
+                            // Cek apakah waktu saat ini masih kurang dari sama dengan waktu block atau kolom block time itu tidak kosong (ada isinya) yang bermakna terblokir
+                            if (!empty($pemilih[0]['block_time']) && new DateTime(date('Y-m-d H:i:s')) <= $cek_block) {
+                                echo "Anda Terblokir, Tunggu Beberapa Menit Lagi";
+                            } else {
+
+                                $this->All_model->unblockPemilih($pemilih[0]['id_pemilih']);
+                                if (!empty($pemilih[0]['token'])) {
+                                    if ($_POST['token'] == $pemilih[0]['token']) {
+                                        if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($pemilih[0]['token_valid_until']) || $pemilih[0]['has_voting'] == 1) {
+                                            echo "Benar";
+                                            // Buat Session Login Untuk User, Redirect kehalaman Administrator
+                                        } else {
+                                            echo "Token Sudah Invalid atau Token Sudah Digunakan";
+                                        }
+                                    } else {
+                                        $attempt = $pemilih[0]['login_attempt'] + 1;
+                                        $this->All_model->loginAttempt($pemilih[0]['id_pemilih'], $attempt);
+                                        echo "Token Salah";
+                                    }
+                                } else {
+                                    echo "Token Belum di Generate";
+                                }
+                            }
+                        }
+                    } else {
+                        echo "Username Salah";
+                    }
+                } else {
+                    echo "Waktu Voting Telah Berakhir";
+                }
+            }
         }
     }
     public function verifikasi_akun($id_kegiatan = "")
