@@ -1028,16 +1028,20 @@ class Etika extends CI_Controller
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('nim', 'NIM', 'required|integer');
         $this->form_validation->set_rules('semester', 'Semester', 'required|integer');
-        if ($this->form_validation->run() == FALSE) {
-            if (!empty($cari)) {
-                $this->load->view('guest/etika/master/header', $this->data);
-                $this->load->view('guest/etika/page/verifikasi-akun', $this->data);
-                $this->load->view('guest/etika/master/footer', $this->data);
+        if (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($cari[0]['waktu_mulai']) && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
+            if ($this->form_validation->run() == FALSE) {
+                if (!empty($cari)) {
+                    $this->load->view('guest/etika/master/header', $this->data);
+                    $this->load->view('guest/etika/page/verifikasi-akun', $this->data);
+                    $this->load->view('guest/etika/master/footer', $this->data);
+                } else {
+                    show_404();
+                }
             } else {
-                show_404();
+                var_dump($_POST);
             }
         } else {
-            var_dump($_POST);
+            show_404();
         }
     }
     public function dashboard()

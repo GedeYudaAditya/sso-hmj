@@ -79,9 +79,18 @@
                             </div>
                             <?php if ($kegiatan[0]["mode"] == 0) : ?>
                             <div class="col-12">
-                                <span class="d-block pt-2 ">Belum Memiliki Token? <a
-                                        href="<?= base_url() ?>etika/verifikasi_akun/<?= base64_encode(base64_encode($kegiatan[0]['id_kegiatan'])) ?>">Verifikasi
+                                <span class="d-block pt-2 ">Belum Memiliki Token?
+                                    <?php if (new DateTime(date('Y-m-d H:i:s')) < new DateTime($kegiatan[0]['waktu_mulai'])) : ?>
+                                    <a href="#" data-toggle="modal" data-target="#info-1">Verifikasi
                                         Akun</a></span>
+                                <?php elseif (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($kegiatan[0]['waktu_mulai']) && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($kegiatan[0]['waktu_selesai'])) : ?>
+                                <a
+                                    href="<?= base_url() ?>etika/verifikasi_akun/<?= base64_encode(base64_encode($kegiatan[0]['id_kegiatan'])) ?>">Verifikasi
+                                    Akun</a></span>
+                                <?php else : ?>
+                                <a href="#" data-toggle="modal" data-target="#info-2">Verifikasi
+                                    Akun</a></span>
+                                <?php endif ?>
                                 <button class="btn btn-bordered w-100 mt-3 mt-sm-4" name="submit" value="Submit"
                                     type="submit">Masuk</button>
                             </div>
@@ -185,4 +194,39 @@
     </div>
 </section>
 <!-- ***** Features Area End ***** -->
+</div>
+
+
+<!--====== Modal Developer Area Start ======-->
+<div class="modal fade" id="info-1" tabindex="-1" role="dialog" aria-labelledby="labelInfo-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="labelInfo-1">Notice</h5>
+            </div>
+            <div class="modal-body text-center">
+                <p>Tidak Dapat Memverifikasi Token Pada Kegiatan Yang Belum Dimulai</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--====== Modal Developer Area Start ======-->
+<div class="modal fade" id="info-2" tabindex="-1" role="dialog" aria-labelledby="labelInfo-2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="labelInfo-2">Notice</h5>
+            </div>
+            <div class="modal-body text-center">
+                <p>Tidak Dapat Memverifikasi Token Pada Kegiatan Yang Sudah Berakhir</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            </div>
+        </div>
+    </div>
 </div>
