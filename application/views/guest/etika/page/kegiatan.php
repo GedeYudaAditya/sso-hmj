@@ -81,9 +81,18 @@
                         </ul>
                         <p class="text-justify mt-4"><?= $data['deskripsi'] ?></p>
                         <div class="row justify-content-center">
+                            <?php if (!empty($this->session->userdata('id_kegiatan')) && $this->session->userdata('id_kegiatan') == $data['id_kegiatan']) : ?>
                             <a
                                 href="<?= base_url() ?>etika/login_kegiatan/<?= base64_encode(base64_encode($data['id_kegiatan'])) ?>"><button
                                     class="btn mt-5">Lihat Detail</button></a>
+                            <?php elseif (empty($this->session->userdata('id_kegiatan'))) : ?>
+                            <a
+                                href="<?= base_url() ?>etika/login_kegiatan/<?= base64_encode(base64_encode($data['id_kegiatan'])) ?>"><button
+                                    class="btn mt-5">Lihat Detail</button></a>
+                            <?php else : ?>
+                            <a href="#"><button data-toggle="modal" data-target="#devModal" class="btn mt-5">Lihat
+                                    Detail</button></a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -93,6 +102,23 @@
     </div>
 </section>
 <!-- ***** Blog Area End ***** -->
+<!--====== Modal Error ======-->
+<div class="modal fade" id="devModal" tabindex="-1" role="dialog" aria-labelledby="devModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="devModalLabel">Notice</h4>
+            </div>
+            <div class="modal-body">
+                <p>Anda Masih Login Dikegiatan Sebelumnya, Untuk melanjutkan Silahkan Log Out terlebih dahulu</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Kembali</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--====== Modal Developer Area End ======-->
 <!--====== Footer Area Start ======-->
 <footer class="section inner-footer bg-gray ptb_100">
     <div class="container">

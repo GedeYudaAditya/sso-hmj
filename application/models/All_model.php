@@ -1476,6 +1476,28 @@ class All_model extends CI_Model
 	{
 		return $this->db->where("username=" . "'$email'")->where("id_kegiatan=" . $id_kegiatan)->get('s5_pemilih')->result_array();
 	}
+	public function saveVote($id_kandidat, $id_pemilih, $id_kegiatan, $ip_address)
+	{
+		$query = array(
+			'ip_address' => $ip_address,
+			'id_pemilih' => $id_pemilih,
+			'id_kandidat' => $id_kandidat,
+			'id_kegiatan' => $id_kegiatan,
+			'created_date' => date('Y-m-d H:i:s'),
+
+		);
+		return $this->db->insert(
+				's5_pilihan',
+				$query
+			);
+	}
+	public function updateVote($id_pemilih)
+	{
+		$query = array(
+			'has_voting' => 1,
+		);
+		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
+	}
 	// **************************************************************
 	// End ETIKA
 	// **************************************************************

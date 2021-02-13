@@ -957,14 +957,19 @@ class Etika extends CI_Controller
         $this->form_validation->set_rules('token', 'Token', 'required');
         if ($this->form_validation->run() == FALSE) {
             if (!empty($cari)) {
-                $this->load->view('guest/etika/master/header', $this->data);
-                $this->load->view('guest/etika/page/login-token', $this->data);
-                $this->load->view('guest/etika/master/footer', $this->data);
+                if (!empty($this->session->userdata('id_pemilih'))) {
+                    redirect('etika/dashboard', 'refresh');
+                } else {
+                    $this->load->view('guest/etika/master/header', $this->data);
+                    $this->load->view('guest/etika/page/login-token', $this->data);
+                    $this->load->view('guest/etika/master/footer', $this->data);
+                }
             } else {
                 show_404();
             }
         } else {
             if (isset($_POST['submit'])) {
+
                 $pemilih = $this->All_model->cekEmailLoginPemilih($_POST['email'], $id_kegiatan);
                 if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
                     if (!empty($pemilih)) {
@@ -982,13 +987,15 @@ class Etika extends CI_Controller
                             if (!empty($pemilih[0]['block_time']) && new DateTime(date('Y-m-d H:i:s')) <= $cek_block) {
                                 echo "Anda Terblokir, Tunggu Beberapa Menit Lagi";
                             } else {
-
                                 $this->All_model->unblockPemilih($pemilih[0]['id_pemilih']);
                                 if (!empty($pemilih[0]['token'])) {
                                     if ($_POST['token'] == $pemilih[0]['token']) {
-                                        if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($pemilih[0]['token_valid_until']) || $pemilih[0]['has_voting'] == 1) {
-                                            echo "Benar";
+                                        if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($pemilih[0]['token_valid_until']) && $pemilih[0]['has_voting'] == 0) {
                                             // Buat Session Login Untuk User, Redirect kehalaman Administrator
+                                            $this->session->set_userdata('nama_pemilih', $pemilih[0]['nama_pemilih']);
+                                            $this->session->set_userdata('id_pemilih', $pemilih[0]['id_pemilih']);
+                                            $this->session->set_userdata('id_kegiatan', $pemilih[0]['id_kegiatan']);
+                                            redirect('etika/dashboard', 'refresh');
                                         } else {
                                             echo "Token Sudah Invalid atau Token Sudah Digunakan";
                                         }
@@ -1031,6 +1038,74 @@ class Etika extends CI_Controller
             }
         } else {
             var_dump($_POST);
+        }
+    }
+    public function dashboard()
+    {
+        if (!empty($this->session->userdata('id_pemilih')) || !empty($this->session->userdata('id_kegiatan'))) {
+            $id_kegiatan = $this->session->userdata('id_kegiatan');
+            $id_pemilih = $this->session->userdata('id_pemilih');
+            $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
+            $this->data['title'] = "Dashboard Pemilihan ETIKA";
+            $this->data['kegiatan'] = $cari;
+            $this->data['kandidat'] = $this->All_model->getAllKandidat($id_kegiatan);
+            $this->data['pemilih'] = $this->All_model->cariPemilih($id_pemilih);
+            if (!empty($cari)) {
+                $this->load->view('guest/etika/master/header-dashboard', $this->data);
+                $this->load->view('guest/etika/page/administrator', $this->data);
+                $this->load->view('guest/etika/master/footer-dashboard', $this->data);
+            } else {
+                show_404();
+            }
+        } else {
+            redirect('etika/voting_kegiatan', 'refresh');
+        }
+    }
+    public function save_vote($id_kandidat = "")
+    {
+        if (!empty($this->session->userdata('id_pemilih')) || !empty($this->session->userdata('id_kegiatan'))) {
+            $id_kegiatan = $this->session->userdata('id_kegiatan');
+            $id_pemilih = $this->session->userdata('id_pemilih');
+            $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
+            $cari_kandidat = $this->All_model->cariKandidat(base64_decode(base64_decode($id_kandidat)));
+            $pemilih = $this->All_model->cariPemilih($id_pemilih);
+            $this->data['title'] = "Dashboard Pemilihan ETIKA";
+            $this->data['kegiatan'] = $cari;
+            $this->data['kandidat'] = $this->All_model->getAllKandidat($id_kegiatan);
+            $this->data['pemilih'] = $pemilih;
+            if (
+                !empty($cari) && $pemilih[0]['has_voting'] == 0 && !empty($cari_kandidat)
+            ) {
+                if ($this->All_model->saveVote(base64_decode(base64_decode($id_kandidat)), $id_pemilih, $id_kegiatan, $this->input->ip_address()) && $this->All_model->updateVote($id_pemilih)) {
+                    redirect("etika/dashboard", 'refresh');
+                } else {
+                    echo "Gagal Melakukan Voting";
+                }
+            } else {
+                show_404();
+            }
+        } else {
+            redirect('etika/voting_kegiatan', 'refresh');
+        }
+    }
+    public function logout()
+    {
+        if (!empty($this->session->userdata('id_pemilih')) || !empty($this->session->userdata('id_kegiatan'))) {
+            $id_kegiatan = $this->session->userdata('id_kegiatan');
+            $id_pemilih = $this->session->userdata('id_pemilih');
+            $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
+            $this->data['pemilih'] = $this->All_model->cariPemilih($id_pemilih);
+            if (!empty($cari)) {
+                // unset session
+                $this->session->unset_userdata(['id_pemilih', 'id_kegiatan', 'nama_pemilih']);
+                // Destroy the session
+                $this->session->sess_destroy();
+                redirect('etika/voting_kegiatan', 'refresh');
+            } else {
+                show_404();
+            }
+        } else {
+            redirect('etika/voting_kegiatan', 'refresh');
         }
     }
 }
