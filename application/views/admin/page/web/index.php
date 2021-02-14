@@ -6,70 +6,7 @@
          kepengurusan HMJ dan Kategori Berkas telah terisi</p>
      <!-- Kepengurusan -->
      <div class="accordion" id="ManajemenBerkas">
-         <div class="card shadow mb-4">
-             <!-- Card Header - Accordion -->
-             <a href="#kepengurusan" class="d-block card-header py-3" data-toggle="collapse" role="button"
-                 aria-expanded="true" aria-controls="kepengurusan">
-                 <h6 class="m-0 font-weight-bold text-primary">Data Kepengurusan HMJ</h6>
-             </a>
-             <!-- Card Content - Collapse -->
-             <div class="collapse show" id="kepengurusan" data-parent="#ManajemenBerkas">
-                 <div class="card-body">
-                     <a href="<?= base_url() ?>web/tambah_data_kepengurusan"
-                         class="btn btn-primary btn-sm btn-icon-split mb-4">
-                         <span class="icon text-white-50">
-                             <i class="fas fa-flag"></i>
-                         </span>
-                         <span class="text">Tambah Data</span>
-                     </a>
-                     <div class="table-responsive">
-                         <table class="table table-bordered" id="tableKepengurusan" width="100%" cellspacing="0">
-                             <thead>
-                                 <tr>
-                                     <th>Nama Kepengurusan</th>
-                                     <th>Deskripsi</th>
-                                     <th>Dibuat Oleh</th>
-                                     <th>Dibuat Tanggal</th>
-                                     <?php if ($group[0]['group_id'] == "1") { ?>
-                                     <th>Fitur</th>
-                                     <?php } ?>
-                                 </tr>
-                             </thead>
-                             <tbody>
-                                 <?php foreach ($kepengurusan as $data) : ?>
-                                 <tr>
-                                     <?php
-                                            if ($data['status_pakai'] == 1) {
-                                            ?><td style="color: green;"><?php
-                                                                    } else { ?>
-                                     <td style="color: red;"><?php
-                                                                    }
-                                                                        ?>
-                                         <?= $data['nama_hmj'] ?>
-                                     </td>
-                                     <td><?= $data['deskripsi_hmj'] ?></td>
-                                     <td><?= $data['create_by'] ?></td>
-                                     <td><?= $data['create_at'] ?></td>
-                                     <?php if ($group[0]['group_id'] == "1") { ?>
-                                     <td>
-                                         <a href="<?= base_url() ?>web/hapus_data_kepengurusan/<?= $data['id_hmj']; ?>"
-                                             class="btn btn-danger btn-sm btn-icon-split tombol-hapus">
-                                             <span class="icon text-white-50">
-                                                 <i class="fas fa-trash"></i>
-                                             </span>
-                                             <span class="text">Delete</span>
-                                         </a>
 
-                                     </td>
-                                     <?php } ?>
-                                 </tr>
-                                 <?php endforeach; ?>
-                             </tbody>
-                         </table>
-                     </div>
-                 </div>
-             </div>
-         </div>
 
 
          <!-- Kategori Berkas -->
@@ -86,7 +23,7 @@
                  </h6>
              </a>
              <!-- Card Content - Collapse -->
-             <div class="collapse" id="kategori_berkas" data-parent="#ManajemenBerkas">
+             <div class="collapse show" id="kategori_berkas" data-parent="#ManajemenBerkas">
                  <div class="card-body">
                      <a href="<?= base_url() ?>web/tambah_kategori_berkas"
                          class="btn btn-primary btn-sm btn-icon-split mb-4">

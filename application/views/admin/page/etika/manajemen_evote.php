@@ -47,8 +47,8 @@
                             <span class="text">Reset All Token</span>
                         </a>
                         <?php if ($kegiatan[0]['mode'] == "1" && new DateTime(date('Y-m-d H:i:s')) < new DateTime($kegiatan[0]['waktu_mulai'])) { ?>
-                        <a href="#" class="btn ml-2 btn-info btn-sm btn-icon-split mb-4" data-toggle="modal"
-                            data-target="#exampleModal">
+                        <a href="<?= base_url() ?>etika/create_all_token/<?= base64_encode(base64_encode($id_kegiatan)) ?>"
+                            class="btn ml-2 btn-info btn-sm btn-icon-split mb-4">
                             <span class="icon text-white-50">
                                 <i class="fas fa-plus"></i>
                             </span>
@@ -96,7 +96,7 @@
                                             <span class=" text">Belum memilih</span>
                                         </a>
                                         <?php else : ?>
-                                        <a href="#" class="btn btn-warning btn-sm mb-2">
+                                        <a href="#" class="btn btn-success btn-sm mb-2">
                                             <span class=" text">Sudah memilih</span>
                                         </a>
                                         <?php endif; ?>
@@ -237,47 +237,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create All Token</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Token Aktif (format : yyyy-mm-dd hh:mm:ss)</div>
-                            <input type="text" class="form-control form-control-user" id="ketua"
-                                aria-describedby="nama_kegiatan" placeholder="Masukkan Tanggal Token Aktif"
-                                name="waktu_mulai" required value="<?= set_value('waktu_mulai') ?>">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Token Non-Aktif (format : yyyy-mm-dd hh:mm:ss)</div>
-                            <input type="text" class="form-control form-control-user" id="ketua"
-                                aria-describedby="nama_kegiatan" placeholder="Masukkan Tanggal Token Non-Aktif"
-                                name="waktu_selesai" required value="<?= set_value('waktu_selesai') ?>">
-                        </div>
-                    </div>
-                    <button type="submit" value="Submit" name="Submit" class="btn btn-primary btn-user btn-block">Create
-                        Token</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

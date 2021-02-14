@@ -3,9 +3,34 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Daftar Kandidat</h1>
-        <p class="mb-4">Silahkan pilih kandidat yang sesuai dengan pandangan Anda, junjung tinggi asas
-            LUBERJUDIL dalam berdemokrasi</p>
+        <h1 class="h3 mb-2 text-gray-800 mb-4">Kandidat EVOTING Kegiatan <span
+                class="text-primary "><?= $kegiatan[0]['nama_kegiatan'] ?></span> </h1>
+        <?php
+        if (new DateTime(date('Y-m-d H:i:s')) > new DateTime($kegiatan[0]['waktu_selesai'])) : ?>
+        <div class="alert alert-danger col-12" role="alert">
+            Waktu Voting Telah Usai !!
+        </div>
+        <?php elseif (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($kegiatan[0]['waktu_mulai'])  && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($kegiatan[0]['waktu_selesai'])) : ?>
+        <div class="alert alert-success col-12" role="alert">
+            <?php
+                $tgl_selesai = new DateTime($kegiatan[0]['waktu_selesai']);
+                $tgl_hari_ini = new DateTime(date('Y-m-d H:i:s'));
+
+                $diff = $tgl_selesai->diff($tgl_hari_ini);
+                echo "Voting Berakhir dalam " . $diff->d . " hari " . $diff->h . " jam " . $diff->i . " menit ";
+                ?>
+        </div>
+        <?php else : ?>
+        <div class="alert alert-secondary col-12" role="alert">
+            <?php
+                $tgl_selesai = new DateTime($kegiatan[0]['waktu_mulai']);
+                $tgl_hari_ini = new DateTime(date('Y-m-d H:i:s'));
+
+                $diff = $tgl_selesai->diff($tgl_hari_ini);
+                echo "Voting Dimulai dalam " . $diff->d . " hari " . $diff->h . " jam " . $diff->i . " menit ";
+                ?>
+        </div>
+        <?php endif; ?>
         <div class="card shadow mb-4">
             <!-- Card Header - Accordion -->
             <a href="#kepengurusan" class="d-block card-header py-3" data-toggle="collapse" role="button"
@@ -58,10 +83,12 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Batal</button>
+                                        <?php if ((new DateTime(date('Y-m-d H:i:s')) >= new DateTime($kegiatan[0]['waktu_mulai']) && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($kegiatan[0]['waktu_selesai']))) : ?>
                                         <a
                                             href="<?= base_url() ?>etika/save_vote/<?= base64_encode(base64_encode($data['id_kandidat'])) ?>"><button
                                                 type="button" class="btn btn-primary">Voting
                                                 Kandidat</button></a>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>

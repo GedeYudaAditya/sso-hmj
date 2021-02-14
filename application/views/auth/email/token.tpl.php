@@ -182,7 +182,7 @@
                                         </td>
                                         <td>:</td>
                                         <td>
-                                            1 Jam
+                                            2 Jam
                                         </td>
                                     </tr>
                                     <tr>

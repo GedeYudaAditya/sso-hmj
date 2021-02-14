@@ -119,8 +119,8 @@
 	                    data-parent="#accordionSidebar">
 	                    <div class="bg-white py-2 collapse-inner rounded">
 	                        <h6 class="collapse-header">Daftar Fitur:</h6>
+	                        <a class="collapse-item" href="<?= base_url() ?>web/tentang_hmj">Manajemen Kepengurusan</a>
 	                        <a class="collapse-item" href="<?= base_url() ?>web/berkas">Manajemen Berkas</a>
-	                        <a class="collapse-item" href="<?= base_url() ?>web/tentang_hmj">Tentang HMJ</a>
 	                        <a class="collapse-item" href="<?= base_url() ?>web/informasi_hmj">Manajemen Informasi</a>
 	                    </div>
 	                </div>

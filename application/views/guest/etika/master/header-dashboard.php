@@ -44,7 +44,11 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
+            <?php if ($active == 1) : ?>
             <li class="nav-item active">
+                <?php else : ?>
+            <li class="nav-item">
+                <?php endif; ?>
                 <a class="nav-link" href="<?= base_url() ?>etika/dashboard">
                     <i class="fas fa-fw fa-vote-yea"></i>
                     <span>Voting Kandidat</span></a>
@@ -59,12 +63,18 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            <?php if ($active == 2) : ?>
+            <li class="nav-item active">
+                <?php else : ?>
             <li class="nav-item">
-                <a class="nav-link" href="ganti-token.html">
+                <?php endif; ?>
+                <?php if ($kegiatan[0]['mode'] == 1) : ?>
+                <a class="nav-link" href="<?=base_url()?>etika/ganti_token">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Ganti Token</span>
                 </a>
             </li>
+            <?php endif; ?>
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url() ?>etika/logout">
                     <i class="fas fa-sign-out-alt"></i>
@@ -108,3 +118,4 @@
 
                 </nav>
                 <!-- End of Topbar -->
+                <div class="login" data-login="<?= $this->session->flashdata('login'); ?>">

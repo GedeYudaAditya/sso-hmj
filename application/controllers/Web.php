@@ -17,7 +17,7 @@ class Web extends CI_Controller
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
-			$this->data['kepengurusan'] = $this->All_model->getAllKepengurusan();
+			
 			$this->data['kategoriBerkas'] = $this->All_model->getOnlyActiveKategoriBerkas();
 			$this->data['namaKepengurusan'] = $this->All_model->getActiveKepengurusan();
 			$this->data['berkass'] = $this->All_model->getActiveBerkas();
@@ -37,7 +37,7 @@ class Web extends CI_Controller
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
-			$this->data['kepengurusan'] = $this->All_model->getAllKepengurusan();
+			
 			$this->data['kategoriBerkas'] = $this->All_model->getOnlyActiveKategoriBerkas();
 			$this->data['namaKepengurusan'] = $this->All_model->getActiveKepengurusan();
 			$this->data['berkass'] = $this->All_model->getActiveBerkas();
@@ -57,6 +57,7 @@ class Web extends CI_Controller
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
+			$this->data['kepengurusan'] = $this->All_model->getAllKepengurusan();
 			$this->data['select_kepengurusan'] = $this->All_model->getKepengurusanSelect();
 			$this->data['bidang'] = $this->All_model->getAllBidangSelect();
 			$this->data['title'] = "Web HMJ - Tentang HMJ";
@@ -427,7 +428,7 @@ class Web extends CI_Controller
 							} else {
 								if ($this->All_model->insertKepengurusan($foto_ketua, $foto_wakil, $foto_vertikal, $foto_landscape)) {
 									$this->session->set_flashdata('berhasil', 'Ditambahkan');
-									redirect('web/');
+									redirect('web/tentang_hmj');
 								} else {
 									$this->session->set_flashdata('gagal', 'Ditambahkan, Periksa Kembali Ukuran dan Tipe dari File');
 									redirect('web/tambah_data_kepengurusan');

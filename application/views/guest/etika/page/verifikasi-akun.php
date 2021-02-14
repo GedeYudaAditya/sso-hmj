@@ -73,7 +73,8 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-bordered w-100 mt-3" type="submit">Verifikasi Akun</button>
+                                <button class="btn btn-bordered w-100 mt-3" name="submit" value="Submit"
+                                    type="submit">Verifikasi Akun</button>
                             </div>
                             <div class="col-12">
                                 <span class="d-block pt-2 mt-4 border-top">Terjadi Masalah? <a

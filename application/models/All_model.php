@@ -1412,6 +1412,7 @@ class All_model extends CI_Model
 		$query = array(
 			'token' => null,
 			'token_valid_until' => null,
+			'has_voting' => 0,
 			'manage_by' => null,
 		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
@@ -1420,6 +1421,7 @@ class All_model extends CI_Model
 	{
 		$query = array(
 			'token' => null,
+			'has_voting' => 0,
 			'manage_by' => null,
 		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
@@ -1430,6 +1432,7 @@ class All_model extends CI_Model
 			'token' => null,
 			'token_valid_start' => null,
 			'token_valid_until' => null,
+			'has_voting' => 0,
 			'manage_by' => null,
 		);
 		return $this->db->where('id_kegiatan=' . $id_kegiatan)->update('s5_pemilih', $query);
@@ -1497,6 +1500,13 @@ class All_model extends CI_Model
 			'has_voting' => 1,
 		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
+	}
+	public function cariPemilihAktivasi($data, $prodi, $id_kegiatan)
+	{
+		return $this->db->where('semester=' . "'$data[semester]'")->where('nim=' . "'$data[nim]'")->where('prodi=' . "'$prodi'")->like(
+			'nama_pemilih',
+			$data['name']
+		)->where('id_kegiatan=' . $id_kegiatan)->get('s5_pemilih')->result_array();
 	}
 	// **************************************************************
 	// End ETIKA

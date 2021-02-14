@@ -8,7 +8,7 @@
     $kode = substr(str_shuffle($string), 0, 12);
     ?>
     <h5>Kode Cetak : #<?= $kode ?> </h5>
-    <h5>Lama Aktif Token : <?= $pendaftar[0]['token_valid_start'] ?> WITA - <?= $pendaftar[0]['token_valid_until'] ?>
+    <h5>Token Aktif Sampai : <?= $pendaftar[0]['token_valid_until'] ?>
         WITA</h5>
 </div>
 <table border="1" cellspacing="0" cellpadding="5" width="100%">
@@ -22,15 +22,6 @@
             </th>
             <th style="vertical-align: middle;">
                 <center>Nama Pemilih</center>
-            </th>
-            <th style="vertical-align: middle;">
-                <center>Email</center>
-            </th>
-            <th style="vertical-align: middle;">
-                <center>Prodi</center>
-            </th>
-            <th style="vertical-align: middle;">
-                <center>Semester</center>
             </th>
             <th style="vertical-align: middle;">
                 <center>Username</center>
@@ -47,9 +38,6 @@
             <td><?= $i++ ?></td>
             <td><?= $data['nim'] ?></td>
             <td><?= $data['nama_pemilih'] ?></td>
-            <td><?= $data['email'] ?></td>
-            <td><?= $data['prodi'] ?></td>
-            <td><?= $data['semester'] ?></td>
             <td><?= $data['username'] ?></td>
             <td><?= $data['token'] ?></td>
         </tr>
