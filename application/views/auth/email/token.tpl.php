@@ -178,16 +178,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="time">Durasi Token</label>
-                                        </td>
-                                        <td>:</td>
-                                        <td>
-                                            2 Jam
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label for="time">Aktif Sampai</label>
+                                            <label for="time">Token Aktif Sampai</label>
                                         </td>
                                         <td>:</td>
                                         <td>

@@ -1398,6 +1398,21 @@ class All_model extends CI_Model
 		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
 	}
+	public function addIpLogin($ip, $id_pemilih)
+	{
+		$query = array(
+			'ip_address' => $ip,
+		);
+		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
+	}
+	public function requestTokenBaru($token, $id_pemilih)
+	{
+		$query = array(
+				'token' => $token,
+			);
+		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
+
+	}
 	public function createTokenManualMode($token, $id_pemilih, $admin, $time)
 	{
 		$query = array(

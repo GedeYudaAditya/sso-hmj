@@ -23,9 +23,12 @@
                                          <h4><?= $pemilih[0]['token'] ?></h4>
                                          <p>Valid Until : <?= $pemilih[0]['token_valid_until'] ?> WITA</p>
                                      </div>
-                                     <button type="submit" class="btn btn-primary btn-user btn-block">Request
+                                     <button type="button" data-toggle="modal" data-target="#ganti-token"
+                                         class="btn btn-primary btn-user btn-block">Request
                                          Token Baru</button>
-                                     <button type="submit" class="btn btn-info btn-user btn-block">Unduh Token</button>
+                                     <button type="button" class="btn btn-info btn-user btn-block" data-toggle="modal"
+                                         data-target="#send-email">Kirim Token Ke
+                                         Email</button>
                                  </form>
                                  <script type="text/javascript">
                                  $(document).ready(function() {
@@ -43,3 +46,86 @@
          </div>
      </div>
  </div>
+
+ <!--====== Modal Request Token Area Start ======-->
+ <div class="modal fade" id="ganti-token" tabindex="-1" role="dialog" aria-labelledby="tokenModalLabel"
+     aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title" id="tokenModalLabel">Verifikasi Ganti Token</h4>
+             </div>
+             <div class="modal-body">
+                 <form action="" method="POST">
+                     <div class="form-group">
+                         <div class="col mr-2">
+                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                 Prodi Mahasiswa</div>
+
+                             <select name="prodi" id="prodi" required class="form-control form-control-select">
+                                 <option value="">Pilih Prodi</option>
+                                 <option value="Sistem Informasi">Sistem Informasi</option>
+                                 <option value="Manajemen Informatika">Manajemen Informatika</option>
+                                 <option value="Pendidikan Teknik Informatika">Pendidikan Teknik Informatika</option>
+                                 <option value="Ilmu Komputer">Ilmu Komputer</option>
+                             </select>
+                         </div>
+                         <div class="col mr-2 mt-4">
+                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                 Semester</div>
+
+                             <input type="number" class="form-control form-control-user" id="semester"
+                                 aria-describedby="semester" min="1" max="16" placeholder="Masukkan Semester Anda"
+                                 name="semester" required value="<?= set_value('semester') ?>">
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="submit" class="btn btn-primary" name="submit" value="Submit">Request
+                             Token</button>
+                     </div>
+                 </form>
+             </div>
+
+         </div>
+     </div>
+ </div>
+ <!--====== Modal Request Token Area End ======-->
+
+
+ <!--====== Modal Send Email Area Start ======-->
+ <div class="modal fade" id="send-email" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel"
+     aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title" id="emailModalLabel">Kirim Salinan Token</h4>
+             </div>
+             <div class="modal-body">
+                 <form action="" method="POST">
+                     <div class="form-group">
+                         <div class="col mr-2">
+                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                 Email</div>
+                             <input type="email" class="form-control form-control-user" id="email"
+                                 aria-describedby="email" placeholder="Masukkan email Anda" name="email" required
+                                 value="<?= set_value('email') ?>">
+                         </div>
+                         <div class="col mr-2 mt-4">
+                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                 Konfirmasi Email</div>
+                             <input type="email" class="form-control form-control-user" id="konf-email"
+                                 aria-describedby="konf-email" placeholder="Masukkan email Anda" name="konf-email"
+                                 required value="<?= set_value('konf-email') ?>">
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="submit" class="btn btn-primary" name="submit-email" value="Submit-email">Kirim
+                             Salinan Token</button>
+                     </div>
+                 </form>
+             </div>
+
+         </div>
+     </div>
+ </div>
+ <!--====== Modal Send Email Area End ======-->

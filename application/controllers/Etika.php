@@ -1000,7 +1000,7 @@ class Etika extends CI_Controller
                                     $this->All_model->unblockPemilih($pemilih[0]['id_pemilih']);
                                     if (!empty($pemilih[0]['token'])) {
                                         if ($_POST['token'] == $pemilih[0]['token']) {
-                                            if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($pemilih[0]['token_valid_until']) && $pemilih[0]['has_voting'] == 0) {
+                                            if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($pemilih[0]['token_valid_until']) && $pemilih[0]['has_voting'] == 0 && $this->All_model->addIpLogin($this->input->ip_address(), $pemilih[0]['id_pemilih'])) {
                                                 // Buat Session Login Untuk User, Redirect kehalaman Administrator
                                                 $this->session->set_userdata('nama_pemilih', $pemilih[0]['nama_pemilih']);
                                                 $this->session->set_userdata('id_pemilih', $pemilih[0]['id_pemilih']);
@@ -1144,16 +1144,66 @@ class Etika extends CI_Controller
                 $id_kegiatan = $this->session->userdata('id_kegiatan');
                 $id_pemilih = $this->session->userdata('id_pemilih');
                 $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
+                $pemilih =  $this->All_model->cariPemilih($id_pemilih);
                 $this->data['title'] = "Ganti Token Pemilihan ETIKA";
                 $this->data['kegiatan'] = $cari;
                 $this->data['active'] = 2;
-                $this->data['pemilih'] = $this->All_model->cariPemilih($id_pemilih);
-                if (!empty($cari)) {
-                    $this->load->view('guest/etika/master/header-dashboard', $this->data);
-                    $this->load->view('guest/etika/page/ganti-token', $this->data);
-                    $this->load->view('guest/etika/master/footer-dashboard', $this->data);
+                $this->data['pemilih'] = $pemilih;
+                if (isset($_POST['submit'])) {
+                    $this->form_validation->set_rules('prodi', 'Prodi', 'required');
+                    $this->form_validation->set_rules('semester', 'Semester', 'required|integer');
                 } else {
-                    show_404();
+                    $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+                    $this->form_validation->set_rules('konf-email', 'Konfirmasi Email', 'required|valid_email');
+                }
+                if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
+                    if ($this->form_validation->run() == FALSE) {
+                        if (!empty($cari) && $cari[0]['mode'] == 1) {
+                            $this->load->view('guest/etika/master/header-dashboard', $this->data);
+                            $this->load->view('guest/etika/page/ganti-token', $this->data);
+                            $this->load->view('guest/etika/master/footer-dashboard', $this->data);
+                        } else {
+                            show_404();
+                        }
+                    } else {
+                        if (isset($_POST['submit'])) {
+                            if ($pemilih[0]['prodi'] == $_POST['prodi'] && $pemilih[0]['semester'] == $_POST['semester']) {
+                                $string = "0123456789bcdfghjklmnpqrstvwxyz";
+                                $token = substr(str_shuffle($string), 0, 12);
+                                if ($this->All_model->requestTokenBaru($token, $id_pemilih)) {
+                                    echo "Token berhasil diperbaharui";
+                                } else {
+                                    echo "Token gagal diperbaharui";
+                                }
+                            } else {
+                                echo "Tidak dapat melakukan request Token";
+                            }
+                        } else {
+                            // Content Email
+                            if ($_POST['konf-email'] == $_POST['email']) {
+                                $data = [
+                                    'identity' => $_POST['email'],
+                                    'username' => $pemilih[0]['username'],
+                                    'token_code' => $pemilih[0]['token'],
+                                    'kegiatan' => $cari[0]['nama_kegiatan'],
+                                    'time' => $pemilih[0]['token_valid_until'] . ' WITA',
+                                    'id_kegiatan' => $id_kegiatan,
+                                ];
+                                $template = $this->config->item('email_token', 'ion_auth');
+                                $email = $_POST['email'];
+                                // End Content Email
+                                if ($this->send_mail($data, $template, $email)) {
+                                    echo "Salinan Berhasil Dikirim Ke Email, Silahkan Cek Inbox atau Spam";
+                                } else {
+                                    echo "Token Gagal Dikirim";
+                                }
+                            } else {
+                                echo "Email Tidak Sama";
+                            }
+                        }
+                    }
+                } else {
+                    echo "Waktu Voting Telah Selesai";
                 }
             } else {
                 redirect('etika/voting_kegiatan', 'refresh');
