@@ -1,4 +1,5 @@
 <!-- ***** Welcome Area Manual ***** -->
+<input type="hidden" id="id_kegiatan" value="<?= $kegiatan[0]['id_kegiatan'] ?>">
 <section id="home" class="section welcome-area bg-overlay d-flex align-items-center">
     <div class="container">
         <div class="row align-items-center justify-content-center">
@@ -141,13 +142,17 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-6 my-3 res-margin">
                 <!-- Image Box -->
-                <div class="image-box text-center icon-1 p-5 wow fadeInLeft" data-aos-duration="2s"
+                <div class="image-box col-12 text-center icon-1 p-5 wow fadeInLeft" data-aos-duration="2s"
                     data-wow-delay="0.4s">
-
                     <!-- Icon Text -->
                     <div class="icon-text">
-                        <h3 class="mb-2">Berdasarkan Prodi</h3>
-                        <p>Tanpa perlu mengunduh, Sistem ETIKA dapat diakses melalui browser pengguna</p>
+                        <h3 class="mb-4">Berdasarkan Prodi</h3>
+                    </div>
+                    <div id="form-diagram">
+
+                    </div>
+                    <div class="col-12">
+                        <canvas id="prodiChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -157,9 +162,13 @@
 
                     <!-- Icon Text -->
                     <div class="icon-text">
-                        <h3 class="mb-2">Berdasarkan Semester</h3>
-                        <p>Cukup login dengan Username dan Token, Anda dapat memulai melakukan
-                            pemilihan</p>
+                        <h3 class="mb-4">Berdasarkan Semester</h3>
+                    </div>
+                    <div id="form-diagram-semester">
+
+                    </div>
+                    <div class="col-12">
+                        <canvas id="semesterChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -172,8 +181,13 @@
                     <!-- Icon Text -->
                     <div class="icon-text">
                         <h3 class="mb-2">Berdasarkan Kandidat</h3>
-                        <p>Hanya Anda yang mengetahui pilihan Anda, tidak ada yang lain diantaranya bahkan
-                            panitia</p>
+
+                        <div id="form-diagram-kandidat">
+
+                        </div>
+                        <div class="col-12">
+                            <canvas id="kandidatChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -186,7 +200,12 @@
                     <!-- Icon Text -->
                     <div class="icon-text">
                         <h3 class="mb-2">Perbandingan Jumlah Pemilih</h3>
-                        <p>Proses penginputan kandidat, pemilih, dan perhitungan suara dilakukan oleh sistem</p>
+                        <div id="form-diagram-pemilih">
+
+                        </div>
+                        <div class="col-12">
+                            <canvas id="pemilihChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>

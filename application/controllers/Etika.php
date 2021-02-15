@@ -160,7 +160,9 @@ class Etika extends CI_Controller
             $id_kegiatan = (int)base64_decode(base64_decode($id_kegiatan));
             $id = $_SESSION['user_id'];
             $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
-            $this->data['pemilih'] = $this->All_model->rowAllPemilih($id_kegiatan);
+            $this->data['jml_pemilih'] = $this->All_model->rowAllPemilih($id_kegiatan);
+            $this->data['jml_sudah_voting'] = $this->All_model->countAllSudahMemilih($id_kegiatan);
+            $this->data['jml_belum_voting'] = $this->data['jml_pemilih'] - $this->data['jml_sudah_voting'];
             $this->data['group'] = $this->ion_auth_model->getGroup($id);
             $this->data['title'] = "ETIKA - Administrator ETIKA";
             $this->data['active'] = "10";
@@ -213,6 +215,7 @@ class Etika extends CI_Controller
             $id_kegiatan = (int)base64_decode(base64_decode($id_kandidat));
             $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
             if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_mulai'])) {
+                
                 $id = $_SESSION['user_id'];
                 $this->data['group'] = $this->ion_auth_model->getGroup($id);
                 $this->data['title'] = "ETIKA - Tambah Kandidat ETIKA";
@@ -220,7 +223,11 @@ class Etika extends CI_Controller
                 $this->data['ckeditor'] = "etika";
                 $this->data['flip'] = "false";
                 // Form Validation
-                $this->form_validation->set_rules('no_urut', 'Nomor Urut', 'required|integer');
+                $cari_kandidat = $this->All_model->cariKandidatKegiatan($id_kegiatan);
+                $kode_undi = $cari_kandidat[0]['noUndi'];
+                $urutan = (int) $kode_undi;
+                $urutan++;
+                $kode_undi = sprintf("%01s", $urutan);
                 $this->form_validation->set_rules('ketua', 'Nama Ketua', 'required|max_length[100]');
                 $this->form_validation->set_rules('wakil_ketua', 'Nama Wakil Ketua', 'required|max_length[100]');
                 $this->form_validation->set_rules('visi_kandidat', 'Visi Kandidat', 'required|max_length[1000]');
@@ -244,7 +251,7 @@ class Etika extends CI_Controller
                         $tujuan = "etika";
                         $upload = $this->All_model->uploadFile($id_file, $id_sistem, $tujuan);
                         if ($upload['result'] == "success") {
-                            if ($this->All_model->inputDataKandidat($upload, $id_kegiatan)) {
+                            if ($this->All_model->inputDataKandidat($upload, $id_kegiatan, $kode_undi)) {
                                 echo "Berhasil";
                             } else {
                                 echo "Gagal ditambahkan";
@@ -545,7 +552,33 @@ class Etika extends CI_Controller
             }
         }
     }
-
+    public function live_count($id_kegiatan = "")
+    {
+        if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(etika)) {
+            redirect('etika/home', 'refresh');
+        } else {
+            // Decode id
+            $id_kegiatan = (int)base64_decode(base64_decode($id_kegiatan));
+            $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
+            if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
+                // Send Data to views
+                $id = $_SESSION['user_id'];
+                $this->data['group'] = $this->ion_auth_model->getGroup($id);
+                $this->data['title'] = "ETIKA - Live Count Kegiatan";
+                $this->data['active'] = "10";
+                $this->data['ckeditor'] = "etika";
+                $this->data['kegiatan'] = $cari;
+                $this->data['flip'] = "etika";
+                if (!empty($cari)) {
+                    $this->load->view('admin/master/header', $this->data);
+                    $this->load->view('admin/page/etika/live_count', $this->data);
+                    $this->load->view('admin/master/footer', $this->data);
+                } else {
+                    show_404();
+                }
+            }
+        }
+    }
     public function ubah_pemilih($id_kegiatan = "", $id_pemilih = "")
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
@@ -784,6 +817,10 @@ class Etika extends CI_Controller
                 if (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($cari[0]['waktu_mulai'])  && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
                     if ($cari[0]['mode'] == "1") {
                         if (!empty($pemilih[0]['token'])) {
+                            $cari_pilihan = $this->All_model->cariPilihanWhere($id_kegiatan, $id_pemilih);
+                            if ($cari_pilihan > 0) {
+                                $this->All_model->resetPemilihanWhere($id_kegiatan, $id_pemilih);
+                            }
                             if ($this->All_model->updateTokenManualMode($id_pemilih)) {
                                 echo "Berhasil di reset";
                             } else {
@@ -794,6 +831,10 @@ class Etika extends CI_Controller
                         }
                     } else {
                         if (!empty($pemilih[0]['token'])) {
+                            $cari_pilihan = $this->All_model->cariPilihanWhere($id_kegiatan, $id_pemilih);
+                            if ($cari_pilihan > 0) {
+                                $this->All_model->resetPemilihanWhere($id_kegiatan, $id_pemilih);
+                            }
                             if ($this->All_model->updateTokenManual($id_pemilih)) {
                                 echo "Berhasil di reset";
                             } else {
@@ -823,10 +864,12 @@ class Etika extends CI_Controller
             $group =  $this->ion_auth_model->getGroup($id);
             if ($group[0]['group_id'] == "1" && new DateTime(date('Y-m-d H:i:s')) < new DateTime($cari[0]['waktu_mulai'])) {
                 if (!empty($cari)) {
-                    if ($this->All_model->resetTokenAll($id_kegiatan)) {
-                        echo "Berhasil di reset";
-                    } else {
-                        echo "Gagal Di reset";
+                    if ($this->All_model->resetPemilihanAll($id_kegiatan)) {
+                        if ($this->All_model->resetTokenAll($id_kegiatan)) {
+                            echo "Berhasil di reset";
+                        } else {
+                            echo "Gagal Di reset";
+                        }
                     }
                 } else {
                     show_404();
@@ -953,6 +996,83 @@ class Etika extends CI_Controller
             $this->load->view('guest/etika/master/footer', $this->data);
         }
     }
+    function countProdi()
+    {
+
+        // Start Chart Data JS
+        if (isset($_POST['id_kegiatan'])) {
+            $id_kegiatan = $_POST['id_kegiatan'];
+            $this->data['ajax'] = 1;
+            $this->data['digSI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Sistem Informasi");
+            $this->data['digPTI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Pendidikan Teknik Informatika");
+            $this->data['digMI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Manajemen Informatika");
+            $this->data['digIlkom'] = $this->All_model->getDiagramProdi($id_kegiatan, "Ilmu Komputer");
+            $this->load->view('guest/etika/page/ajax-chart', $this->data);
+        } else {
+            show_404();
+        }
+    }
+    function countSemester()
+    {
+
+        // Start Chart Data JS
+        if (isset($_POST['id_kegiatan'])) {
+            $id_kegiatan = $_POST['id_kegiatan'];
+            $this->data['ajax'] = 2;
+            if (
+                date('m') >= 1 && date('m') <= 6
+            ) {
+                $this->data['sem_a'] = $this->All_model->getDiagramSemester($id_kegiatan, 2);
+                $this->data['sem_b'] = $this->All_model->getDiagramSemester($id_kegiatan, 4);
+                $this->data['sem_c'] = $this->All_model->getDiagramSemester($id_kegiatan, 6);
+                $this->data['sem_d'] = $this->All_model->getDiagramSemester($id_kegiatan, 8);
+                $this->data['sem_etc'] = $this->All_model->getDiagramSemesterWhereHighFrom($id_kegiatan, 8);
+            } else {
+                $this->data['sem_a'] = $this->All_model->getDiagramSemester($id_kegiatan, 1);
+                $this->data['sem_b'] = $this->All_model->getDiagramSemester($id_kegiatan, 3);
+                $this->data['sem_c'] = $this->All_model->getDiagramSemester($id_kegiatan, 4);
+                $this->data['sem_d'] = $this->All_model->getDiagramSemester($id_kegiatan, 7);
+                $this->data['sem_etc'] = $this->All_model->getDiagramSemesterWhereHighFrom($id_kegiatan, 7);
+            }
+            $this->load->view('guest/etika/page/ajax-chart', $this->data);
+        } else {
+            show_404();
+        }
+    }
+    function countPemilih()
+    {
+
+        // Start Chart Data JS
+        if (isset($_POST['id_kegiatan'])) {
+            $id_kegiatan = $_POST['id_kegiatan'];
+            $this->data['ajax'] = 4;
+            $this->data['jml_pemilih'] = $this->All_model->rowAllPemilih($id_kegiatan);
+            $this->data['jml_sudah_voting'] = $this->All_model->countAllSudahMemilih($id_kegiatan);
+            $this->data['jml_belum_voting'] = $this->data['jml_pemilih'] - $this->data['jml_sudah_voting'];
+            $this->load->view('guest/etika/page/ajax-chart', $this->data);
+        } else {
+            show_404();
+        }
+    }
+    function countKandidat()
+    {
+
+        // Start Chart Data JS
+        if (isset($_POST['id_kegiatan'])) {
+            $id_kegiatan = $_POST['id_kegiatan'];
+            $this->data['ajax'] = 3;
+            $cek_jumlah_kandidat = $this->All_model->countKandidat($id_kegiatan);
+            $this->data['jml_kandidat'] = $cek_jumlah_kandidat;
+            for (
+                $i = 1;
+                $i <= $cek_jumlah_kandidat;
+                $i++
+            ) {
+                $this->data['kandidat'][$i] = $this->All_model->getDiagramKandidat($id_kegiatan, $i);
+            }
+            $this->load->view('guest/etika/page/ajax-chart', $this->data);
+        }
+    }
     public function login_kegiatan($id_kegiatan = "")
     {
         if ($this->ion_auth->logged_in() || $this->ion_auth->in_group(etika)) {
@@ -963,6 +1083,64 @@ class Etika extends CI_Controller
             $this->data['title'] = "Login Kegiatan ETIKA";
             $this->data['kegiatan'] = $cari;
             $this->data['body'] = 3;
+            // die;
+            // // Start Chart Data JS
+            // $this->data['digSI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Sistem Informasi");
+            // $this->data['digPTI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Pendidikan Teknik Informatika");
+            // $this->data['digMI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Manajemen Informatika");
+            // $this->data['digIlkom'] = $this->All_model->getDiagramProdi($id_kegiatan, "Ilmu Komputer");
+            // if (
+            //     date('m') >= 1 && date('m') <= 6
+            // ) {
+            //     $this->data['sem_a'] = $this->All_model->getDiagramSemester($id_kegiatan, 2);
+            //     $this->data['sem_b'] = $this->All_model->getDiagramSemester($id_kegiatan, 4);
+            //     $this->data['sem_c'] = $this->All_model->getDiagramSemester($id_kegiatan, 6);
+            //     $this->data['sem_d'] = $this->All_model->getDiagramSemester($id_kegiatan, 8);
+            //     $this->data['sem_etc'] = $this->All_model->getDiagramSemesterWhereHighFrom($id_kegiatan, 8);
+            // } else {
+            //     $this->data['sem_a'] = $this->All_model->getDiagramSemester($id_kegiatan, 1);
+            //     $this->data['sem_b'] = $this->All_model->getDiagramSemester($id_kegiatan, 3);
+            //     $this->data['sem_c'] = $this->All_model->getDiagramSemester($id_kegiatan, 4);
+            //     $this->data['sem_d'] = $this->All_model->getDiagramSemester($id_kegiatan, 7);
+            //     $this->data['sem_etc'] = $this->All_model->getDiagramSemesterWhereHighFrom($id_kegiatan, 7);
+            // }
+            // $cek_jumlah_kandidat = $this->All_model->countKandidat($id_kegiatan);
+            // $this->data['jml_kandidat'] = $cek_jumlah_kandidat;
+            // for ($i = 1; $i <= $cek_jumlah_kandidat; $i++) {
+            //     $this->data['kandidat'][$i] = $this->All_model->getDiagramKandidat($id_kegiatan, $i);
+            // }
+            // $this->data['jml_pemilih'] = $this->All_model->rowAllPemilih($id_kegiatan);
+            // $this->data['jml_sudah_voting'] = $this->All_model->countAllSudahMemilih($id_kegiatan);
+            // $this->data['jml_belum_voting'] = $this->data['jml_pemilih'] - $this->data['jml_sudah_voting'];
+            //  //End Chart Data   // // Start Chart Data JS
+            // $this->data['digSI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Sistem Informasi");
+            // $this->data['digPTI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Pendidikan Teknik Informatika");
+            // $this->data['digMI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Manajemen Informatika");
+            // $this->data['digIlkom'] = $this->All_model->getDiagramProdi($id_kegiatan, "Ilmu Komputer");
+            // if (
+            //     date('m') >= 1 && date('m') <= 6
+            // ) {
+            //     $this->data['sem_a'] = $this->All_model->getDiagramSemester($id_kegiatan, 2);
+            //     $this->data['sem_b'] = $this->All_model->getDiagramSemester($id_kegiatan, 4);
+            //     $this->data['sem_c'] = $this->All_model->getDiagramSemester($id_kegiatan, 6);
+            //     $this->data['sem_d'] = $this->All_model->getDiagramSemester($id_kegiatan, 8);
+            //     $this->data['sem_etc'] = $this->All_model->getDiagramSemesterWhereHighFrom($id_kegiatan, 8);
+            // } else {
+            //     $this->data['sem_a'] = $this->All_model->getDiagramSemester($id_kegiatan, 1);
+            //     $this->data['sem_b'] = $this->All_model->getDiagramSemester($id_kegiatan, 3);
+            //     $this->data['sem_c'] = $this->All_model->getDiagramSemester($id_kegiatan, 4);
+            //     $this->data['sem_d'] = $this->All_model->getDiagramSemester($id_kegiatan, 7);
+            //     $this->data['sem_etc'] = $this->All_model->getDiagramSemesterWhereHighFrom($id_kegiatan, 7);
+            // }
+            // $cek_jumlah_kandidat = $this->All_model->countKandidat($id_kegiatan);
+            // $this->data['jml_kandidat'] = $cek_jumlah_kandidat;
+            // for ($i = 1; $i <= $cek_jumlah_kandidat; $i++) {
+            //     $this->data['kandidat'][$i] = $this->All_model->getDiagramKandidat($id_kegiatan, $i);
+            // }
+            // $this->data['jml_pemilih'] = $this->All_model->rowAllPemilih($id_kegiatan);
+            // $this->data['jml_sudah_voting'] = $this->All_model->countAllSudahMemilih($id_kegiatan);
+            // $this->data['jml_belum_voting'] = $this->data['jml_pemilih'] - $this->data['jml_sudah_voting'];
+            //  //End Chart Data
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
             $this->form_validation->set_rules('token', 'Token', 'required');
             if ($this->form_validation->run() == FALSE) {

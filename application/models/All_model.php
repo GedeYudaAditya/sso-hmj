@@ -566,7 +566,7 @@ class All_model extends CI_Model
 			unlink('assets/upload/Folder_' . $nama . '/' . $row->ketua_foto);
 		}
 	}
-	
+
 	public function insertKepengurusan($foto_ketua, $foto_wakil, $foto_vertikal, $foto_landscape)
 	{
 
@@ -666,7 +666,7 @@ class All_model extends CI_Model
 	{
 		return $this->db->where('nama_hmj=' . "'$data'")->get('s1_hmj')->num_rows();
 	}
-	
+
 	public function insertKategoriBerkas()
 	{
 		$query = [
@@ -867,7 +867,7 @@ class All_model extends CI_Model
 	{
 		return $this->db->where('id_kegiatan_hmj=' . $id)->order_by("create_at", "desc")->get('s1_detail_kegiatan')->result_array();
 	}
-	
+
 	public function getInformasiAll()
 	{
 		return $this->db->order_by('create_at', 'DESC')->get('s1_informasi')->result_array();
@@ -901,8 +901,9 @@ class All_model extends CI_Model
 			return true;
 		}
 	}
-	public function deleteJabatan($id){
-		return $this->db->where('id_pilihan='.$id)->delete('jabatan');
+	public function deleteJabatan($id)
+	{
+		return $this->db->where('id_pilihan=' . $id)->delete('jabatan');
 	}
 	// **************************************************************
 	// End Website HMJ
@@ -1236,7 +1237,8 @@ class All_model extends CI_Model
 	// Start ETIKA
 	// **************************************************************
 	// Tulis Syntax Models disini
-	public function inputKegiatanEtika(){
+	public function inputKegiatanEtika()
+	{
 
 		$query = array(
 			'nama_kegiatan' => $this->input->post('nama_kegiatan', true),
@@ -1251,11 +1253,13 @@ class All_model extends CI_Model
 		return $this->db->insert('s5_kegiatan', $query);
 	}
 
-	public function getAllKegiatanEtika(){
+	public function getAllKegiatanEtika()
+	{
 		return $this->db->get('s5_kegiatan')->result_array();
 	}
-		public function getAllKegiatanEtikaWhere($id){
-		return $this->db->where('id_kegiatan='.$id)->get('s5_kegiatan')->result_array();
+	public function getAllKegiatanEtikaWhere($id)
+	{
+		return $this->db->where('id_kegiatan=' . $id)->get('s5_kegiatan')->result_array();
 	}
 	public function editKegiatanEtika($id)
 	{
@@ -1267,18 +1271,21 @@ class All_model extends CI_Model
 			'waktu_selesai' => $this->input->post('waktu_selesai', true),
 			'mode' => $this->input->post('mode', true),
 		);
-		return $this->db->where('id_kegiatan=',$id)->update('s5_kegiatan', $query);
+		return $this->db->where('id_kegiatan=', $id)->update('s5_kegiatan', $query);
 	}
-	public function deleteKegiatanEtikaWhere($id){
-		return $this->db->where('id_kegiatan='.$id)->delete('s5_kegiatan');
+	public function deleteKegiatanEtikaWhere($id)
+	{
+		return $this->db->where('id_kegiatan=' . $id)->delete('s5_kegiatan');
 	}
-	public function getAllKandidat($id){
-		return $this->db->where('id_kegiatan='.$id)->order_by('no_urut','ASC')->get('s5_kandidat')->result_array();
+	public function getAllKandidat($id)
+	{
+		return $this->db->where('id_kegiatan=' . $id)->order_by('no_urut', 'ASC')->get('s5_kandidat')->result_array();
 	}
-	public function inputDataKandidat($foto,$id){
+	public function inputDataKandidat($foto, $id, $no_undi)
+	{
 		$query = array(
 			'id_kegiatan' => $id,
-			'no_urut' => $this->input->post('no_urut', true),
+			'no_urut' => $no_undi,
 			'nama_ketua' => $this->input->post('ketua', true),
 			'nama_wakil' => $this->input->post('wakil_ketua', true),
 			'visi' => $this->input->post('visi_kandidat', false),
@@ -1297,7 +1304,7 @@ class All_model extends CI_Model
 			'misi' => $this->input->post('misi_kandidat', false),
 			'foto' => $foto['file']['file_name'],
 		);
-		return $this->db->where('id_kandidat='.$id)->update('s5_kandidat', $query);
+		return $this->db->where('id_kandidat=' . $id)->update('s5_kandidat', $query);
 	}
 	public function editDataKandidat($id)
 	{
@@ -1310,14 +1317,24 @@ class All_model extends CI_Model
 		);
 		return $this->db->where('id_kandidat=' . $id)->update('s5_kandidat', $query);
 	}
-	public function cariKandidat( $id_kandidat){
-		return $this->db->where("id_kandidat=".$id_kandidat)->get('s5_kandidat')->result_array();
+	public function cariKandidat($id_kandidat)
+	{
+		return $this->db->where("id_kandidat=" . $id_kandidat)->get('s5_kandidat')->result_array();
 	}
-	public function deleteFileKandidat($nama_file){
+	public function cariKandidatKegiatan($id_kegiatan)
+	{
+		$this->db->select('max(no_urut) as noUndi');
+		$this->db->from('s5_kandidat');
+		$this->db->where("id_kegiatan=" . $id_kegiatan);
+		return $this->db->get()->result_array();
+	}
+	public function deleteFileKandidat($nama_file)
+	{
 		unlink('assets/upload/Folder_etika/' . $nama_file);
 		return true;
 	}
-	public function hapusKandidat($id_kandidat){
+	public function hapusKandidat($id_kandidat)
+	{
 		$row = $this->db->where('id_kandidat', $id_kandidat)->get('s5_kandidat')->row();
 		if ($this->db->where('id_kandidat', $id_kandidat)->delete('s5_kandidat')) {
 			unlink('assets/upload/Folder_etika/' . $row->foto);
@@ -1332,23 +1349,28 @@ class All_model extends CI_Model
 			return true;
 		}
 	}
-	public function getAllPemilih($id_kegiatan){
-		return $this->db->where("id_kegiatan=".$id_kegiatan)->order_by('nim','ASC')->get('s5_pemilih')->result_array();
+	public function getAllPemilih($id_kegiatan)
+	{
+		return $this->db->where("id_kegiatan=" . $id_kegiatan)->order_by('nim', 'ASC')->get('s5_pemilih')->result_array();
 	}
 	public function rowAllPemilih($id_kegiatan)
 	{
 		return $this->db->where("id_kegiatan=" . $id_kegiatan)->order_by('nim', 'ASC')->get('s5_pemilih')->num_rows();
 	}
-	public function inputPemilihExcel($data){
+	public function inputPemilihExcel($data)
+	{
 		return $this->db->insert_batch('s5_pemilih', $data);
 	}
-	public function resetAllPemilih($id_kegiatan){
-		return $this->db->where('id_kegiatan='.$id_kegiatan)->delete('s5_pemilih');
+	public function resetAllPemilih($id_kegiatan)
+	{
+		return $this->db->where('id_kegiatan=' . $id_kegiatan)->delete('s5_pemilih');
 	}
-	public function cekDataPemilih($nama,$nim,$email){
-		return $this->db->where('nama_pemilih='."'$nama'")->or_where('email='."'$email'")->or_where('nim='."'$nim'")->get('s5_pemilih')->num_rows();
+	public function cekDataPemilih($nama, $nim, $email)
+	{
+		return $this->db->where('nama_pemilih=' . "'$nama'")->or_where('email=' . "'$email'")->or_where('nim=' . "'$nim'")->get('s5_pemilih')->num_rows();
 	}
-	public function inputDataPemilih($id_kegiatan){
+	public function inputDataPemilih($id_kegiatan)
+	{
 		$query = array(
 			'id_kegiatan' => $id_kegiatan,
 			'nama_pemilih' => $this->input->post('nama_pemilih', true),
@@ -1367,16 +1389,18 @@ class All_model extends CI_Model
 			'nama_pemilih' => $nama_baru,
 			'email' => $email_baru,
 			'nim' => $nim_baru,
-			'username' => $nim_baru.'@evote.com',
+			'username' => $nim_baru . '@evote.com',
 			'prodi' => $this->input->post('prodi', true),
 			'semester'	=> $this->input->post('semester', true),
 		);
-		return $this->db->where('id_pemilih='.$id_pemilih)->update('s5_pemilih', $query);
+		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
 	}
-	public function cariPemilih($id_pemilih){
-		return $this->db->where('id_pemilih='.$id_pemilih)->get('s5_pemilih')->result_array();
+	public function cariPemilih($id_pemilih)
+	{
+		return $this->db->where('id_pemilih=' . $id_pemilih)->get('s5_pemilih')->result_array();
 	}
-	public function cekNimPemilihWhere($nim){
+	public function cekNimPemilihWhere($nim)
+	{
 		return $this->db->where('nim=' . "'$nim'")->get('s5_pemilih')->num_rows();
 	}
 	public function cekNamaPemilihWhere($nama)
@@ -1387,10 +1411,12 @@ class All_model extends CI_Model
 	{
 		return $this->db->where('email=' . "'$email'")->get('s5_pemilih')->num_rows();
 	}
-	public function hapusPemilih($id_pemilih){
-		return $this->db->where('id_pemilih='.$id_pemilih)->delete('s5_pemilih');
+	public function hapusPemilih($id_pemilih)
+	{
+		return $this->db->where('id_pemilih=' . $id_pemilih)->delete('s5_pemilih');
 	}
-	public function createTokenManual($token, $time, $id_pemilih, $admin){
+	public function createTokenManual($token, $time, $id_pemilih, $admin)
+	{
 		$query = array(
 			'token' => $token,
 			'token_valid_until' => $time,
@@ -1405,13 +1431,37 @@ class All_model extends CI_Model
 		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
 	}
+	public function getDiagramProdi($id_kegiatan, $prodi)
+	{
+		return $this->db->where('has_voting=' . '1')->where('id_kegiatan=' . $id_kegiatan)->where('prodi=' . "'$prodi'")->get('s5_pemilih')->num_rows();
+	}
+	public function getDiagramSemester($id_kegiatan, $semester)
+	{
+		return $this->db->where('has_voting=' . '1')->where('id_kegiatan=' . $id_kegiatan)->where('semester=' . $semester)->get('s5_pemilih')->num_rows();
+	}
+	public function getDiagramSemesterWhereHighFrom($id_kegiatan, $semester)
+	{
+		return $this->db->where('has_voting=' . '1')->where('id_kegiatan=' . $id_kegiatan)->where('semester >' . $semester)->get('s5_pemilih')->num_rows();
+	}
+	public function countKandidat($id_kegiatan)
+	{
+		return $this->db->where('id_kegiatan=' . $id_kegiatan)->get('s5_kandidat')->num_rows();
+	}
+	public function getDiagramKandidat($id_kegiatan, $no_undi)
+	{
+		$this->db->select('s5_pilihan.*, s5_kandidat.*');
+		$this->db->from('s5_pilihan');
+		$this->db->join('s5_kandidat', 's5_kandidat.id_kandidat = s5_pilihan.id_kandidat');
+		$this->db->where('s5_pilihan.id_kegiatan=' . $id_kegiatan);
+		$this->db->where('s5_kandidat.no_urut=' . $no_undi);
+		return $this->db->get()->num_rows();
+	}
 	public function requestTokenBaru($token, $id_pemilih)
 	{
 		$query = array(
-				'token' => $token,
-			);
+			'token' => $token,
+		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
-
 	}
 	public function createTokenManualMode($token, $id_pemilih, $admin, $time)
 	{
@@ -1445,12 +1495,23 @@ class All_model extends CI_Model
 	{
 		$query = array(
 			'token' => null,
-			'token_valid_start' => null,
 			'token_valid_until' => null,
 			'has_voting' => 0,
 			'manage_by' => null,
 		);
 		return $this->db->where('id_kegiatan=' . $id_kegiatan)->update('s5_pemilih', $query);
+	}
+	public function cariPilihanWhere($id_kegiatan, $id_pemilih)
+	{
+		return $this->db->where("id_kegiatan=" . $id_kegiatan)->where("id_pemilih=" . $id_pemilih)->get("s5_pilihan")->num_rows();
+	}
+	public function resetPemilihanWhere($id_kegiatan, $id_pemilih)
+	{
+		return $this->db->where("id_kegiatan=" . $id_kegiatan)->where("id_pemilih=" . $id_pemilih)->delete("s5_pilihan");
+	}
+	public function resetPemilihanAll($id_kegiatan)
+	{
+		return $this->db->where("id_kegiatan=" . $id_kegiatan)->delete("s5_pilihan");
 	}
 	public function loginAttempt($id_pemilih, $login_attempt)
 	{
@@ -1462,9 +1523,9 @@ class All_model extends CI_Model
 	public function blockPemilih($id_pemilih, $time)
 	{
 		$query = array(
-				'block_time' => $time,
-				'login_attempt' => 0,
-			);
+			'block_time' => $time,
+			'login_attempt' => 0,
+		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update(
 			's5_pemilih',
 			$query
@@ -1473,12 +1534,13 @@ class All_model extends CI_Model
 	public function unblockPemilih($id_pemilih)
 	{
 		$query = array(
-				'block_time' => "0000-00-00 00:00:00",
-			);
+			'block_time' => "0000-00-00 00:00:00",
+		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
 	}
-	public function createAllToken($data){
-		return $this->db->update_batch('s5_pemilih',$data, 'id_pemilih');
+	public function createAllToken($data)
+	{
+		return $this->db->update_batch('s5_pemilih', $data, 'id_pemilih');
 	}
 
 	public function getUserCekHakPilih($prodi, $nim)
@@ -1505,9 +1567,9 @@ class All_model extends CI_Model
 
 		);
 		return $this->db->insert(
-				's5_pilihan',
-				$query
-			);
+			's5_pilihan',
+			$query
+		);
 	}
 	public function updateVote($id_pemilih)
 	{
@@ -1523,20 +1585,24 @@ class All_model extends CI_Model
 			$data['name']
 		)->where('id_kegiatan=' . $id_kegiatan)->get('s5_pemilih')->result_array();
 	}
+	public function countAllSudahMemilih($id_kegiatan)
+	{
+		return $this->db->where('id_kegiatan=' . $id_kegiatan)->where('has_voting=' . "1")->get('s5_pemilih')->num_rows();
+	}
 	// **************************************************************
 	// End ETIKA
 	// **************************************************************
 
 
 
-	
+
 	// **************************************************************
 	// Start Halaman Guest Website
 	// **************************************************************
 
-		// **************************************************************
-		//  WEBSITE HMJ
-		// **************************************************************
+	// **************************************************************
+	//  WEBSITE HMJ
+	// **************************************************************
 	public function getTotalPengurus($id)
 	{
 		$this->db->select('*');
@@ -1623,9 +1689,9 @@ class All_model extends CI_Model
 	{
 		return $this->db->where('id_informasi=' . $id)->get('s1_informasi')->result_array();
 	}
-		// **************************************************************
-		// End Website HMJ
-		// **************************************************************
+	// **************************************************************
+	// End Website HMJ
+	// **************************************************************
 
 	// **************************************************************
 	// End Halaman Guest Website
@@ -1636,7 +1702,7 @@ class All_model extends CI_Model
 
 
 
-	
+
 
 	// **************************************************************
 	// Start Upload File
@@ -1844,11 +1910,11 @@ class All_model extends CI_Model
 				$config['upload_path'] = $folder;
 				$config['allowed_types'] = 'jpg|png';
 				$config['max_size']  = '1045';
-			}else if ($nama == "excel") {
+			} else if ($nama == "excel") {
 				$config['upload_path'] = $folder;
 				$config['allowed_types'] = 'xlsx';
 				$config['max_size']  = '10045';
-			} 
+			}
 			$config['encrypt_name'] = TRUE;
 			$config['remove_space'] = TRUE;
 			$config['overwrite'] = TRUE;
@@ -1901,7 +1967,7 @@ class All_model extends CI_Model
 			} else {
 				$config['max_size']  = '1048';
 			}
-		
+
 			$config['remove_space'] = TRUE;
 			$config['overwrite'] = TRUE;
 			$this->load->library('upload', $config);

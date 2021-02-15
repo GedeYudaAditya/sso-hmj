@@ -37,12 +37,18 @@
 <script src="<?= base_url() ?>assets/js/sweetalert2.all.min.js"></script>
 <script src="<?= base_url() ?>assets/js/sb-admin-2.min.js"></script>
 
-<?php if ($active == "10" && $flip == "administrator") { ?>
 <script src="<?= base_url() ?>assets/vendor/chart.js/Chart.min.js"></script>
+<?php if ($active == "10" && $flip == "administrator") { ?>
 <!-- Page level custom scripts -->
 <script src="<?= base_url() ?>assets/js/chart.js"></script>
 <?php } ?>
-
+<?php if ($active == "10" && $flip == "etika") { ?>
+<!-- Page level custom scripts -->
+<script>
+const baseURL = "<?php echo base_url(); ?>";
+</script>
+<script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
+<?php } ?>
 <!-- Data Table-->
 <script src="<?= base_url() ?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>

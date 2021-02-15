@@ -4,6 +4,9 @@
 
 	<head>
 	    <meta charset="UTF-8" />
+	    <?php if ($active == "10" && $flip == "etika") { ?>
+	    <meta http-equiv="refresh" content="30" />
+	    <?php } ?>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	    <title>SSO HMJ :: <?= $title ?></title>
 	    <link rel="stylesheet" href="<?= base_url() ?>assets/css/viewer.css" />
@@ -22,7 +25,9 @@
 	        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	        <meta name="description" content="">
 	        <meta name="author" content="">
-
+	        <?php if ($active == "10" && $flip == "etika") { ?>
+	        <meta http-equiv="refresh" content="30" />
+	        <?php } ?>
 	        <title>SSO Informatics :: <?= $title ?></title>
 
 	        <!-- Custom fonts for this template-->

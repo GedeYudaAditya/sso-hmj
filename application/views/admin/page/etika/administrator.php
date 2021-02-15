@@ -12,13 +12,13 @@
     </div>
     <?php elseif (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($kegiatan[0]['waktu_mulai'])  && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($kegiatan[0]['waktu_selesai'])) : ?>
     <div class="alert alert-success col-12" role="alert">
-        <?php 
-        $tgl_selesai = new DateTime($kegiatan[0]['waktu_selesai']);
-        $tgl_hari_ini = new DateTime(date('Y-m-d H:i:s'));
-        
-        $diff = $tgl_selesai->diff($tgl_hari_ini);
-        echo "Voting Berakhir dalam ". $diff->d." hari ".$diff->h." jam ".$diff->i." menit ";
-        ?>
+        <?php
+            $tgl_selesai = new DateTime($kegiatan[0]['waktu_selesai']);
+            $tgl_hari_ini = new DateTime(date('Y-m-d H:i:s'));
+
+            $diff = $tgl_selesai->diff($tgl_hari_ini);
+        echo "Voting Berakhir dalam " . $diff->d . " hari " . $diff->h . " jam " . $diff->i . " menit ";
+            ?>
     </div>
     <?php else : ?>
     <div class="alert alert-secondary col-12" role="alert">
@@ -36,7 +36,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah Pemilih</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $pemilih?> Pemilih</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jml_pemilih ?> Pemilih</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-user-friends fa-2x text-gray-300"></i>
@@ -54,7 +54,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Surat Masuk </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"> Pemilih</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jml_sudah_voting ?> Pemilih</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-sign-in-alt fa-2x text-gray-300"></i>
@@ -70,11 +70,12 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Golput
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Belum Memilih
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> Pemilih</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $jml_belum_voting ?>
+                                        Pemilih</div>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +96,7 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Waktu Sekarang
                                 <div class="col-auto col-12 row">
                                     <div class="h5 mb-0 mr-2 text-xs font-weight-bold text-gray-800">
-                                        <?= date('d F Y')?></div>
+                                        <?= date('d F Y') ?></div>
                                 </div>
                                 <div class="col-auto col-12 row">
 
@@ -133,7 +134,9 @@
                             Pemilih, dan
                             Rasio
                             Kandidat</p>
-                        <a href=""><button class="btn btn-primary col-lg-12"> <i class="fas fa-sign-in-alt"></i>
+                        <a
+                            href="<?=base_url()?>etika/live_count/<?=base64_encode(base64_encode($kegiatan[0]['id_kegiatan']))?>"><button
+                                class="btn btn-primary col-lg-12"> <i class="fas fa-sign-in-alt"></i>
                                 Manajemen
                                 Data</button></a>
                     </div>

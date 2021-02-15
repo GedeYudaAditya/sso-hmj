@@ -22,24 +22,6 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    No Urut</div>
-                                                <input type="number" class="form-control form-control-user" id="ketua"
-                                                    aria-describedby="no_urut" min="0"
-                                                    placeholder="Masukkan Nama Kegiatan" name="no_urut" required
-                                                    value="<?= set_value('no_urut') ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12 mb-3">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Foto Kandidat</div>
                                                 <input type="file" class="form-control form-control-user" name="file"
                                                     required>
