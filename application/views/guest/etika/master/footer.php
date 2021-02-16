@@ -3,7 +3,8 @@
 <!-- jQuery(necessary for all JavaScript plugins) -->
 <script src="<?= base_url() ?>assets/js/jquery/jquery-3.3.1.min.js"></script>
 
-
+<!-- Sweetalert -->
+<script src="<?= base_url() ?>assets/js/sweetalert2.all.min.js"></script>
 <!-- Bootstrap js -->
 <script src="<?= base_url() ?>assets/js/bootstrap/popper.min.js"></script>
 <script src="<?= base_url() ?>assets/js/bootstrap/bootstrap.min.js"></script>

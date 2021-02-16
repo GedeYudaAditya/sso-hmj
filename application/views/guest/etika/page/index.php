@@ -419,6 +419,10 @@
                         <!-- Single Price Plan -->
                         <div class="single-price-plan text-center p-5 wow fadeInLeft" data-aos-duration="2s"
                             data-wow-delay="0.4s">
+                            <div class="featured-img text-center mb-3">
+                                <img class="avatar-sm" src="<?= base_url() ?>assets/img/icon/featured-img/support.png"
+                                    alt="">
+                            </div>
                             <!-- Plan Thumb -->
                             <?php
                                 $saat_ini = date_create(date('Y-m-d H:i:s'));
@@ -467,7 +471,7 @@
                             <div class="plan-button">
                                 <a
                                     href="<?= base_url() ?>etika/login_kegiatan/<?= base64_encode(base64_encode($data['id_kegiatan'])) ?>"><button
-                                        class="btn mt-4">Lihat Detail</button></a>
+                                        class="btn mt-4 mb-5">Lihat Detail</button></a>
                             </div>
                         </div>
                     </div>
@@ -475,7 +479,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-12">
                 <!-- FAQ Content -->
                 <div class="faq-content">

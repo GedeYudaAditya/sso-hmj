@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Feb 2021 pada 03.19
+-- Waktu pembuatan: 16 Feb 2021 pada 06.14
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -108,6 +108,13 @@ CREATE TABLE `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(113, '::1', '1915051090@evote.com', 1613380627);
 
 -- --------------------------------------------------------
 
@@ -866,8 +873,8 @@ CREATE TABLE `s5_kandidat` (
 --
 
 INSERT INTO `s5_kandidat` (`id_kandidat`, `id_kegiatan`, `no_urut`, `nama_ketua`, `nama_wakil`, `visi`, `misi`, `foto`) VALUES
-(3, 5, '1', 'Ini Ketua', 'Ini Wakil', '<p>Ini Visi</p>\r\n', '<p>Ini Misi</p>\r\n', '871afd302534c69c673a78fe99f24198.jpg'),
-(4, 5, '2', 'Deyan', 'Ardi', 'Menjadi Raja', 'Menjadi Babu', '871afd302534c69c673a78fe99f24198.jpg');
+(11, 5, '1', 'Kadek Adnyana', 'Wididada', '<p>Ini Visi Kami</p>\r\n', '<p>Ini Misi Kami</p>\r\n', '088997fffb6d26b88bd3a6185014910a.jpg'),
+(12, 5, '2', 'Kadek Budiarti', 'Wawan Cahyadi', '<p>Ini Visi Kadek - Wawan</p>\r\n', '<p>Ini Misi Kadek - Wawan</p>\r\n', '76efbda25cb3bfd88117d69d578220e4.jpg');
 
 -- --------------------------------------------------------
 
@@ -891,8 +898,7 @@ CREATE TABLE `s5_kegiatan` (
 --
 
 INSERT INTO `s5_kegiatan` (`id_kegiatan`, `nama_kegiatan`, `deskripsi`, `waktu_mulai`, `waktu_selesai`, `mode`, `created_date`, `created_by`) VALUES
-(4, 'PEMIRA HMJ TI UNDIKSHA 2021', '<p>Pemira HMJ TI Undiksha 2021</p>\r\n', '2021-02-07 10:30:00', '2021-02-08 01:00:00', 0, '2021-02-06 21:07:16', 'Admin'),
-(5, 'PEMIRA HMJ TI UNDIKSHA 2020', '<p>PEMIRA HMJ TI UNDIKSHA 2020</p>\r\n', '2021-02-07 13:45:00', '2021-02-15 00:20:58', 1, '2021-02-07 10:22:55', 'Admin');
+(5, 'PEMIRA HMJ TI UNDIKSHA 2020', '<p>PEMIRA HMJ TI UNDIKSHA 2020</p>\r\n', '2021-02-16 12:18:41', '2021-02-18 00:20:58', 1, '2021-02-07 10:22:55', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -904,6 +910,8 @@ CREATE TABLE `s5_pemilih` (
   `id_pemilih` int(11) NOT NULL,
   `id_kegiatan` int(11) NOT NULL,
   `ip_address` varchar(25) DEFAULT NULL,
+  `browser` varchar(100) DEFAULT NULL,
+  `perangkat` varchar(100) DEFAULT NULL,
   `nama_pemilih` varchar(250) NOT NULL,
   `email` varchar(250) DEFAULT NULL,
   `nim` varchar(45) NOT NULL,
@@ -911,7 +919,6 @@ CREATE TABLE `s5_pemilih` (
   `semester` int(11) NOT NULL,
   `username` varchar(250) DEFAULT NULL,
   `token` varchar(250) DEFAULT NULL,
-  `token_valid_start` datetime DEFAULT NULL,
   `token_valid_until` datetime DEFAULT NULL,
   `has_voting` int(11) DEFAULT 0,
   `block_time` datetime DEFAULT NULL,
@@ -923,14 +930,11 @@ CREATE TABLE `s5_pemilih` (
 -- Dumping data untuk tabel `s5_pemilih`
 --
 
-INSERT INTO `s5_pemilih` (`id_pemilih`, `id_kegiatan`, `ip_address`, `nama_pemilih`, `email`, `nim`, `prodi`, `semester`, `username`, `token`, `token_valid_start`, `token_valid_until`, `has_voting`, `block_time`, `manage_by`, `login_attempt`) VALUES
-(24, 4, '', 'I Gede Riyan Ardi Darmawan', 'riyan@undiksha.ac.id', '1815091037', 'Sistem Informasi', 6, '1815091037@evote.com', NULL, NULL, NULL, 0, '0000-00-00 00:00:00', NULL, 0),
-(25, 4, '', 'Vina Velina', 'vina.velina@undiksha.ac.id', '1915051080', 'Pendidikan Teknik Informatika', 4, '1915051080@evote.com', NULL, NULL, NULL, 0, '0000-00-00 00:00:00', NULL, 0),
-(26, 4, '', 'Putu Annanda Diva Sanjaya', 'annanda@undiksha.ac.id', '1815091061', 'Sistem Informasi', 6, '1815091061@evote.com', NULL, NULL, NULL, 0, '0000-00-00 00:00:00', NULL, 0),
-(27, 5, '', 'I Gede Riyan Ardi Darmawan', 'riyan@undiksha.ac.id', '1815091037', 'Sistem Informasi', 6, '1815091037@evote.com', 'nvdp5r3t8gym', '2021-02-07 13:45:00', '2021-02-16 00:20:14', 0, '2021-02-13 00:27:41', 'Admin', 0),
-(28, 5, '', 'Vina Velina', 'vina.velina@undiksha.ac.id', '1915051080', 'Pendidikan Teknik Informatika', 4, '1915051080@evote.com', '72ybwn65834f', '2021-02-07 13:45:00', '2021-02-08 10:35:00', 0, '0000-00-00 00:00:00', 'Admin', 0),
-(29, 5, '', 'Putu Annanda Diva Sanjaya', 'annanda@undiksha.ac.id', '1815091061', 'Sistem Informasi', 6, '1815091061@evote.com', 'jfrw627q3yd0', '2021-02-07 13:45:00', '2021-02-15 10:35:00', 0, '0000-00-00 00:00:00', 'Admin', 0),
-(30, 5, NULL, 'Kadek Arya Dinata', '', '1915051090', 'Pendidikan Teknik Informatika', 4, '1915051090@evote.com', 'df64hk0lm3g9', NULL, '2021-02-15 03:17:12', 1, '0000-00-00 00:00:00', 'Admin', 0);
+INSERT INTO `s5_pemilih` (`id_pemilih`, `id_kegiatan`, `ip_address`, `browser`, `perangkat`, `nama_pemilih`, `email`, `nim`, `prodi`, `semester`, `username`, `token`, `token_valid_until`, `has_voting`, `block_time`, `manage_by`, `login_attempt`) VALUES
+(27, 5, '127.0.0.1', NULL, NULL, 'I Gede Riyan Ardi Darmawan', NULL, '1815091037', 'Ilmu Komputer', 2, '1815091037@evote.com', 'd67f0b39wvsh', '2021-02-18 00:20:58', 1, '0000-00-00 00:00:00', 'Admin', 0),
+(28, 5, '127.0.0.1', NULL, NULL, 'Vina Velina', 'vina.velina@undiksha.ac.id', '1915051080', 'Sistem Informasi', 2, '1915051080@evote.com', '80fyt35hb7ks', '2021-02-18 00:20:58', 1, '0000-00-00 00:00:00', 'Admin', 0),
+(29, 5, '127.0.0.1', NULL, NULL, 'Putu Annanda Diva Sanjaya', NULL, '1815091061', 'Ilmu Komputer', 2, '1815091061@evote.com', 'q32n716vgcfj', '2021-02-16 12:58:37', 0, '0000-00-00 00:00:00', 'Admin', 0),
+(30, 5, '127.0.0.1', 'Firefox 85.0', 'Windows 10', 'Kadek Arya Dinata', '', '1915051090', 'Ilmu Komputer', 2, '1915051090@evote.com', 'wy6gtl37x1hr', '2021-02-18 00:20:58', 0, '0000-00-00 00:00:00', 'Admin', 0);
 
 -- --------------------------------------------------------
 
@@ -952,7 +956,8 @@ CREATE TABLE `s5_pilihan` (
 --
 
 INSERT INTO `s5_pilihan` (`id_pilihan`, `ip_address`, `id_pemilih`, `id_kandidat`, `id_kegiatan`, `created_date`) VALUES
-(2, '::1', 30, 3, 5, '2021-02-14 00:48:08');
+(6, '127.0.0.1', 27, 11, 5, '2021-02-16 12:19:59'),
+(7, '127.0.0.1', 28, 11, 5, '2021-02-16 12:28:16');
 
 -- --------------------------------------------------------
 
@@ -987,7 +992,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$uHtl1dL57NuF7qFzZqUrneKqL2t4c5R6FJhQrEaBjYiRfvqnd755e', 'hmjtiundiksha@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1268889823, 1613269062, 1, 'Admin', '1815091037', 46, '081915656865'),
+(1, '127.0.0.1', 'administrator', '$2y$12$uHtl1dL57NuF7qFzZqUrneKqL2t4c5R6FJhQrEaBjYiRfvqnd755e', 'hmjtiundiksha@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1268889823, 1613451827, 1, 'Admin', '1815091037', 46, '081915656865'),
 (22, '127.0.0.1', NULL, '$2y$10$O1KWWZXWdDoo8qm364F/4.qwXRG/78xxha6cAQ9wPGbUFwPLZgIje', 'irfan@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601478582, 1603603369, 1, 'IRFAN WALHIDAYAH', '1815091002', 38, '08983197636'),
 (23, '127.0.0.1', NULL, '$2y$10$UdZ.NWa/aTPtwQgR0MlO8./sUjlSPRpYuOQB8CsTtZT/cO0TWp9eS', 'jurnalistik@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601478638, 1608459579, 1, 'Sub Bidang Jurnalistik', '1815051083', 40, '081339289008'),
 (24, '127.0.0.1', NULL, '$2y$10$DAWjFjedaWxM7yQEoLhFueum.UMmxHelnKxrFvFzncohmqe.y/v1O', 'riyan@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601992246, 1613221137, 1, 'I Gede Riyan Ardi Darmawan', '1815091037', 44, '081915656865'),
@@ -1287,7 +1292,7 @@ ALTER TABLE `links`
 -- AUTO_INCREMENT untuk tabel `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT untuk tabel `s1_detail_hmj`
@@ -1419,7 +1424,7 @@ ALTER TABLE `s4_wawancara`
 -- AUTO_INCREMENT untuk tabel `s5_kandidat`
 --
 ALTER TABLE `s5_kandidat`
-  MODIFY `id_kandidat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kandidat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `s5_kegiatan`
@@ -1437,7 +1442,7 @@ ALTER TABLE `s5_pemilih`
 -- AUTO_INCREMENT untuk tabel `s5_pilihan`
 --
 ALTER TABLE `s5_pilihan`
-  MODIFY `id_pilihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pilihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

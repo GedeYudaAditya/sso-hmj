@@ -268,7 +268,7 @@ console.log(pesan);
       Swal.fire({
         position: 'center',
         icon: 'success',
-        text: 'Berhasil ' + success + '...',
+        text: 'Berhasil ' + success ,
         showConfirmButton: true,
       })
     }
@@ -279,7 +279,7 @@ console.log(pesan);
       Swal.fire({
         position: 'center',
         icon: 'error',
-        text: 'Opss.. Gagal ' + gagal + '...',
+        text: 'Opss.. Gagal ' + gagal ,
         showConfirmButton: true,
       })
     }

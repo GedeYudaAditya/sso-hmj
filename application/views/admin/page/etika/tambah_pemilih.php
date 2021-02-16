@@ -102,7 +102,7 @@
                                                     Semester</div>
                                                 <input type="number" min="1" max="16"
                                                     class="form-control form-control-user" id="semester"
-                                                    aria-describedby="semester" placeholder="Masukkan Nama Pemilih"
+                                                    aria-describedby="semester" placeholder="Masukkan Semester"
                                                     name="semester" required value="<?= set_value('semester') ?>">
                                             </div>
                                         </div>

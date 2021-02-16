@@ -298,5 +298,8 @@ $(document).ready(function() {
         sendPemilih();
         sendKandidat();
     }, 5000);
-// loadDiagram()
+    sendProdi();
+    sendSemester();
+    sendPemilih();
+    sendKandidat();
 });

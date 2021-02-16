@@ -68,15 +68,15 @@
                 <?php else : ?>
             <li class="nav-item">
                 <?php endif; ?>
-                <?php if ($kegiatan[0]['mode'] == 1) : ?>
-                <a class="nav-link" href="<?=base_url()?>etika/ganti_token">
+                <?php if ($kegiatan[0]['mode'] == 1 && $pemilih[0]['has_voting'] == 0) : ?>
+                <a class="nav-link" href="<?= base_url() ?>etika/ganti_token">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Ganti Token</span>
                 </a>
             </li>
             <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url() ?>etika/logout">
+                <a class="nav-link log-out" href="<?= base_url() ?>etika/logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -119,3 +119,5 @@
                 </nav>
                 <!-- End of Topbar -->
                 <div class="login" data-login="<?= $this->session->flashdata('login'); ?>">
+                    <div class="berhasil" data-berhasil="<?= $this->session->flashdata('berhasil') ?>"></div>
+                    <div class="gagal" data-gagal="<?= $this->session->flashdata('gagal') ?>"></div>

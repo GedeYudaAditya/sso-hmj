@@ -67,6 +67,9 @@
                             <thead>
                                 <tr>
                                     <th>Nim</th>
+                                    <th>IP Address</th>
+                                    <th>Browser</th>
+                                    <th>Perangkat</th>
                                     <th>Nama Pemilih</th>
                                     <th>Email</th>
                                     <th>Username</th>
@@ -86,8 +89,21 @@
                                 <tr>
 
                                     <td><?= $data['nim'] ?></td>
+                                    <?php if (empty($data['ip_address']) && empty($data['browser']) && empty($data['perangkat'])) : ?>
+                                    <td>Belum Login</td>
+                                    <td>Belum Login</td>
+                                    <td>Belum Login</td>
+                                    <?php else : ?>
+                                    <td><?= $data['ip_address'] ?></td>
+                                    <td><?= $data['browser'] ?></td>
+                                    <td><?= $data['perangkat'] ?></td>
+                                    <?php endif; ?>
                                     <td><?= $data['nama_pemilih'] ?></td>
+                                    <?php if(!empty($data['email'])): ?>
                                     <td><?= $data['email'] ?></td>
+                                    <?php else: ?>
+                                    <td> <span class="text-danger">Tidak Ada Email</span></td>
+                                    <?php endif; ?>
                                     <td><?= $data['username'] ?></td>
                                     <td><?= $data['prodi'] ?></td>
                                     <td><?= $data['semester'] ?></td>

@@ -26,7 +26,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Foto Pendaftar</div>
+                                                    Foto Pendaftar ( *.jpg atau *.png maks 1 Mb)</div>
                                                 <input type="file" class="form-control form-control-user" id="file_foto"
                                                     name="file_foto" required>
                                             </div>
@@ -42,7 +42,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Dokumen Pendaftar</div>
+                                                    Dokumen Pendaftar (*.pdf atau *.zip maks 5 MB)</div>
                                                 <input type="file" class="form-control form-control-user"
                                                     id="file_dokumen" name="file_dokumen">
                                             </div>
@@ -100,9 +100,13 @@
                                                 <select name="angkatan" id="angkatan"
                                                     class="form-control form-control-select" required>
                                                     <option value="">Masukkan Angkatan</option>
-                                                    <option value="2018">2018</option>
-                                                    <option value="2019">2019</option>
-                                                    <option value="2020">2020</option>
+                                                    <?php 
+                                                    $year = date('Y');
+                                                    $i = $year - 2;
+                                                    for($i ; $i <=  $year; $i++ ):
+                                                    ?>
+                                                    <option value="<?=$i?>"><?= $i?></option>
+                                                    <?php endfor; ?>
                                                 </select>
                                             </div>
                                         </div>

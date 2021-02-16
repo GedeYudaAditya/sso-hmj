@@ -1343,11 +1343,12 @@ class All_model extends CI_Model
 	}
 	public function hapusKandidatAll($id_kegiatan)
 	{
-		$row = $this->db->where('id_kegiatan', $id_kegiatan)->get('s5_kandidat')->row();
-		if ($this->db->where('id_kegiatan', $id_kegiatan)->delete('s5_kandidat')) {
-			unlink('assets/upload/Folder_etika/' . $row->foto);
-			return true;
+		$row = $this->db->where('id_kegiatan', $id_kegiatan)->get('s5_kandidat')->result_array();
+		foreach ($row as $data) {
+			unlink('assets/upload/Folder_etika/' . $data['foto']);
 		}
+		return true;
+		
 	}
 	public function getAllPemilih($id_kegiatan)
 	{
@@ -1424,10 +1425,12 @@ class All_model extends CI_Model
 		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
 	}
-	public function addIpLogin($ip, $id_pemilih)
+	public function addIpLogin($ip, $id_pemilih, $browser, $sistem_operasi)
 	{
 		$query = array(
 			'ip_address' => $ip,
+			'browser' => $browser,
+			'perangkat' => $sistem_operasi,
 		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
 	}
@@ -1860,8 +1863,8 @@ class All_model extends CI_Model
 				$config['max_size']  = '1045';
 			} else {
 				$config['upload_path'] = $folder;
-				$config['allowed_types'] = 'pdf';
-				$config['max_size']  = '1045';
+				$config['allowed_types'] = 'pdf|zip';
+				$config['max_size']  = '5045';
 			}
 			$config['encrypt_name'] = TRUE;
 			$config['remove_space'] = TRUE;

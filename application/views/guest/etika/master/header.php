@@ -80,24 +80,17 @@
                         </div>
                     </header>
                     <!-- ***** Header End ***** -->
+                    <div class="berhasil" data-berhasil="<?= $this->session->flashdata('berhasil') ?>"></div>
+                    <div class="gagal" data-gagal="<?= $this->session->flashdata('gagal') ?>"></div>
                     <div class="tidak-ditemukan"
                         data-tidak-ditemukan="<?= $this->session->flashdata('tidak-ditemukan'); ?>">
-                        <div class="berhasil" data-berhasil="<?= $this->session->flashdata('berhasil'); ?>">
-                            <div class="gagal" data-gagal="<?= $this->session->flashdata('gagal'); ?>">
-                                <div class="ditemukan" data-ditemukan="<?php
+                        <div class="ditemukan" data-ditemukan="<?php
                                                                         $datas = $this->session->flashdata('ditemukan');
-                                                                        $i = 0;
-                                                                        $id_key = 0;
                                                                         if (!empty($datas)) {
                                                                             foreach ($datas as $key => $value) {
-                                                                                if ($i > $id_key) {
-                                                                                    echo "Kegiatan " . $value['nama_kegiatan'];
-                                                                                } else {
-                                                                                    echo "Kegiatan " . $value['nama_kegiatan'] . ", ";
-                                                                                }
                                                                                 $id_key = $key;
-                                                                                $i++;
+                                                                                echo "[ Kegiatan " . $value['nama_kegiatan'] . " ] ";
                                                                             }
                                                                         }
                                                                         ?>">
-                                </div>
+                        </div>

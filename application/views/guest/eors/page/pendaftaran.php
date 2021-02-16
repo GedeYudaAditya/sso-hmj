@@ -49,7 +49,8 @@
                             <label for="foto">Document Pendaftaran (Bersifat Opsional)</label>
                             <input type="file" class="form-control-file" name="file_dokumen" id="file_dokumen">
                             <small id="fotoHelp" class="form-text text-muted">Silahkan di cek terkait dokumen yang
-                                dikumpul pada bagian persyaratan dan ketentuan, format *.pdf maks 1 Mb</small>
+                                dikumpul pada bagian persyaratan dan ketentuan, format *.pdf atau *.zip maks 5
+                                Mb</small>
                         </div>
                         <?php } ?>
                         <!-- NIM -->
@@ -69,9 +70,13 @@
                             <label for="pilihanUtama">Angkatan</label>
                             <select class="form-control" id="angkatan" name="angkatan" required>
                                 <option value="">Masukkan Angkatan</option>
-                                <option value="2018">2018</option>
-                                <option value="2019">2019</option>
-                                <option value="2020">2020</option>
+                                <?php
+                                    $year = date('Y');
+                                    $i = $year - 2;
+                                    for ($i; $i <=  $year; $i++) :
+                                    ?>
+                                <option value="<?= $i ?>"><?= $i ?></option>
+                                <?php endfor; ?>
                             </select>
                         </div>
                         <!-- Jenis Kelamin-->

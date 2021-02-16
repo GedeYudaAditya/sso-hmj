@@ -15,6 +15,12 @@ class Etika extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->library('user_agent');
+    }
+    // Method Getter Email
+    public function getEmailAdmin()
+    {
+        return $this->email_admin;
     }
     public function index()
     {
@@ -63,15 +69,19 @@ class Etika extends CI_Controller
                 if ($mulai >= $date && $akhir >= $date) {
                     if ($mulai < $akhir) {
                         if ($this->All_model->inputKegiatanEtika()) {
-                            echo "Berhasil";
+                            $this->session->set_flashdata('berhasil', 'Ditambahkan');
+                            redirect('etika/index', 'refresh');
                         } else {
-                            echo "Masalah pada server";
+                            $this->session->set_flashdata('gagal', 'Ditambahkan, Kode Error :: 500 - Internal Server Error');
+                            redirect('etika/tambah_kegiatan', 'refresh');
                         }
                     } else {
-                        echo "Waktu Salah";
+                        $this->session->set_flashdata('gagal', 'Ditambahkan, Waktu Awal lebih Besar Dari Waktu Akhir');
+                        redirect('etika/tambah_kegiatan', 'refresh');
                     }
                 } else {
-                    echo "Error";
+                    $this->session->set_flashdata('gagal', 'Ditambahkan, Format Waktu Tidak Boleh Kurang Dari Waktu Saat Ini');
+                    redirect('etika/tambah_kegiatan', 'refresh');
                 }
             }
         }
@@ -114,15 +124,19 @@ class Etika extends CI_Controller
                 if ($mulai >= $date && $akhir >= $date) {
                     if ($mulai < $akhir) {
                         if ($this->All_model->editKegiatanEtika($id_kegiatan)) {
-                            echo "Berhasil";
+                            $this->session->set_flashdata('berhasil', 'Diubah');
+                            redirect('etika/index', 'refresh');
                         } else {
-                            echo "Masalah pada server";
+                            $this->session->set_flashdata('gagal', 'Diubah, Kode Error :: 500 - Internal Server Error');
+                            redirect('etika/ubah_kegiatan/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                         }
                     } else {
-                        echo "Waktu Salah";
+                        $this->session->set_flashdata('gagal', 'Diubah, Waktu Awal lebih Besar Dari Waktu Akhir');
+                        redirect('etika/ubah_kegiatan/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                     }
                 } else {
-                    echo "Error";
+                    $this->session->set_flashdata('gagal', 'Diubah, Format Waktu Tidak Boleh Kurang Dari Waktu Saat Ini');
+                    redirect('etika/ubah_kegiatan/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                 }
             }
         }
@@ -139,12 +153,15 @@ class Etika extends CI_Controller
             if (!empty($cari)) {
                 if ($this->All_model->hapusKandidatAll($id_kegiatan)) {
                     if ($this->All_model->deleteKegiatanEtikaWhere($id_kegiatan)) {
-                        echo "Berhasil dihapus";
+                        $this->session->set_flashdata('berhasil', 'Dihapus');
+                        redirect('etika/index', 'refresh');
                     } else {
-                        echo "Gagal dihapus";
+                        $this->session->set_flashdata('gagal', 'Dihapus, Kode Error :: 500 - Internal Server Error');
+                        redirect('etika/index', 'refresh');
                     }
                 } else {
-                    echo "Server Error";
+                    $this->session->set_flashdata('gagal', 'Dihapus, Kode Error :: 500 - Internal Server Error');
+                    redirect('etika/index', 'refresh');
                 }
             } else {
                 show_404();
@@ -168,7 +185,7 @@ class Etika extends CI_Controller
             $this->data['active'] = "10";
             $this->data['kegiatan'] = $cari;
             $this->data['ckeditor'] = "false";
-            $this->data['flip'] = "false";
+            $this->data['flip'] = "etika";
             $this->data['id_kegiatan'] = $id_kegiatan;
             if (!empty($cari)) {
                 $this->load->view('admin/master/header', $this->data);
@@ -180,12 +197,12 @@ class Etika extends CI_Controller
         }
     }
 
-    public function kandidat($id_kandidat = "")
+    public function kandidat($id_kegiatan = "")
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(etika)) {
             redirect('etika/home', 'refresh');
         } else {
-            $id_kegiatan = (int)base64_decode(base64_decode($id_kandidat));
+            $id_kegiatan = (int)base64_decode(base64_decode($id_kegiatan));
             $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
             $id = $_SESSION['user_id'];
             $this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -206,16 +223,16 @@ class Etika extends CI_Controller
         }
     }
 
-    public function tambah_kandidat($id_kandidat = "")
+    public function tambah_kandidat($id_kegiatan = "")
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
             redirect('etika/home', 'refresh');
         } else {
             // Send Data
-            $id_kegiatan = (int)base64_decode(base64_decode($id_kandidat));
+            $id_kegiatan = (int)base64_decode(base64_decode($id_kegiatan));
             $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
             if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_mulai'])) {
-                
+
                 $id = $_SESSION['user_id'];
                 $this->data['group'] = $this->ion_auth_model->getGroup($id);
                 $this->data['title'] = "ETIKA - Tambah Kandidat ETIKA";
@@ -244,7 +261,8 @@ class Etika extends CI_Controller
                 } else {
                     if ($_FILES["file"]['error'] == 4) {
                         // if empty,, send message file is empty, return back
-                        echo "Gambar Belum Diisi";
+                        $this->session->set_flashdata('gagal', 'Ditambahkan, Gambar Wajib Diisi, Format Harus Benar');
+                        redirect('etika/tambah_kandidat/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                     } else {
                         $id_sistem = "etika";
                         $id_file = "kandidat";
@@ -252,12 +270,15 @@ class Etika extends CI_Controller
                         $upload = $this->All_model->uploadFile($id_file, $id_sistem, $tujuan);
                         if ($upload['result'] == "success") {
                             if ($this->All_model->inputDataKandidat($upload, $id_kegiatan, $kode_undi)) {
-                                echo "Berhasil";
+                                $this->session->set_flashdata('berhasil', 'Ditambahkan');
+                                redirect('etika/kandidat/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                             } else {
-                                echo "Gagal ditambahkan";
+                                $this->session->set_flashdata('gagal', 'Ditambahkan, Kode Error :: 500 - Internal Server Error');
+                                redirect('etika/tambah_kandidat/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                             }
                         } else {
-                            echo "Periksa File";
+                            $this->session->set_flashdata('gagal', 'Ditambahkan, Format File Yang Diijinkan .jpg atau .png');
+                            redirect('etika/tambah_kandidat/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                         }
                     }
                 }
@@ -305,9 +326,11 @@ class Etika extends CI_Controller
                     if ($_FILES["file"]['error'] == 4) {
                         // if empty,, input to database, return back
                         if ($this->All_model->editDataKandidat($id_kandidat)) {
-                            echo "Berhasil";
+                            $this->session->set_flashdata('berhasil', 'Diubah');
+                            redirect('etika/kandidat', 'refresh');
                         } else {
-                            echo "Gagal ditambahkan";
+                            $this->session->set_flashdata('gagal', 'Diubah, Kode Error :: 500 - Internal Server Error');
+                            redirect('etika/ubah_kandidat', 'refresh');
                         }
                     } else {
                         if ($this->All_model->deleteFileKandidat($kandidat[0]['foto'])) {
@@ -317,15 +340,19 @@ class Etika extends CI_Controller
                             $upload = $this->All_model->uploadFile($id_file, $id_sistem, $tujuan);
                             if ($upload['result'] == "success") {
                                 if ($this->All_model->editDataKandidatFile($upload, $id_kandidat)) {
-                                    echo "Berhasil";
+                                    $this->session->set_flashdata('berhasil', 'Ditambahkan');
+                                    redirect('etika/kandidat/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                                 } else {
-                                    echo "Gagal ditambahkan";
+                                    $this->session->set_flashdata('gagal', 'Diubah, Kode Error :: 500 - Internal Server Error');
+                                    redirect('etika/ubah_kandidat/' . base64_encode(base64_encode($id_kegiatan)) . '/' . base64_encode(base64_encode($id_kandidat)), 'refresh');
                                 }
                             } else {
-                                echo "Periksa File";
+                                $this->session->set_flashdata('gagal', 'Diubah, Format File Yang Diijinkan .jpg atau .png');
+                                redirect('etika/ubah_kandidat/' . base64_encode(base64_encode($id_kegiatan)) . '/' . base64_encode(base64_encode($id_kandidat)), 'refresh');
                             }
                         } else {
-                            echo "Terdapat kegagalan sistem";
+                            $this->session->set_flashdata('gagal', 'Diubah, Kode Error :: 500 - Internal Server Error');
+                            redirect('etika/ubah_kandidat/' . base64_encode(base64_encode($id_kegiatan)) . '/' . base64_encode(base64_encode($id_kandidat)), 'refresh');
                         }
                     }
                 }
@@ -348,9 +375,11 @@ class Etika extends CI_Controller
                 $kandidat = $this->All_model->cariKandidat($id_kandidat);
                 if (!empty($cari) || !empty($kandidat)) {
                     if ($this->All_model->hapusKandidat($id_kandidat)) {
-                        echo "Berhasil";
+                        $this->session->set_flashdata('berhasil', 'Dihapus');
+                        redirect('etika/kandidat/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                     } else {
-                        echo "Terjadi masalah pada sistem";
+                        $this->session->set_flashdata('gagal', 'Dihapus, Kode Error :: 500 - Internal Server Error');
+                        redirect('etika/kandidat/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                     }
                 } else {
                     show_404();
@@ -410,14 +439,17 @@ class Etika extends CI_Controller
                                 $numrow++;
                             }
                             if ($this->All_model->inputPemilihExcel($data)) {
-                                echo "berhasil";
+                                $this->session->set_flashdata('berhasil', 'Ditambahkan');
+                                redirect('etika/database_pemilih/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                             } else {
-                                echo "Gagal";
+                                $this->session->set_flashdata('gagal', 'Ditambahkan, Kode Error :: 500 - Internal Server Error');
+                                redirect('etika/database_pemilih/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                             }
                             //delete file from server
                             unlink(realpath('assets/upload/Folder_etika/' . $upload['file']['file_name']));
                         } else {
-                            echo "Gagal, kesalahan pada file";
+                            $this->session->set_flashdata('gagal', 'Ditambahkan, Format File Yang Diijinkan .xlsx');
+                            redirect('etika/database_pemilih/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                         }
                     } else {
                         show_404();
@@ -446,9 +478,11 @@ class Etika extends CI_Controller
             if ($group[0]['group_id'] == "1" && new DateTime(date('Y-m-d H:i:s')) < new DateTime($cari[0]['waktu_mulai'])) {
                 if (!empty($cari)) {
                     if ($this->All_model->resetAllPemilih($id_kegiatan)) {
-                        echo "Berhasil direset";
+                        $this->session->set_flashdata('berhasil', 'Dihapus');
+                        redirect('etika/database_pemilih/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                     } else {
-                        echo "Kesalahan sistem";
+                        $this->session->set_flashdata('gagal', 'Dihapus, Kode Error :: 500 - Internal Server Error');
+                        redirect('etika/database_pemilih/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                     }
                 } else {
                     show_404();
@@ -538,12 +572,15 @@ class Etika extends CI_Controller
                     }
                 } else {
                     if ($this->All_model->cekDataPemilih($_POST['nama_pemilih'], $_POST['nim_pemilih'], $_POST['email_pemilih']) > 0) {
-                        echo "Data Sudah Ada";
+                        $this->session->set_flashdata('gagal', 'Ditambahkan, Redudansi Data');
+                        redirect('etika/tambah_pemilih/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                     } else {
                         if ($this->All_model->inputDataPemilih($id_kegiatan)) {
-                            echo "Berhasil Ditambahkan";
+                            $this->session->set_flashdata('berhasil', 'Ditambahkan');
+                            redirect('etika/database_pemilih/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                         } else {
-                            echo "Kegagalan Sistem";
+                            $this->session->set_flashdata('gagal', 'Ditambahkan, Kode Error :: 500 - Internal Server Error');
+                            redirect('etika/tambah_pemilih/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                         }
                     }
                 }
@@ -560,22 +597,20 @@ class Etika extends CI_Controller
             // Decode id
             $id_kegiatan = (int)base64_decode(base64_decode($id_kegiatan));
             $cari = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
-            if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
-                // Send Data to views
-                $id = $_SESSION['user_id'];
-                $this->data['group'] = $this->ion_auth_model->getGroup($id);
-                $this->data['title'] = "ETIKA - Live Count Kegiatan";
-                $this->data['active'] = "10";
-                $this->data['ckeditor'] = "etika";
-                $this->data['kegiatan'] = $cari;
-                $this->data['flip'] = "etika";
-                if (!empty($cari)) {
-                    $this->load->view('admin/master/header', $this->data);
-                    $this->load->view('admin/page/etika/live_count', $this->data);
-                    $this->load->view('admin/master/footer', $this->data);
-                } else {
-                    show_404();
-                }
+            // Send Data to views
+            $id = $_SESSION['user_id'];
+            $this->data['group'] = $this->ion_auth_model->getGroup($id);
+            $this->data['title'] = "ETIKA - Live Count Kegiatan";
+            $this->data['active'] = "10";
+            $this->data['ckeditor'] = "etika";
+            $this->data['kegiatan'] = $cari;
+            $this->data['flip'] = "etika";
+            if (!empty($cari)) {
+                $this->load->view('admin/master/header', $this->data);
+                $this->load->view('admin/page/etika/live_count', $this->data);
+                $this->load->view('admin/master/footer', $this->data);
+            } else {
+                show_404();
             }
         }
     }
@@ -615,8 +650,8 @@ class Etika extends CI_Controller
                 } else {
                     if ($_POST['nim_pemilih'] != $pemilih[0]['nim']) {
                         if ($this->All_model->cekNimPemilihWhere($_POST['nim_pemilih']) > 0) {
-                            echo "Nim Sudah Terpakai";
-                            redirect('etika/ubah_pemilih/' . base64_encode(base64_encode($id_kegiatan)) . '/' . base64_encode(base64_encode($id_pemilih)));
+                            $this->session->set_flashdata('gagal', 'Diubah, Nim Sudah Dipakai');
+                            redirect('etika/ubah_pemilih/' . base64_encode(base64_encode($id_kegiatan)) . '/' . base64_encode(base64_encode($id_pemilih)), "refresh");
                         } else {
                             $nim_baru = $_POST['nim_pemilih'];
                         }
@@ -625,28 +660,34 @@ class Etika extends CI_Controller
                     }
                     if ($_POST['nama_pemilih'] != $pemilih[0]['nama_pemilih']) {
                         if ($this->All_model->cekNamaPemilihWhere($_POST['nama_pemilih']) > 0) {
-                            echo "Nama Sudah Terpakai";
-                            redirect('etika/ubah_pemilih/' . base64_encode(base64_encode($id_kegiatan)) . '/' . base64_encode(base64_encode($id_pemilih)));
+                            $this->session->set_flashdata('gagal', 'Diubah, Nama Sudah Dipakai');
+                            redirect('etika/ubah_pemilih/' . base64_encode(base64_encode($id_kegiatan)) . '/' . base64_encode(base64_encode($id_pemilih)), "refresh");
                         } else {
                             $nama_baru = $_POST['nama_pemilih'];
                         }
                     } else {
                         $nama_baru = $pemilih[0]['nama_pemilih'];
                     }
-                    if ($_POST['email_pemilih'] != $pemilih[0]['email']) {
-                        if ($this->All_model->cekEmailPemilihWhere($_POST['email_pemilih']) > 0) {
-                            echo "Email Sudah Terpakai";
-                            redirect('etika/ubah_pemilih/' . base64_encode(base64_encode($id_kegiatan)) . '/' . base64_encode(base64_encode($id_pemilih)));
+                    if (!empty($_POST['email_pemilih'])) {
+                        if ($_POST['email_pemilih'] != $pemilih[0]['email']) {
+                            if ($this->All_model->cekEmailPemilihWhere($_POST['email_pemilih']) > 0) {
+                                $this->session->set_flashdata('gagal', 'Diubah, Email Sudah Dipakai');
+                                redirect('etika/ubah_pemilih/' . base64_encode(base64_encode($id_kegiatan)) . '/' . base64_encode(base64_encode($id_pemilih)), "refresh");
+                            } else {
+                                $email_baru = $_POST['email_pemilih'];
+                            }
                         } else {
-                            $email_baru = $_POST['email_pemilih'];
+                            $email_baru = $pemilih[0]['email'];
                         }
                     } else {
-                        $email_baru = $pemilih[0]['email'];
+                        $email_baru = null;
                     }
                     if ($this->All_model->updateDataPemilih($nim_baru, $nama_baru, $email_baru, $id_pemilih)) {
-                        echo "Benar";
+                        $this->session->set_flashdata('berhasil', 'Diubah');
+                        redirect('etika/database_pemilih/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                     } else {
-                        echo "Gagal";
+                        $this->session->set_flashdata('gagal', 'Diubah, Kode Error :: 500 - Internal Server Error');
+                        redirect('etika/ubah_pemilih/' . base64_encode(base64_encode($id_kegiatan)) . '/' . base64_encode(base64_encode($id_pemilih)), "refresh");
                     }
                 }
             } else {
@@ -668,9 +709,11 @@ class Etika extends CI_Controller
                 $pemilih = $this->All_model->cariPemilih($id_pemilih);
                 if (!empty($cari) || !empty($pemilih)) {
                     if ($this->All_model->hapusPemilih($id_pemilih)) {
-                        echo "Berhasil";
+                        $this->session->set_flashdata('berhasil', 'Dihapus');
+                        redirect('etika/database_pemilih/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                     } else {
-                        echo "Terjadi masalah pada sistem";
+                        $this->session->set_flashdata('gagal', 'Dihapus, Kode Error :: 500 - Internal Server Error');
+                        redirect('etika/database_pemilih/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                     }
                 } else {
                     show_404();
@@ -735,9 +778,11 @@ class Etika extends CI_Controller
                     );
                 }
                 if ($this->All_model->createAllToken($data)) {
-                    echo "berhasil";
+                    $this->session->set_flashdata('berhasil', 'Digenerate, Token Dapat Digunakan');
+                    redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                 } else {
-                    echo "Gagal";
+                    $this->session->set_flashdata('gagal', 'Digenerate, Kode Error :: 500 - Internal Server Error');
+                    redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                 }
             } else {
                 show_404();
@@ -765,10 +810,15 @@ class Etika extends CI_Controller
                     if ($cari[0]['mode'] == "1") {
                         if (empty($pemilih[0]['token'])) {
                             if ($this->All_model->createTokenManualMode($token, $id_pemilih, $user[0]['first_name'], $time)) {
-                                echo "Token Berhasil di Generate";
+                                $this->session->set_flashdata('berhasil', 'Digenerate, Token Dapat Digunakan');
+                                redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
+                            } else {
+                                $this->session->set_flashdata('gagal', 'Digenerate, Kode Error :: 500 - Internal Server Error');
+                                redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                             }
                         } else {
-                            echo "Tidak dapat mengenerate ulang token, silahkan Reset Token";
+                            $this->session->set_flashdata('gagal', 'Digenerate, Silahkan Reset Token Terlebih Dahulu');
+                            redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                         }
                     } else {
                         if (empty($pemilih[0]['token'])) {
@@ -786,13 +836,19 @@ class Etika extends CI_Controller
                             // End Content Email
                             if ($this->send_mail($data, $template, $email)) {
                                 if ($this->All_model->createTokenManual($token, $time, $id_pemilih, $user[0]['first_name'])) {
-                                    echo "Token Berhasil Dikirim Melalui Email, Silahkan Cek Inbox atau Spam";
+                                    $this->session->set_flashdata('berhasil', 'Digenerate, Token Dikirim Melalui Email Silahkan Cek Inbox atau Spam');
+                                    redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
+                                } else {
+                                    $this->session->set_flashdata('gagal', 'Digenerate, Kode Error :: 500 - Internal Server Error');
+                                    redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                                 }
                             } else {
-                                echo "Token Gagal Dikirim";
+                                $this->session->set_flashdata('gagal', 'Digenerate, Email Tidak Dapat Dikirim');
+                                redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                             }
                         } else {
-                            echo "Tidak dapat mengenerate ulang token, silahkan Reset Token";
+                            $this->session->set_flashdata('gagal', 'Digenerate, Silahkan Lakukan Reset Token Terlebih Dahulu');
+                            redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                         }
                     }
                 } else {
@@ -822,12 +878,15 @@ class Etika extends CI_Controller
                                 $this->All_model->resetPemilihanWhere($id_kegiatan, $id_pemilih);
                             }
                             if ($this->All_model->updateTokenManualMode($id_pemilih)) {
-                                echo "Berhasil di reset";
+                                $this->session->set_flashdata('berhasil', 'Direset, Silahkan Generate Manual Token');
+                                redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                             } else {
-                                echo "Gagal Di reset";
+                                $this->session->set_flashdata('gagal', 'Direset, Kode Error :: 500 - Internal Server Error');
+                                redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                             }
                         } else {
-                            echo "Tidak dapat mengenerate ulang token, silahkan Reset Token";
+                            $this->session->set_flashdata('gagal', 'Direset, Token Belum Digenerate');
+                            redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                         }
                     } else {
                         if (!empty($pemilih[0]['token'])) {
@@ -836,12 +895,15 @@ class Etika extends CI_Controller
                                 $this->All_model->resetPemilihanWhere($id_kegiatan, $id_pemilih);
                             }
                             if ($this->All_model->updateTokenManual($id_pemilih)) {
-                                echo "Berhasil di reset";
+                                $this->session->set_flashdata('berhasil', 'Direset, Silahkan Generate Manual Token');
+                                redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                             } else {
-                                echo "Gagal Di reset";
+                                $this->session->set_flashdata('gagal', 'Direset, Kode Error :: 500 - Internal Server Error');
+                                redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                             }
                         } else {
-                            echo "Tidak dapat mengenerate ulang token, silahkan Reset Token";
+                            $this->session->set_flashdata('gagal', 'Direset, Token Belum Digenerate');
+                            redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                         }
                     }
                 } else {
@@ -866,10 +928,15 @@ class Etika extends CI_Controller
                 if (!empty($cari)) {
                     if ($this->All_model->resetPemilihanAll($id_kegiatan)) {
                         if ($this->All_model->resetTokenAll($id_kegiatan)) {
-                            echo "Berhasil di reset";
+                            $this->session->set_flashdata('berhasil', 'Direset');
+                            redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                         } else {
-                            echo "Gagal Di reset";
+                            $this->session->set_flashdata('gagal', 'Direset, Kode Error :: 500 - Internal Server Error');
+                            redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                         }
+                    } else {
+                        $this->session->set_flashdata('gagal', 'Direset, Kode Error :: 500 - Internal Server Error');
+                        redirect('etika/manajemen_evote/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                     }
                 } else {
                     show_404();
@@ -914,11 +981,7 @@ class Etika extends CI_Controller
 
 
     // Halaman User
-    // Method Getter Email
-    public function getEmailAdmin()
-    {
-        return $this->email_admin;
-    }
+
     public function home()
     {
         if ($this->ion_auth->logged_in() || $this->ion_auth->in_group(etika)) {
@@ -972,10 +1035,10 @@ class Etika extends CI_Controller
                     $this->email->message($message);
                     $this->email->set_newline("\r\n");
                     if ($this->email->send()) {
-                        $this->session->set_flashdata('berhasil', "Dikirim");
+                        $this->session->set_flashdata('berhasil', "Dikirim, Help Desk Kami Akan Menghubungimu Melalui Email");
                         return redirect('etika/home', 'refresh');
                     } else {
-                        $this->session->set_flashdata('gagal', 'Dikirim');
+                        $this->session->set_flashdata('gagal', 'Dikirim, Kode :: 500 - Internal Server Error');
                         echo $this->email->print_debugger();
                         return redirect('admin', 'refresh');
                     }
@@ -1157,7 +1220,6 @@ class Etika extends CI_Controller
                 }
             } else {
                 if (isset($_POST['submit'])) {
-
                     $pemilih = $this->All_model->cekEmailLoginPemilih($_POST['email'], $id_kegiatan);
                     if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
                         if (!empty($pemilih)) {
@@ -1165,7 +1227,8 @@ class Etika extends CI_Controller
                                 $time = date('Y-m-d H:i:s');
                                 // Jika user salah masuk sebanyak lebih dari 4 kali, maka block
                                 $this->All_model->blockPemilih($pemilih[0]['id_pemilih'], $time);
-                                echo "Anda Terblokir, Tunggu Beberapa Menit Lagi";
+                                $this->session->set_flashdata('gagal', 'Login, Anda Di Blokir Untuk Sementara Waktu. Tunggu Beberapa Menit');
+                                redirect('etika/login_kegiatan/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                             } else {
                                 $date = date_create(date($pemilih[0]['block_time']));
                                 // Set block selama 300 detik atau 5 menit
@@ -1173,12 +1236,20 @@ class Etika extends CI_Controller
                                 $cek_block = new Datetime(date_format($date, 'Y-m-d H:i:s'));
                                 // Cek apakah waktu saat ini masih kurang dari sama dengan waktu block atau kolom block time itu tidak kosong (ada isinya) yang bermakna terblokir
                                 if (!empty($pemilih[0]['block_time']) && new DateTime(date('Y-m-d H:i:s')) <= $cek_block) {
-                                    echo "Anda Terblokir, Tunggu Beberapa Menit Lagi";
+                                    $this->session->set_flashdata('gagal', 'Login, Anda Di Blokir Untuk Sementara Waktu. Tunggu Beberapa Menit');
+                                    redirect('etika/login_kegiatan/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                                 } else {
                                     $this->All_model->unblockPemilih($pemilih[0]['id_pemilih']);
                                     if (!empty($pemilih[0]['token'])) {
                                         if ($_POST['token'] == $pemilih[0]['token']) {
-                                            if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($pemilih[0]['token_valid_until']) && $pemilih[0]['has_voting'] == 0 && $this->All_model->addIpLogin($this->input->ip_address(), $pemilih[0]['id_pemilih'])) {
+                                            if ($this->agent->is_browser()) {
+                                                $agent = $this->agent->browser() . ' ' . $this->agent->version();
+                                            } elseif ($this->agent->is_mobile()) {
+                                                $agent = $this->agent->mobile();
+                                            } else {
+                                                $agent = 'Data user gagal di dapatkan';
+                                            }
+                                            if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($pemilih[0]['token_valid_until']) && $pemilih[0]['has_voting'] == 0 && $this->All_model->addIpLogin($this->input->ip_address(),  $pemilih[0]['id_pemilih'], $agent, $this->agent->platform())) {
                                                 // Buat Session Login Untuk User, Redirect kehalaman Administrator
                                                 $this->session->set_userdata('nama_pemilih', $pemilih[0]['nama_pemilih']);
                                                 $this->session->set_userdata('id_pemilih', $pemilih[0]['id_pemilih']);
@@ -1186,23 +1257,28 @@ class Etika extends CI_Controller
                                                 $this->session->set_flashdata('login', 'Selamat Datang ' . $this->session->userdata('nama_pemilih') . ", Selamat Menggunakan Hak Pilih Anda");
                                                 redirect('etika/dashboard', 'refresh');
                                             } else {
-                                                echo "Token Sudah Invalid atau Token Sudah Digunakan";
+                                                $this->session->set_flashdata('gagal', 'Login, Token Sudah Invalid atau Token Sudah Digunakan Sebelumnya');
+                                                redirect('etika/login_kegiatan/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                                             }
                                         } else {
                                             $attempt = $pemilih[0]['login_attempt'] + 1;
                                             $this->All_model->loginAttempt($pemilih[0]['id_pemilih'], $attempt);
-                                            echo "Token Salah";
+                                            $this->session->set_flashdata('gagal', 'Login, Token Yang Dimasukkan Salah');
+                                            redirect('etika/login_kegiatan/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                                         }
                                     } else {
-                                        echo "Token Belum di Generate";
+                                        $this->session->set_flashdata('gagal', 'Login, Silahkan Generate Token Terlebih Dahulu');
+                                        redirect('etika/login_kegiatan/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                                     }
                                 }
                             }
                         } else {
-                            echo "Username Salah";
+                            $this->session->set_flashdata('gagal', 'Login, Username Yang Digunakan Salah');
+                            redirect('etika/login_kegiatan/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                         }
                     } else {
-                        echo "Waktu Voting Telah Berakhir";
+                        $this->session->set_flashdata('gagal', 'Login, Waktu Voting Kegiatan Sudah Berakhir');
+                        redirect('etika/login_kegiatan/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                     }
                 }
             }
@@ -1263,16 +1339,20 @@ class Etika extends CI_Controller
                                 // End Content Email
                                 if ($this->send_mail($data, $template, $email)) {
                                     if ($this->All_model->createTokenManual($token, $time, $cari_pemilih[0]['id_pemilih'], "By Sistem")) {
-                                        echo "Token Berhasil Dikirim Melalui Email, Silahkan Cek Inbox atau Spam";
+                                        $this->session->set_flashdata('berhasil', 'Diaktivasi, Token Berhasil Dikirim Ke Email Anda, Silahkan Cek Inbox atua Spam');
+                                        redirect('etika/verifikasi_akun/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                                     }
                                 } else {
-                                    echo "Token Gagal Dikirim";
+                                    $this->session->set_flashdata('gagal', 'Diaktivasi, Kode :: 500 - Internal Server Error');
+                                    redirect('etika/verifikasi_akun/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                                 }
                             } else {
-                                echo "Token Sudah Di Generate Sebelumnya, Silahkan Cek Inbox atau Spam pada Email";
+                                $this->session->set_flashdata('gagal', 'Diaktivasi, Token Sudah Digenerate Sebelumnya, Silahkan Cek Inbox atau Spam pada Email');
+                                redirect('etika/verifikasi_akun/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                             }
                         } else {
-                            echo "Pengguna Tidak Ditemukan";
+                            $this->session->set_flashdata('gagal', 'Diaktivasi, Gagal Menemukan Data Anda');
+                            redirect('etika/verifikasi_akun/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                         }
                     }
                 }
@@ -1336,7 +1416,7 @@ class Etika extends CI_Controller
                 }
                 if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
                     if ($this->form_validation->run() == FALSE) {
-                        if (!empty($cari) && $cari[0]['mode'] == 1) {
+                        if (!empty($cari) && $cari[0]['mode'] == 1 && $pemilih[0]['has_voting'] == 0) {
                             $this->load->view('guest/etika/master/header-dashboard', $this->data);
                             $this->load->view('guest/etika/page/ganti-token', $this->data);
                             $this->load->view('guest/etika/master/footer-dashboard', $this->data);
@@ -1349,12 +1429,15 @@ class Etika extends CI_Controller
                                 $string = "0123456789bcdfghjklmnpqrstvwxyz";
                                 $token = substr(str_shuffle($string), 0, 12);
                                 if ($this->All_model->requestTokenBaru($token, $id_pemilih)) {
-                                    echo "Token berhasil diperbaharui";
+                                    $this->session->set_flashdata('berhasil', 'Ganti Token');
+                                    redirect('etika/ganti_token/', "refresh");
                                 } else {
-                                    echo "Token gagal diperbaharui";
+                                    $this->session->set_flashdata('gagal', 'Ganti Token, Kode :: 500 - Internal Server Error');
+                                    redirect('etika/ganti_token/', "refresh");
                                 }
                             } else {
-                                echo "Tidak dapat melakukan request Token";
+                                $this->session->set_flashdata('gagal', 'Ganti Token, Tidak Dapat Menemukan Data Anda');
+                                redirect('etika/ganti_token/', "refresh");
                             }
                         } else {
                             // Content Email
@@ -1371,17 +1454,21 @@ class Etika extends CI_Controller
                                 $email = $_POST['email'];
                                 // End Content Email
                                 if ($this->send_mail($data, $template, $email)) {
-                                    echo "Salinan Berhasil Dikirim Ke Email, Silahkan Cek Inbox atau Spam";
+                                    $this->session->set_flashdata('berhasil', 'Mengirim Salinan, Silahkan Cek Inbox atau Spam Pada Email');
+                                    redirect('etika/ganti_token/', "refresh");
                                 } else {
-                                    echo "Token Gagal Dikirim";
+                                    $this->session->set_flashdata('gagal', 'Mengirim Salinan, Kode :: 500 - Internal Server Error');
+                                    redirect('etika/ganti_token/', "refresh");
                                 }
                             } else {
-                                echo "Email Tidak Sama";
+                                $this->session->set_flashdata('gagal', 'Ganti Token, Email Konfirmasi Harus Sama');
+                                redirect('etika/ganti_token/', "refresh");
                             }
                         }
                     }
                 } else {
-                    echo "Waktu Voting Telah Selesai";
+                    $this->session->set_flashdata('gagal', 'Waktu Voting Kegiatan Telah Usai');
+                    redirect('etika/ganti_token/', "refresh");
                 }
             } else {
                 redirect('etika/voting_kegiatan', 'refresh');
@@ -1407,9 +1494,11 @@ class Etika extends CI_Controller
                     !empty($cari) && $pemilih[0]['has_voting'] == 0 && !empty($cari_kandidat)
                 ) {
                     if ($this->All_model->saveVote(base64_decode(base64_decode($id_kandidat)), $id_pemilih, $id_kegiatan, $this->input->ip_address()) && $this->All_model->updateVote($id_pemilih)) {
+                        $this->session->set_flashdata('berhasil', 'Disimpan, Terimakasih Telah Melakukan EVOTING');
                         redirect("etika/dashboard", 'refresh');
                     } else {
-                        echo "Gagal Melakukan Voting";
+                        $this->session->set_flashdata('gagal', 'Disimpan, Kode :: 500 - Internal Server Error');
+                        redirect("etika/dashboard", 'refresh');
                     }
                 } else {
                     show_404();

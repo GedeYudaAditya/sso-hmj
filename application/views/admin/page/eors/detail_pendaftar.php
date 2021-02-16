@@ -436,6 +436,10 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Dokumen
                                             Pendaftar</div>
+                                        <?php
+                                                $ekstensi_file = explode(".", $pendaftar[0]['file_dokumen']);
+                                                if ($ekstensi_file[1] == "pdf") :
+                                                ?>
                                         <a href="<?= base_url() ?>web/flip_me/<?= $kegiatan[0]['nama_kegiatan'] ?>/<?= $pendaftar[0]['file_dokumen'] ?>/eors"
                                             class="btn btn-primary btn-sm mt-2 btn-icon-split">
                                             <span class="icon text-white-50">
@@ -443,6 +447,15 @@
                                             </span>
                                             <span class="text">Lihat File</span>
                                         </a>
+                                        <?php else : ?>
+                                        <a href="<?= base_url() ?>assets/upload/Folder_<?= $kegiatan[0]['nama_kegiatan'] ?>/<?= $pendaftar[0]['file_dokumen'] ?>"
+                                            class="btn btn-primary btn-sm mt-2 btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                            <span class="text">Download File</span>
+                                        </a>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
