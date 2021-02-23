@@ -18,7 +18,6 @@
 const baseURL = "<?php echo base_url(); ?>";
 </script>
 <script src="<?= base_url() ?>assets/vendor/chart.js/Chart.js"></script>
-<script src="<?= base_url() ?>assets/js/chartEtikaDiagram.js"></script>
 <script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
 <?php endif;  ?>
 <!-- Active js -->

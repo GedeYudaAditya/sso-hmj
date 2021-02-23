@@ -69,6 +69,8 @@ const baseURL = "<?php echo base_url(); ?>";
 <?php if ($ckeditor == "etika") { ?>
 <script src="<?= base_url() ?>assets/js/ckeditor/etika.js"></script>
 <script src="<?= base_url() ?>assets/js/plugins/jquery-qrcode-0.18.0.js"></script>
+<script src="<?= base_url() ?>assets/vendor/chart.js/Chart.js"></script>
+<script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
 
 <?php } ?>
 <?php } ?>
