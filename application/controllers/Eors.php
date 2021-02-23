@@ -282,9 +282,10 @@ class Eors extends CI_Controller
             $this->data['MI'] = $this->All_model->getAllPendaftarProdi("02", $id_kegiatan);
             $this->data['SI'] = $this->All_model->getAllPendaftarProdi("09", $id_kegiatan);
             $this->data['ILKOM'] = $this->All_model->getAllPendaftarProdi("10", $id_kegiatan);
-            $this->data['thn_2018'] = $this->All_model->getAllPendaftarTahun("2018", $id_kegiatan);
-            $this->data['thn_2019'] = $this->All_model->getAllPendaftarTahun("2019", $id_kegiatan);
-            $this->data['thn_2020'] = $this->All_model->getAllPendaftarTahun("2020", $id_kegiatan);
+            $date = date('Y');
+            $this->data['thn_2018'] = $this->All_model->getAllPendaftarTahun($date - 2, $id_kegiatan);
+            $this->data['thn_2019'] = $this->All_model->getAllPendaftarTahun($date - 1, $id_kegiatan);
+            $this->data['thn_2020'] = $this->All_model->getAllPendaftarTahun($date, $id_kegiatan);
             // END SETTING CHART PENDAFTARAN
             $this->data['sie'] = $this->All_model->getAllPilihanWhere($id_kegiatan);
             if ($data_user_login[0]['group_id'] == "5" || $data_user_login[0]['group_id'] == "1") {
@@ -473,12 +474,27 @@ class Eors extends CI_Controller
 
                             if ($this->All_model->inputDataPeserta($nama_dokumen, $nama_foto, $id_kegiatan)) {
                                 $jumlah_peserta = $this->All_model->countPesertaEors($id_kegiatan);
-                                if ($this->All_model->updateJumlahPeserta($jumlah_peserta, $id_kegiatan)) {
-                                    $this->session->set_flashdata('berhasil', 'Ditambahkan');
-                                    redirect('eors/administrator/' . urldecode($data));
+                                $data_email = [
+                                    'identity' => $_POST['email'],
+                                    'kegiatan' => $data_kegiatan[0]['nama_kegiatan'],
+                                    'nim_pendaftar' => $_POST['nim'],
+                                    'username' => $_POST['nama_lengkap'],
+                                    'time' => date('d F Y H:i:s') . ' WITA',
+                                ];
+                                $template = $this->config->item('email_information', 'ion_auth');
+                                $email = $_POST['email'];
+                                // End Content Email
+                                if ($this->send_mail($data_email, $template, $email)) {
+                                    if ($this->All_model->updateJumlahPeserta($jumlah_peserta, $id_kegiatan)) {
+                                        $this->session->set_flashdata('berhasil', 'Ditambahkan');
+                                        redirect('eors/administrator/' . urldecode($data));
+                                    } else {
+                                        $this->session->set_flashdata('gagal', 'Ditambahkan, Periksa Kembali Ukuran dan Tipe dari File');
+                                        redirect('eors/tambah_peserta/' . urldecode($data));
+                                    }
                                 } else {
-                                    $this->session->set_flashdata('gagal', 'Ditambahkan, Periksa Kembali Ukuran dan Tipe dari File');
-                                    redirect('eors/tambah_peserta/' . urldecode($data));
+                                    $this->session->set_flashdata('gagal', 'Ditambahkan, Email gagal dikirim');
+                                    redirect('eors/administrator/' . urldecode($data));
                                 }
                             }
                         }
@@ -676,9 +692,10 @@ class Eors extends CI_Controller
         $this->data['MI'] = $this->All_model->getAllPendaftarProdi("02", $id_kegiatan);
         $this->data['SI'] = $this->All_model->getAllPendaftarProdi("09", $id_kegiatan);
         $this->data['ILKOM'] = $this->All_model->getAllPendaftarProdi("10", $id_kegiatan);
-        $this->data['thn_2018'] = $this->All_model->getAllPendaftarTahun("2018", $id_kegiatan);
-        $this->data['thn_2019'] = $this->All_model->getAllPendaftarTahun("2019", $id_kegiatan);
-        $this->data['thn_2020'] = $this->All_model->getAllPendaftarTahun("2020", $id_kegiatan);
+        $date = date('Y');
+        $this->data['thn_2018'] = $this->All_model->getAllPendaftarTahun($date - 2, $id_kegiatan);
+        $this->data['thn_2019'] = $this->All_model->getAllPendaftarTahun($date - 1, $id_kegiatan);
+        $this->data['thn_2020'] = $this->All_model->getAllPendaftarTahun($date, $id_kegiatan);
         // END SETTING CHART PENDAFTARAN
 
         if (!empty($data_kegiatan) && $data_kegiatan[0]['pengumuman'] == 1) {
@@ -703,9 +720,10 @@ class Eors extends CI_Controller
         $this->data['MI'] = $this->All_model->getAllPendaftarProdi("02", $id_kegiatan);
         $this->data['SI'] = $this->All_model->getAllPendaftarProdi("09", $id_kegiatan);
         $this->data['ILKOM'] = $this->All_model->getAllPendaftarProdi("10", $id_kegiatan);
-        $this->data['thn_2018'] = $this->All_model->getAllPendaftarTahun("2018", $id_kegiatan);
-        $this->data['thn_2019'] = $this->All_model->getAllPendaftarTahun("2019", $id_kegiatan);
-        $this->data['thn_2020'] = $this->All_model->getAllPendaftarTahun("2020", $id_kegiatan);
+        $date = date('Y');
+        $this->data['thn_2018'] = $this->All_model->getAllPendaftarTahun($date - 2, $id_kegiatan);
+        $this->data['thn_2019'] = $this->All_model->getAllPendaftarTahun($date - 1, $id_kegiatan);
+        $this->data['thn_2020'] = $this->All_model->getAllPendaftarTahun($date, $id_kegiatan);
         // END SETTING CHART PENDAFTARAN
 
         // All Validations
@@ -792,9 +810,24 @@ class Eors extends CI_Controller
 
                         if ($this->All_model->inputDataPeserta($nama_dokumen, $nama_foto, $id_kegiatan)) {
                             $jumlah_peserta = $this->All_model->countPesertaEors($id_kegiatan);
-                            if ($this->All_model->updateJumlahPeserta($jumlah_peserta, $id_kegiatan)) {
-                                $this->session->set_flashdata('berhasil', 'Dikirim, Terimakasih Telah Melakukan Pendaftaran');
-                                redirect('eors/daftar_sekarang/' . urldecode($data));
+                            $data_email = [
+                                'identity' => $_POST['email'],
+                                'kegiatan' => $data_kegiatan[0]['nama_kegiatan'],
+                                'nim_pendaftar' => $_POST['nim'],
+                                'username' => $_POST['nama_lengkap'],
+                                'time' => date('d F Y H:i:s') . ' WITA',
+                            ];
+                            $template = $this->config->item('email_information', 'ion_auth');
+                            $email = $_POST['email'];
+                            // End Content Email
+                            if ($this->send_mail($data_email, $template, $email)) {
+                                if ($this->All_model->updateJumlahPeserta($jumlah_peserta, $id_kegiatan)) {
+                                    $this->session->set_flashdata('berhasil', 'Dikirim, Pendaftaran Berhasil. Bukti Pendaftaran Telah Dikirim Melalui Email, Silahkan Cek Inbox atau Spam');
+                                    redirect('eors/daftar_sekarang/' . urldecode($data));
+                                } else {
+                                    $this->session->set_flashdata('gagal', 'Tidak Terkirim, Error Server');
+                                    redirect('eors/daftar_sekarang/' . urldecode($data));
+                                }
                             } else {
                                 $this->session->set_flashdata('gagal', 'Tidak Terkirim, Error Server');
                                 redirect('eors/daftar_sekarang/' . urldecode($data));
@@ -812,6 +845,24 @@ class Eors extends CI_Controller
                 $this->session->set_flashdata('gagal', 'Masa Pendaftaran Telah Berakhir');
                 redirect('eors/daftar_sekarang/' . urldecode($data));
             }
+        }
+    }
+
+    // Function Send Mail Token
+    public function send_mail($data = "", $template = "", $to_email = "")
+    {
+        $this->load->library('encrypt');
+        $message = $this->load->view($this->config->item('email_templates', 'ion_auth') . $template, $data, TRUE);
+        $this->email->clear();
+        $this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
+        $this->email->to($to_email);
+        $this->email->subject($this->config->item('site_title', 'ion_auth') . ' - Pengiriman Bukti Pendaftaran Kegiatan');
+        $this->email->message($message);
+        $this->email->set_newline("\r\n");
+        if ($this->email->send()) {
+            return TRUE;
+        } else {
+            echo $this->email->print_debugger();
         }
     }
 }

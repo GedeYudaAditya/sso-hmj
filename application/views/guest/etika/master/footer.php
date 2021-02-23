@@ -1,7 +1,7 @@
 <!-- ***** All jQuery Plugins ***** -->
 
 <!-- jQuery(necessary for all JavaScript plugins) -->
-<script src="<?= base_url() ?>assets/js/jquery/jquery-3.3.1.min.js"></script>
+
 
 <!-- Sweetalert -->
 <script src="<?= base_url() ?>assets/js/sweetalert2.all.min.js"></script>
@@ -18,6 +18,7 @@
 const baseURL = "<?php echo base_url(); ?>";
 </script>
 <script src="<?= base_url() ?>assets/vendor/chart.js/Chart.js"></script>
+<script src="<?= base_url() ?>assets/js/chartEtikaDiagram.js"></script>
 <script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
 <?php endif;  ?>
 <!-- Active js -->

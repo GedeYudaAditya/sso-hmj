@@ -23,6 +23,7 @@
     <!-- Style css -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/etika.css">
 
+    <script src="<?= base_url() ?>assets/js/jquery/jquery-3.3.1.min.js"></script>
 </head>
 <?php if ($body == 1) : ?>
 
@@ -85,12 +86,12 @@
                     <div class="tidak-ditemukan"
                         data-tidak-ditemukan="<?= $this->session->flashdata('tidak-ditemukan'); ?>">
                         <div class="ditemukan" data-ditemukan="<?php
-                                                                        $datas = $this->session->flashdata('ditemukan');
-                                                                        if (!empty($datas)) {
-                                                                            foreach ($datas as $key => $value) {
-                                                                                $id_key = $key;
-                                                                                echo "[ Kegiatan " . $value['nama_kegiatan'] . " ] ";
-                                                                            }
-                                                                        }
-                                                                        ?>">
+                                                                $datas = $this->session->flashdata('ditemukan');
+                                                                if (!empty($datas)) {
+                                                                    foreach ($datas as $key => $value) {
+                                                                        $id_key = $key;
+                                                                        echo "[ Kegiatan " . $value['nama_kegiatan'] . " ] ";
+                                                                    }
+                                                                }
+                                                                ?>">
                         </div>

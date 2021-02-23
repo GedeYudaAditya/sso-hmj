@@ -24,7 +24,7 @@
                          <span class="text">Tambah Data</span>
                      </a>
                      <div class="table-responsive">
-                         <table class="table table-bordered" id="tableKepengurusan" width="100%" cellspacing="0">
+                         <table class="table table-bordered" id="tableLomba" width="100%" cellspacing="0">
                              <thead>
                                  <tr>
                                      <th>No</th>
@@ -231,13 +231,13 @@
                                      Berdasarkan Angkatan :
                                  </span>
                                  <span class="mr-2">
-                                     <i class="fas fa-circle text-primary"></i> 2018
+                                     <i class="fas fa-circle text-primary"></i> <?= date('Y') - 2 ?>
                                  </span>
                                  <span class="mr-2">
-                                     <i class="fas fa-circle text-success"></i> 2019
+                                     <i class="fas fa-circle text-success"></i> <?= date('Y') - 1 ?>
                                  </span>
                                  <span class="mr-2">
-                                     <i class="fas fa-circle text-info"></i> 2020
+                                     <i class="fas fa-circle text-info"></i> <?= date('Y') ?>
                                  </span>
                              </div>
                          </div>

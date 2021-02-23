@@ -135,7 +135,7 @@
                         <td bgcolor="#ffffff" align="center" valign="top"
                             style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
                             <h1 style="font-size: 48px; font-weight: 400; margin: 2;">HMJ Teknik Informatika</h1>
-                            <img src="https://debly.cc/assets/images/logo/debly.png" alt="debly-logo" width="125"
+                            <img src="http://if.undiksha.ac.id/assets/img/sso-logo.png" alt="debly-logo" width="125"
                                 height="120" style="display: block; border: 0px;" />
                         </td>
                     </tr>
@@ -187,12 +187,12 @@
                             style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                             <p style="margin: 0;">
                                 <?php echo sprintf(
-									// lang('email_forgot_password_subheading'),
-									anchor(
-										'auth/reset_password/' . $forgotten_password_code
-										// lang('email_forgot_password_link')
-									)
-								); ?>
+                                    // lang('email_forgot_password_subheading'),
+                                    anchor(
+                                        'auth/reset_password/' . $forgotten_password_code
+                                        // lang('email_forgot_password_link')
+                                    )
+                                ); ?>
                         </td>
                     </tr>
                     <tr>

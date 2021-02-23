@@ -53,8 +53,7 @@ $(document).ready(function () {
 			position: "center",
 			icon: "success",
 			text: "Berhasil " + success + "...",
-			showConfirmButton: false,
-			timer: 2500,
+			showConfirmButton: true,
 		});
 	}
 });
@@ -65,8 +64,7 @@ $(document).ready(function () {
 			position: "center",
 			icon: "error",
 			text: "Opss.. Gagal " + gagal + "...",
-			showConfirmButton: false,
-			timer: 2500,
+			showConfirmButton: true,
 		});
 	}
 });

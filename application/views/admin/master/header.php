@@ -4,7 +4,7 @@
 
 	<head>
 	    <meta charset="UTF-8" />
-	    <?php if ($active == "10" && $flip == "etika") { ?>
+	    <?php if ($flip == "etika") { ?>
 	    <meta http-equiv="refresh" content="30" />
 	    <?php } ?>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />

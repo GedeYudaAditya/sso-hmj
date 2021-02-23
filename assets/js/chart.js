@@ -15,8 +15,8 @@ $(document).ready(function () {
             labels: ["PTI", "SI", "MI", "Ilkom"],
             datasets: [{
                 data: [PTI, SI, MI, Ilkom],
-                backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e'],
-                hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#f6c23e'],
+                backgroundColor: ['#7c4fe0', '#28a745', '#17a2b8','#ffc107'],
+                hoverBackgroundColor: ['#7c4fe0', '#28a745', '#17a2b8','#ffc107'],
                 hoverBorderColor: "rgba(234, 236, 244, 1)",
             }],
         },
@@ -46,17 +46,20 @@ $(document).ready(function () {
 
     // Pie Chart Example
     var ctx = document.getElementById("myAngkatanChart");
-    var PTI = document.getElementById("thn_2018").value;
-    var SI = document.getElementById("thn_2019").value;
-    var MI = document.getElementById("thn_2020").value;
+    let kr_2 = document.getElementById("thn_2018").value;
+    let kr_1 = document.getElementById("thn_2019").value;
+    let sk = document.getElementById("thn_2020").value;
+    let tahun = new Date().getFullYear();
+    let kurang_1 = tahun - 1;
+    let kurang_2 = tahun - 2;
     var myAngkatanChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ["2018", "2019", "2020"],
+            labels: [kurang_2, kurang_1, tahun],
             datasets: [{
-                data: [PTI, SI, MI, Ilkom],
-                backgroundColor: ['#1cc88a', '#36b9cc', '#f6c23e'],
-                hoverBackgroundColor: ['#17a673', '#2c9faf', '#f6c23e'],
+                data: [kr_2, kr_1, sk],
+                backgroundColor: ['#7c4fe0', '#28a745', '#17a2b8'],
+                hoverBackgroundColor: ['#7c4fe0', '#28a745', '#17a2b8'],
                 hoverBorderColor: "rgba(234, 236, 244, 1)",
             }],
         },

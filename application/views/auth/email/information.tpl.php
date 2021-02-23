@@ -137,18 +137,11 @@
                     <tr>
                         <td bgcolor="#ffffff" align="left"
                             style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0; text-align:justify;">Selamat bergabung pada pemilihan kegiatan <span
-                                    style="color:#2c91fb;"><?= ucwords($kegiatan) ?></span>, berikut merupakan Username
-                                dan Token
-                                pemilihan
-                                yang dapat Anda gunakan dalam melakukan e-voting melalui Sistem ini.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#ffc75f" align="left"
-                            style="padding: 10px 30px 10px 30px; color: #fff; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
-                            <i style="margin: 0;">Kode bersifat unik, jangan berikan Username dan Token kepada
-                                siapapun</i>
+                            <p style="margin: 0; text-align:justify;">Terimakasih telah melakukan pendaftaran kegiatan
+                                <span style="color:#2c91fb;"><?= ucwords($kegiatan) ?></span>, berikut merupakan Bukti
+                                Pendaftaran
+                                sebagai tanda sah anda telah melakukan pendaftaran pada kegiatan ini
+                            </p>
                         </td>
                     </tr>
                     <tr>
@@ -158,7 +151,7 @@
                                 <table cellpadding="7">
                                     <tr>
                                         <td>
-                                            <label for="username">Username</label>
+                                            <label for="username">Nama Pendaftar</label>
                                         </td>
                                         <td>:</td>
                                         <td>
@@ -168,17 +161,17 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="token">Token</label>
+                                            <label for="token">Nim Pendaftar</label>
                                         </td>
                                         <td>:</td>
                                         <td>
-                                            <input type="disable" id="token" disabled value="<?= $token_code ?>"
+                                            <input type="disable" id="token" disabled value="<?= $nim_pendaftar ?>"
                                                 style="border: none; border-radius: 3px; height: 30px; width:250px; padding:10px;font-size:18px">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="time">Token Aktif Sampai</label>
+                                            <label for="time">Waktu Pendaftaran</label>
                                         </td>
                                         <td>:</td>
                                         <td>
@@ -194,7 +187,7 @@
                     <tr>
                         <td bgcolor="#ffffff" align="left"
                             style="padding: 0px 30px 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">Anda dapat melakukan e-voting pada kegiatan <span
+                            <p style="margin: 0;">Anda dapat melihat live count pendaftaran pada kegiatan <span
                                     style="color:#2c91fb;"><?= ucwords($kegiatan) ?></span> melalui Tombol berikut
                                 :</p>
                         </td>
@@ -207,10 +200,10 @@
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td align="center" style="border-radius: 3px;" bgcolor="#2c91fb"><a
-                                                        href="<?php echo site_url('etika/voting_kegiatan/' . base64_encode(base64_encode($id_kegiatan))) ?>"
+                                                        href="<?php echo site_url('eors/daftar_sekarang/' . urldecode($kegiatan)) ?>"
                                                         target="_blank"
-                                                        style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Voting
-                                                        Kegiatan</a></td>
+                                                        style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Live
+                                                        Count</a></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -232,7 +225,7 @@
                                 <?php echo sprintf(
                                     // lang('email_forgot_password_subheading'),
                                     anchor(
-                                        'etika/voting_kegiatan/' . base64_encode(base64_encode($id_kegiatan))
+                                        'eors/daftar_sekarang/' . urldecode($kegiatan)
                                         // lang('email_forgot_password_link')
                                     )
                                 ); ?>
