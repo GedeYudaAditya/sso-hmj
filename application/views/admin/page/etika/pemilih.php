@@ -143,12 +143,32 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Unggah Data Peserta Dengan Excel (.CSV)</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Unggah Data Peserta Dengan Excel (.xlsx)</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                <p>Pastikan Format data mahasiswa dalam Excel adalah sebagai berikut</p>
+                <ul>
+                    <li>Kolom/Row pertama adalah Nama Mahasiswa </li>
+                    <li>Kolom/Row kedua adalah Email Mahasiswa (Jika tidak ada data, kosongkan datanya. Jangan menghapus
+                        Kolom/Rownya)</li>
+                    <li>Kolom/Row ketiga adalah Nim Mahasiswa</li>
+                    <li>Kolom/Row keempat adalah Prodi Mahasiswa (Jangan menyingkat nama prodi, huruf awal nama prodi
+                        harus huruf kapital. Gunakan format penulisan
+                        berikut :)
+                        <ol>
+                            <li>PTI ditulis Pendidikan Teknik Informatika</li>
+                            <li>MI ditulis Manajemen Informatika</li>
+                            <li>SI ditulis Sistem Informasi</li>
+                            <li>ILKOM ditulis Ilmu Komputer</li>
+                        </ol>
+                    </li>
+                    <li>Kolom/Row kelima adalah Semester (Gunakan angka untuk menulis semester)</li>
+                </ul>
+                <p>Jika sudah sesuai dengan format, silahkan unggah file excel dengan format .xlsx maksimal 10 Mb pada
+                    form dibawah</p>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
