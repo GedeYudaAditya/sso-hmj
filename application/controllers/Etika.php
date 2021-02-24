@@ -1047,6 +1047,22 @@ class Etika extends CI_Controller
             }
         }
     }
+    public function voting_kegiatan()
+    {
+        if ($this->ion_auth->logged_in() || $this->ion_auth->in_group(etika)) {
+            redirect(
+                'etika',
+                'refresh'
+            );
+        } else {
+            $this->data['title'] = "Daftar Kegiatan";
+            $this->data['body'] = 2;
+            $this->data['kegiatan'] = $this->All_model->getAllKegiatanEtika();
+            $this->load->view('guest/etika/master/header', $this->data);
+            $this->load->view('guest/etika/page/kegiatan', $this->data);
+            $this->load->view('guest/etika/master/footer', $this->data);
+        }
+    }
     public function ajax_data()
     {
         // Start Chart Data JS
