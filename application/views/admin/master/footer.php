@@ -42,13 +42,7 @@
 <!-- Page level custom scripts -->
 <script src="<?= base_url() ?>assets/js/chart.js"></script>
 <?php } ?>
-<?php if ($active == "10" && $flip == "etika") { ?>
-<!-- Page level custom scripts -->
-<script>
-const baseURL = "<?php echo base_url(); ?>";
-</script>
-<script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
-<?php } ?>
+
 <!-- Data Table-->
 <script src="<?= base_url() ?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
@@ -73,9 +67,14 @@ const baseURL = "<?php echo base_url(); ?>";
 <script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
 
 <?php } ?>
+<?php if ($ckeditor == "etika_diagram") { ?>
+<script>
+const baseURL = "<?php echo base_url(); ?>";
+</script>
+<script src="<?= base_url() ?>assets/vendor/chart.js/Chart.js"></script>
+<script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
 <?php } ?>
-
-
+<?php } ?>
 <?php } ?>
 </body>
 

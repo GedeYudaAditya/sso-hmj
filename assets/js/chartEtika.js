@@ -222,6 +222,7 @@ $(document).ready(function() {
             const data = new FormData()
             let value = document.getElementById('id_kegiatan').value;
             data.append("id_kegiatan", value);
+            data.append('id_send', '1');
             if (value != "") {
                 fetch(baseURL + "etika/ajax_data", {
                     method: "POST",
@@ -245,10 +246,45 @@ $(document).ready(function() {
                 });
             }
     }
-    sendAjax();
-    setInterval(() => {
-          sendAjax();
-    }, 5000);
+
+    const sendAjaxGuest = () => {
+            const data = new FormData()
+            let value = document.getElementById('id_kegiatan').value;
+            data.append("id_kegiatan", value);
+            data.append('id_send', '2');
+            if (value != "") {
+                fetch(baseURL + "etika/ajax_data", {
+                    method: "POST",
+                    body: data,
+                })
+                .then(response => response.text())
+                .then(data => {
+                    if (data != "") {
+                        document.getElementById("features").innerHTML = data;
+                        // Set new default font family and font color to mimic Bootstrap's default styling
+                        diagram_1();
+                        diagram_2();
+                        diagram_3();
+                        diagram_4();
+                    } else {
+                        console.log(data);
+                        console.error("Can't Get Ajax Data");
+                    }
+            });
+        }
+    }
+    if (document.getElementById('result') != null) {
+        sendAjax();
+        setInterval(() => {
+            sendAjax();
+        }, 5000);
+    }
+    if (document.getElementById('features') != null) {
+        sendAjaxGuest()
+        setInterval(() => {
+            sendAjaxGuest();
+        }, 10000);
+    }
 
 
 });
