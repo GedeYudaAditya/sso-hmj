@@ -92,7 +92,7 @@
                      </a>
 
                      <?php } ?>
-                     <?php if (date('Y-m-d H:i:s') >= $kegiatan[0]['tgl_mulai'] && date('Y-m-d H:i:s') <= $kegiatan[0]['tgl_akhir']) { ?>
+                     <?php if (date('Y-m-d H:i:s') >= $kegiatan[0]['tgl_mulai'] && $kegiatan[0]['pengumuman'] != 1) { ?>
                      <a href="<?= base_url() ?>eors/unduh_data_sementara/<?= $id_halaman ?>"
                          class="btn btn-success btn-sm btn-icon-split mb-4">
                          <span class="icon text-white-50">

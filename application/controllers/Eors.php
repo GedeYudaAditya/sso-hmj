@@ -655,6 +655,7 @@ class Eors extends CI_Controller
             $this->data['kegiatan'] = $data_kegiatan[0]['nama_kegiatan'];
             $id = $_SESSION['user_id'];
             $data_user_login = $this->ion_auth_model->getGroup($id);
+            $this->data['group'] = $data_user_login;
             if (!empty($id_kegiatan)) {
                 header("Content-type: application/vnd-ms-excel");
                 header("Content-Disposition: attachment; filename=Data_Pendaftar_Sementara.xls");
@@ -679,6 +680,7 @@ class Eors extends CI_Controller
             $this->data['kegiatan'] = $data_kegiatan[0]['nama_kegiatan'];
             $id = $_SESSION['user_id'];
             $data_user_login = $this->ion_auth_model->getGroup($id);
+            $this->data['group'] = $data_user_login;
             if (!empty($id_kegiatan)) {
                 header("Content-type: application/vnd-ms-excel");
                 header("Content-Disposition: attachment; filename=Data_Pendaftar_Akhir.xls");
