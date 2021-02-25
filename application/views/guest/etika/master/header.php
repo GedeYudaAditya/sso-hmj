@@ -19,7 +19,7 @@
     <!-- ***** All CSS Files ***** -->
 
     <!-- Style css -->
-    <link rel="stylesheet" href="<?= base_url() ?>assets/css/etika.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/etikaStyle.css">
 
     <script src="<?= base_url() ?>assets/js/jquery/jquery-3.3.1.min.js"></script>
 </head>

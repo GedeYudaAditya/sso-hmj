@@ -11,7 +11,7 @@
              <div class="card-body">
                  <p> Instagram : @hmj_ti.undiksha <br>
                      Email : hmjtiundiksha@gmail.com <br>
-                     Whatsapp Admin : 081915656865 <br>
+                     Whatsapp Admin : +<?= nomor_admin ?> <br>
                  </p>
              </div>
          </div>
@@ -26,7 +26,7 @@
          <div class="collapse show" id="landing">
              <div class="card-body">
                  <p>This Website Create Using Codeigniter 3 <br>
-                     Development by Tim Development System HMJ TI Undiksha 2020 <br>
+                     Development by Ganatech <br>
                      Repository <a href="https://github.com/deyan-ardi/sso-hmj">[ https://github.com/deyan-ardi/sso-hmj
                          ]</a> <br>
                      Version <?= date('Y') ?>.<?= date('Y') % 3 ?>.<?= date('Y') * date('m') / 4 ?> - Blockchain <br>

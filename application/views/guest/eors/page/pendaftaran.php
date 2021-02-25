@@ -66,6 +66,9 @@
                                 Pendaftaran
                             </h4>
                             <hr>
+                            <div class="alert alert-danger" role="alert" id="pesan" style="display: none;">
+                                Gunakan Email Undiksha
+                            </div>
                             <form action="" method="POST" id="form_user" enctype="multipart/form-data">
                                 <!-- Foto -->
                                 <?php if ($kegiatan[0]['upload_file'] == 1) { ?>
@@ -151,9 +154,9 @@
                                         required></textarea>
                                 </div>
                                 <!-- Email -->
-                                <div class="form-group">
+                                <div class="form-group" onkeyup="checkEmail()">
                                     <label for="email">Alamat Email</label>
-                                    <input type="email" class="form-control" id="email" name="email"
+                                    <input type="email" class="form-control" id="email_undiksha" name="email"
                                         aria-describedby="emailHelp" required>
                                     <small id="emailHelp" class="form-text text-muted">Gunakan Email Undiksha untuk
                                         pendaftaran</small>
@@ -302,7 +305,8 @@
                                         <?= $kegiatan[0]['nama_kegiatan'] ?></label>
                                 </div>
                                 <!-- Kirim -->
-                                <button type="submit" class="btn btn-primary">Kirim Data</button>
+                                <button type="submit" id="tombol_request" disabled class="btn btn-primary">Kirim
+                                    Data</button>
                             </form>
                             <?php } else { ?>
                             <div class="single-widget">
@@ -424,7 +428,7 @@
                                             via <span class="text-primary font-weight-bold">WhatsApp</span> dengan
                                             mengklik tombol dibawah.
                                         </p>
-                                        <a href="https://api.whatsapp.com/send?phone=<?=nomor_admin?>&text=Terdapat%20masalah%20pada%20website%20pendaftaran,%20mhon%20bantuannya%20untuk%20memperbaiki"
+                                        <a href="https://api.whatsapp.com/send?phone=<?= nomor_admin ?>&text=Terdapat%20masalah%20pada%20website%20pendaftaran,%20mhon%20bantuannya%20untuk%20memperbaiki"
                                             class="btn btn-primary mt-3" data-target="#staticBackdrop">
                                             Hubungi
                                         </a>

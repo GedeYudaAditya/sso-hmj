@@ -419,8 +419,8 @@
                                 <!-- Copyright Right -->
                                 <div class="copyright-right">
                                     Made with <i class="fas fa-heart"></i> By
-                                    <a href="#" class="text-primary" data-toggle="modal" data-target="#devModal">Team
-                                        Dev</a>
+                                    <a href="#" class="text-primary" data-toggle="modal"
+                                        data-target="#devModal">Ganatech</a>
                                 </div>
                             </div>
                         </div>

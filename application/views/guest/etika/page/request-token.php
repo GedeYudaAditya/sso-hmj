@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-bordered w-100 mt-3" name="submit" block id="tombol_request"
+                                <button class="btn btn-bordered w-100 mt-3" name="submit" disabled id="tombol_request"
                                     value="Submit" type="submit">Request Token</button>
                             </div>
                             <div class="col-12">

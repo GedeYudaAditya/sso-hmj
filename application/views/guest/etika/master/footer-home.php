@@ -106,7 +106,7 @@
                                <p>
                                    Made with <i class="fas fa-heart"></i> By
                                    <a href="<?= base_url() ?>#" class="text-primary" data-toggle="modal"
-                                       data-target="#devModal">Team Dev</a>
+                                       data-target="#devModal">Ganatech</a>
                                </p>
                            </div>
                        </div>

@@ -19,6 +19,7 @@ class Admin extends CI_Controller
 				$this->data['title'] = "Admin - Setting Website";
 				$this->data['active'] = "6";
 				$this->data['flip'] = "false";
+				$this->data['ckeditor'] = "false";
 				$this->data['users'] = $this->ion_auth->users()->result();
 				foreach ($this->data['users'] as $k => $user) {
 					$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
@@ -44,6 +45,7 @@ class Admin extends CI_Controller
 				$this->data['jabatan'] = $this->All_model->getJabatanWhere($id_jabatan);
 				$this->data['title'] = "Admin - Edit Jabatan";
 				$this->data['active'] = "6";
+				$this->data['ckeditor'] = "false";
 				$this->data['flip'] = "false";
 				$this->form_validation->set_rules("nama_jabatan", "Nama Jabatan", "required");
 				if ($this->form_validation->run() == FALSE) {
@@ -75,6 +77,7 @@ class Admin extends CI_Controller
 				$this->data['title'] = "Admin - Tambah Jabatan";
 				$this->data['active'] = "6";
 				$this->data['flip'] = "false";
+				$this->data['ckeditor'] = "false";
 				$this->form_validation->set_rules("nama_jabatan", "Nama Jabatan", "required");
 				if ($this->form_validation->run() == FALSE) {
 					$this->load->view('admin/master/header', $this->data);
@@ -151,6 +154,7 @@ class Admin extends CI_Controller
 				$this->data['group'] = $this->ion_auth_model->getGroup($id);
 				$this->data['title'] = "Admin - Tambah Landing";
 				$this->data['active'] = "6";
+				$this->data['ckeditor'] = "false";
 				$this->data['flip'] = "false";
 				$this->form_validation->set_rules("title", "Title", "required");
 				$this->form_validation->set_rules("icon", "Icon", "required");
@@ -184,6 +188,7 @@ class Admin extends CI_Controller
 				$this->data['landing'] = $this->All_model->getLanding($id_landing);
 				$this->data['title'] = "Admin - Tambah Landing";
 				$this->data['active'] = "6";
+				$this->data['ckeditor'] = "false";
 				$this->data['flip'] = "false";
 				$this->form_validation->set_rules("title", "Title", "required");
 				$this->form_validation->set_rules("icon", "Icon", "required");
@@ -276,6 +281,7 @@ class Admin extends CI_Controller
 				$this->data['title'] = "Admin - Backup Database Website";
 				$this->data['active'] = "7";
 				$this->data['flip'] = "false";
+				$this->data['ckeditor'] = "false";
 				$this->load->view('admin/master/header', $this->data);
 				$this->load->view('admin/page/admin/backup', $this->data);
 				$this->load->view('admin/master/footer', $this->data);
@@ -316,6 +322,7 @@ class Admin extends CI_Controller
 				$this->data['group'] = $this->ion_auth_model->getGroup($id);
 				$this->data['title'] = "Admin - Backup Database Website";
 				$this->data['active'] = "8";
+				$this->data['ckeditor'] = "false";
 				$this->data['flip'] = "false";
 				$this->load->view('admin/master/header', $this->data);
 				$this->load->view('admin/page/admin/import', $this->data);

@@ -51,7 +51,7 @@
                                 <div class="contact-bottom">
                                     <span class="d-inline-block mt-3">Jika Hak Pilih Anda belum terdata,
                                         silahkan hubungi <a
-                                            href="<?= base_url() ?>https://api.whatsapp.com/send?phone=<?=nomor_admin?>&text=Hak%20pilih%20saya%20belum%20terdaftar">Admin
+                                            href="<?= base_url() ?>https://api.whatsapp.com/send?phone=<?= nomor_admin ?>&text=Hak%20pilih%20saya%20belum%20terdaftar">Admin
                                             Website</a> atau dapat melalui <a href="<?= base_url() ?>#contact"
                                             class="scroll">Email Kami</a></span>
                                 </div>
@@ -207,7 +207,7 @@
             <div class="col-12 col-lg-6 order-2 order-lg-1">
                 <!-- Discover Thumb -->
                 <div class="service-thumb discover-thumb mx-auto pt-5 pt-lg-0">
-                    <img src="<?= base_url() ?>assets/img/maskot/welcome.png" class="lazyload"
+                    <img src="<?= base_url() ?>assets/img/maskot/welcome.png" class="lazyload" id="welcome_gambar"
                         data-src="<?= base_url() ?>assets/img/maskot/welcome.png" alt="">
                 </div>
             </div>
@@ -309,7 +309,7 @@
                     <div class="icon-box d-flex mt-3">
                         <div class="service-icon">
                             <a
-                                href="<?= base_url() ?>https://api.whatsapp.com/send?phone=<?=nomor_admin?>&text=Hak%20pilih%20saya%20belum%20terdaftar">
+                                href="<?= base_url() ?>https://api.whatsapp.com/send?phone=<?= nomor_admin ?>&text=Hak%20pilih%20saya%20belum%20terdaftar">
                                 <span><i class="fab fa-whatsapp"></i></span>
                             </a>
                         </div>
@@ -702,7 +702,7 @@
             <div class="col-12 col-md-5">
                 <!-- Contact Us -->
                 <div class="contact-us">
-                    <img src="<?= base_url() ?>assets/img/maskot/megang-laptop.png" class="lazyload"
+                    <img src="<?= base_url() ?>assets/img/maskot/megang-laptop.png" class="lazyload" id="megang_laptop"
                         data-src="<?= base_url() ?>assets/img/maskot/megang-laptop.png" alt="">
                 </div>
             </div>
