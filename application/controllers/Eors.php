@@ -1,5 +1,22 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
-
+/**
+ * Name			: Controller EORS
+ * 
+ * Author		: Ganatech
+ *
+ * Created		: 01.09.2020
+ *
+ * Description	: Controller ini digunakan untuk mengatur seluruh halaman yang ada pada website EORS atau Electronic 
+ * Open Recruitment System. Pada controller ini mengatur untuk halaman Administrator serta halaman User yang dipisahkan 
+ * dengan komentar.
+ *
+ * Requirements	: PHP 5.4 atau diatasnya
+ *
+ * @package    SSO HMJ TI Undiksha
+ * @author     Ganatech
+ * @link       https://github.com/deyan-ardi/sso-hmj
+ * @filesource
+ **/
 /**
  * Class Auth
  * @property Ion_auth|Ion_auth_model $ion_auth        The ION Auth spark
@@ -61,14 +78,18 @@ class Eors extends CI_Controller
                         redirect('eors/tambah_kegiatan');
                     } else {
                         $except = "/,#";
+                        // Cek apakah nama kepengurusan mengandung kata yang dilarang
                         if (strpbrk($_POST['nama_kegiatan'], $except)) {
                             $this->session->set_flashdata('gagal', 'Ditambahkan, Nama Kepengurusan Mengandung Karakter Yang Tidak Diperbolehkan');
                             redirect("eors/tambah_kegiatan");
                         } else {
+                            // Konfigurasi upload file
                             $id_file = "eors";
                             $bagian = "kegiatan";
                             $tujuan = $_POST['nama_kegiatan'];
+                            // Mengupload file
                             $upload = $this->All_model->uploadFile($bagian, $id_file, $tujuan);
+                            // Jika upload file success
                             if ($upload['result'] == "success") {
                                 $date_mulai = $_POST['tanggal_mulai'] . " 00:00:00";
                                 $date_akhir = $_POST['tanggal_selesai'] . " 00:00:00";
@@ -261,6 +282,25 @@ class Eors extends CI_Controller
             }
         }
     }
+    public function ajax_data()
+    {
+
+        // SETTING CHART PENDAFTARAN
+        $data_kegiatan = $this->All_model->getKegiatanEorsWhereChar(urldecode($_POST['id_kegiatan']));
+        $id_kegiatan = $data_kegiatan[0]['id_kegiatan'];
+        $this->data['id_ajax'] = $_POST['id_send'];
+        $this->data['PTI'] = $this->All_model->getAllPendaftarProdi("05", $id_kegiatan);
+        $this->data['MI'] = $this->All_model->getAllPendaftarProdi("02", $id_kegiatan);
+        $this->data['SI'] = $this->All_model->getAllPendaftarProdi("09", $id_kegiatan);
+        $this->data['ILKOM'] = $this->All_model->getAllPendaftarProdi("10", $id_kegiatan);
+        $date = date('Y');
+        $this->data['thn_2018'] = $this->All_model->getAllPendaftarTahun($date - 2, $id_kegiatan);
+        $this->data['thn_2019'] = $this->All_model->getAllPendaftarTahun($date - 1, $id_kegiatan);
+        $this->data['thn_2020'] = $this->All_model->getAllPendaftarTahun($date, $id_kegiatan);
+        $this->load->view('admin/page/eors/ajax-data', $this->data);
+            // END SETTING CHART PENDAFTARAN
+        
+    }
     public function administrator($data = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
@@ -278,16 +318,6 @@ class Eors extends CI_Controller
             $this->data['kegiatan'] = $data_kegiatan;
             $this->data['id_halaman'] = $data_kegiatan[0]['nama_kegiatan'];
             $id_kegiatan = $data_kegiatan[0]['id_kegiatan'];
-            // SETTING CHART PENDAFTARAN
-            $this->data['PTI'] = $this->All_model->getAllPendaftarProdi("05", $id_kegiatan);
-            $this->data['MI'] = $this->All_model->getAllPendaftarProdi("02", $id_kegiatan);
-            $this->data['SI'] = $this->All_model->getAllPendaftarProdi("09", $id_kegiatan);
-            $this->data['ILKOM'] = $this->All_model->getAllPendaftarProdi("10", $id_kegiatan);
-            $date = date('Y');
-            $this->data['thn_2018'] = $this->All_model->getAllPendaftarTahun($date - 2, $id_kegiatan);
-            $this->data['thn_2019'] = $this->All_model->getAllPendaftarTahun($date - 1, $id_kegiatan);
-            $this->data['thn_2020'] = $this->All_model->getAllPendaftarTahun($date, $id_kegiatan);
-            // END SETTING CHART PENDAFTARAN
             $this->data['sie'] = $this->All_model->getAllPilihanWhere($id_kegiatan);
             if ($data_user_login[0]['group_id'] == "5" || $data_user_login[0]['group_id'] == "1") {
                 $this->data['kelulusan'] = $this->All_model->getAllPendaftarLulus($id_kegiatan);

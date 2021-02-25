@@ -46,10 +46,10 @@
 <script src="<?= base_url() ?>assets/vendor/chart.js/Chart.js"></script>
 <script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
 <?php } ?>
-<?php if ($ckeditor == "etika_diagram") { ?>
 <script>
 const baseURL = "<?php echo base_url(); ?>";
 </script>
+<?php if ($ckeditor == "etika_diagram") { ?>
 <script src="<?= base_url() ?>assets/vendor/chart.js/Chart.js"></script>
 <script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
 <?php } ?>

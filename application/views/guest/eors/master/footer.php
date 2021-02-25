@@ -15,6 +15,9 @@
 <script src="<?= base_url() ?>assets/js/active.js"></script>
 <script src="<?= base_url() ?>assets/js/inputCostumJs.js"></script>
 <?php if ($id_chart == true) { ?>
+<script>
+const baseURL = "<?php echo base_url(); ?>";
+</script>
 <script src="<?= base_url() ?>assets/vendor/chart.js/Chart.min.js"></script>
 <script src="<?= base_url() ?>assets/js/chart.js"></script>
 <?php } ?>

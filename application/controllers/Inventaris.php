@@ -1,5 +1,19 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
-
+/**
+ * Name			: Controller Inventaris
+ * 
+ * Author		: Ganatech
+ *
+ * Created		: -
+ *
+ * Description	: Masih dalam tahap pengembangan
+ * Requirements	: PHP 5.4 atau diatasnya
+ *
+ * @package    SSO HMJ TI Undiksha
+ * @author     Ganatech
+ * @link       https://github.com/deyan-ardi/sso-hmj
+ * @filesource
+ **/
 /**
  * Class Auth
  * @property Ion_auth|Ion_auth_model $ion_auth        The ION Auth spark

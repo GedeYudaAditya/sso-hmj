@@ -1,5 +1,22 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
-
+/**
+ * Name			: Controller ETIKA
+ * 
+ * Author		: Ganatech
+ *
+ * Created		: 24.02.2021
+ *
+ * Description	: Controller ini digunakan untuk mengatur seluruh halaman yang ada pada website ETIKA atau Electronic 
+ * Voting System HMJ Teknik Informatika. Pada controller ini mengatur untuk halaman Administrator serta halaman User yang dipisahkan 
+ * dengan komentar.
+ *
+ * Requirements	: PHP 5.4 atau diatasnya
+ *
+ * @package    SSO HMJ TI Undiksha
+ * @author     Ganatech
+ * @link       https://github.com/deyan-ardi/sso-hmj
+ * @filesource
+ **/
 /**
  * Class Auth
  * @property Ion_auth|Ion_auth_model $ion_auth        The ION Auth spark

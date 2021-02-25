@@ -1,5 +1,22 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
-
+/**
+ * Name			: Controller Auth
+ * 
+ * Author		: Ganatech
+ *
+ * Created		: 01.09.2020
+ *
+ * Description	: Controller ini digunakan untuk mengatur halaman registrasi, login, lupa password, ubah user, tambah user, 
+ * hapus user, tambah jabatan, ubah jabatan, aktivasi dan deaktivasi user yang ada pada halaman Manajemen Website pada
+ * bagian Data User Website. Controller ini merupakan bagian dari library Ion_Auth CI 3.
+ *
+ * Requirements	: PHP 5.4 atau diatasnya
+ *
+ * @package    SSO HMJ TI Undiksha
+ * @author     Ganatech
+ * @link       https://github.com/deyan-ardi/sso-hmj
+ * @filesource
+ **/
 /**
  * Class Auth
  * @property Ion_auth|Ion_auth_model $ion_auth        The ION Auth spark
@@ -48,6 +65,7 @@ class Auth extends CI_Controller
 			$this->data['admin'] = $this->All_model->getTotalPengurus("1");
 			$this->data['sistem'] = $this->All_model->getTotalSistem();
 			$this->data['flip'] = "false";
+			$this->data['ckeditor'] = "false";
 			// foreach ($this->data['users'] as $k => $user) {
 			// 	$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			// }

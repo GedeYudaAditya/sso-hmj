@@ -1,4 +1,22 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
+/**
+ * Name			: Controller Integer
+ * 
+ * Author		: Ganatech
+ *
+ * Created		: 01.09.2020
+ *
+ * Description	: Controller ini digunakan untuk mengatur seluruh halaman yang ada pada website INTEGER atau Information
+ * Technology Grand Celebration. Pada controller ini mengatur untuk halaman Administrator serta halaman User yang dipisahkan 
+ * dengan komentar.
+ *
+ * Requirements	: PHP 5.4 atau diatasnya
+ *
+ * @package    SSO HMJ TI Undiksha
+ * @author     Ganatech
+ * @link       https://github.com/deyan-ardi/sso-hmj
+ * @filesource
+ **/
 
 /**
  * Class Auth

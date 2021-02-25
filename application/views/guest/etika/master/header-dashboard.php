@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url() ?>assets/css/dashboard.css" rel="stylesheet">
+    <!-- Jquery -->
     <script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
 
 </head>
