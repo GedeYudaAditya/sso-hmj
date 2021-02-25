@@ -15,7 +15,8 @@
                     <!-- Welcome Thumb -->
                     <div class="welcome-thumb mx-auto" data-aos="fade-left" data-aos-delay="500"
                         data-aos-duration="1000">
-                        <img src="<?= base_url() ?>assets/img/maskot/repository.png" class="h-100 mw-auto"
+                        <img src="<?= base_url() ?>assets/img/maskot/repository.png"
+                            data-src="<?= base_url() ?>assets/img/maskot/repository.png" class="h-100 mw-auto lazyload"
                             style="max-width: unset; margin-left: -50px;" alt="Maskot TI" />
                     </div>
                 </div>
@@ -69,7 +70,8 @@
                 <div class="image-box text-center icon-1 p-5 wow fadeInLeft" data-wow-delay="0.4s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/icon/featured-img/library.png" alt="" />
+                        <img class="avatar-sm lazyload" src="<?= base_url() ?>assets/img/icon/featured-img/library.png"
+                            data-src="<?= base_url() ?>assets/img/icon/featured-img/library.png" alt="" />
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">

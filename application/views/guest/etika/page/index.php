@@ -51,7 +51,7 @@
                                 <div class="contact-bottom">
                                     <span class="d-inline-block mt-3">Jika Hak Pilih Anda belum terdata,
                                         silahkan hubungi <a
-                                            href="<?= base_url() ?>https://api.whatsapp.com/send?phone=6281915656865&text=Hak%20pilih%20saya%20belum%20terdaftar">Admin
+                                            href="<?= base_url() ?>https://api.whatsapp.com/send?phone=<?=nomor_admin?>&text=Hak%20pilih%20saya%20belum%20terdaftar">Admin
                                             Website</a> atau dapat melalui <a href="<?= base_url() ?>#contact"
                                             class="scroll">Email Kami</a></span>
                                 </div>
@@ -100,7 +100,8 @@
                     data-wow-delay="0.4s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/icon/featured-img/speak.png" alt="">
+                        <img class="avatar-sm lazyload" src="<?= base_url() ?>assets/img/icon/featured-img/speak.png"
+                            data-src="<?= base_url() ?>assets/img/icon/featured-img/speak.png" alt="">
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">
@@ -114,7 +115,8 @@
                 <div class="image-box text-center icon-1 p-5 wow fadeInUp" data-aos-duration="2s" data-wow-delay="0.2s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/icon/featured-img/support.png" alt="">
+                        <img class="avatar-sm lazyload" src="<?= base_url() ?>assets/img/icon/featured-img/support.png"
+                            data-src="<?= base_url() ?>assets/img/icon/featured-img/support.png" alt="">
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">
@@ -130,7 +132,9 @@
                     data-wow-delay="0.4s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/icon/featured-img/lock.png" alt="">
+                        <img class="avatar-sm lazyload"
+                            data-src="<?= base_url() ?>assets/img/icon/featured-img/lock.png"
+                            src="<?= base_url() ?>assets/img/icon/featured-img/lock.png" alt="">
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">
@@ -146,7 +150,9 @@
                     data-wow-delay="0.8s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/icon/featured-img/code.png" alt="">
+                        <img class="avatar-sm lazyload"
+                            data-src="<?= base_url() ?>assets/img/icon/featured-img/code.png"
+                            src="<?= base_url() ?>assets/img/icon/featured-img/code.png" alt="">
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">
@@ -160,7 +166,9 @@
                 <div class="image-box text-center icon-1 p-5 wow fadeInUp" data-aos-duration="2s" data-wow-delay="0.4s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/icon/featured-img/library.png" alt="">
+                        <img class="avatar-sm lazyload"
+                            data-src="<?= base_url() ?>assets/img/icon/featured-img/library.png"
+                            src="<?= base_url() ?>assets/img/icon/featured-img/library.png" alt="">
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">
@@ -175,8 +183,9 @@
                     data-wow-delay="0.8s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/icon/featured-img/seo-and-web.png"
-                            alt="">
+                        <img class="avatar-sm lazyload"
+                            data-src="<?= base_url() ?>assets/img/icon/featured-img/seo-and-web.png"
+                            src="<?= base_url() ?>assets/img/icon/featured-img/seo-and-web.png" alt="">
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">
@@ -198,7 +207,8 @@
             <div class="col-12 col-lg-6 order-2 order-lg-1">
                 <!-- Discover Thumb -->
                 <div class="service-thumb discover-thumb mx-auto pt-5 pt-lg-0">
-                    <img src="<?= base_url() ?>assets/img/maskot/welcome.png" alt="">
+                    <img src="<?= base_url() ?>assets/img/maskot/welcome.png" class="lazyload"
+                        data-src="<?= base_url() ?>assets/img/maskot/welcome.png" alt="">
                 </div>
             </div>
             <div class="col-12 col-lg-6 order-1 order-lg-2">
@@ -299,7 +309,7 @@
                     <div class="icon-box d-flex mt-3">
                         <div class="service-icon">
                             <a
-                                href="<?= base_url() ?>https://api.whatsapp.com/send?phone=6281915656865&text=Hak%20pilih%20saya%20belum%20terdaftar">
+                                href="<?= base_url() ?>https://api.whatsapp.com/send?phone=<?=nomor_admin?>&text=Hak%20pilih%20saya%20belum%20terdaftar">
                                 <span><i class="fab fa-whatsapp"></i></span>
                             </a>
                         </div>
@@ -347,7 +357,8 @@
                 <div class="single-work text-center p-3">
                     <!-- Work Icon -->
                     <div class="work-icon">
-                        <img class="avatar-md" src="<?= base_url() ?>assets/img/icon/work/register.png" alt="">
+                        <img class="avatar-md lazyload" src="<?= base_url() ?>assets/img/icon/work/register.png"
+                            data-src="<?= base_url() ?>assets/img/icon/work/register.png" alt="">
                     </div>
                     <h3 class="text-white py-3">Cek Hak Pilih</h3>
                     <p class="text-white">Cek Hak Pilih Anda melalui sistem ETIKA, jika belum terdaftar, hubungi
@@ -359,7 +370,8 @@
                 <div class="single-work text-center p-3">
                     <!-- Work Icon -->
                     <div class="work-icon">
-                        <img class="avatar-md" src="<?= base_url() ?>assets/img/icon/work/choose.png" alt="">
+                        <img class="avatar-md lazyload" src="<?= base_url() ?>assets/img/icon/work/choose.png"
+                            data-src="<?= base_url() ?>assets/img/icon/work/choose.png" alt="">
                     </div>
                     <h3 class="text-white py-3">Pilih Kegiatan PEMIRA</h3>
                     <p class="text-white">Pilih Kegiatan PEMIRA sesuai dengan dikegiatan apa Anda telah
@@ -372,7 +384,8 @@
                 <div class="single-work text-center p-3">
                     <!-- Work Icon -->
                     <div class="work-icon">
-                        <img class="avatar-md" src="<?= base_url() ?>assets/img/icon/work/archive.png" alt="">
+                        <img class="avatar-md lazyload" src="<?= base_url() ?>assets/img/icon/work/archive.png"
+                            data-src="<?= base_url() ?>assets/img/icon/work/archive.png" alt="">
                     </div>
                     <h3 class="text-white py-3">Gunakan Hak Pilih</h3>
                     <p class="text-white">Lakukan Login dengan Username dan Token yang didapatkan. Jika Anda
@@ -413,8 +426,9 @@
                         <div class="single-price-plan text-center p-5 wow fadeInLeft" data-aos-duration="2s"
                             data-wow-delay="0.4s">
                             <div class="featured-img text-center mb-3">
-                                <img class="avatar-sm" src="<?= base_url() ?>assets/img/icon/featured-img/support.png"
-                                    alt="">
+                                <img class="avatar-sm lazyload"
+                                    data-src="<?= base_url() ?>assets/img/icon/featured-img/support.png"
+                                    src="<?= base_url() ?>assets/img/icon/featured-img/support.png" alt="">
                             </div>
                             <!-- Plan Thumb -->
                             <?php
@@ -688,7 +702,8 @@
             <div class="col-12 col-md-5">
                 <!-- Contact Us -->
                 <div class="contact-us">
-                    <img src="<?= base_url() ?>assets/img/maskot/megang-laptop.png" alt="">
+                    <img src="<?= base_url() ?>assets/img/maskot/megang-laptop.png" class="lazyload"
+                        data-src="<?= base_url() ?>assets/img/maskot/megang-laptop.png" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-6 pt-4 pt-md-0">

@@ -34,6 +34,8 @@
 <script src="<?= base_url() ?>assets/vendor/chart.js/Chart.min.js"></script>
 <script src="<?= base_url() ?>assets/js/plugins/jquery-qrcode-0.18.0.js"></script>
 
+<!-- Lazyload -->
+<script src="<?= base_url() ?>assets/js/plugins/lazysizes.min.js" async=""></script>
 
 </body>
 

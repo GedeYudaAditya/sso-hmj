@@ -38,18 +38,21 @@
                                     <?php } ?>
                                     <div class="carousel-item active" data-interval="2000" data-touch="true">
                                         <img src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $detail[0]['foto1_informasi']; ?>"
-                                            class="d-block w-100" alt="">
+                                            data-src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $detail[0]['foto1_informasi']; ?>"
+                                            class="d-block w-100 lazyload" alt="">
                                     </div>
                                     <?php if (!empty($detail[0]['foto2_informasi'])) { ?>
                                     <div class="carousel-item" data-touch="true">
                                         <img src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $detail[0]['foto2_informasi']; ?>"
-                                            class="d-block w-100" alt="">
+                                            data-src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $detail[0]['foto2_informasi']; ?>"
+                                            class="d-block w-100 lazyload" alt="">
                                     </div>
                                     <?php } ?>
                                     <?php if (!empty($detail[0]['foto3_informasi'])) { ?>
                                     <div class="carousel-item" data-touch="true">
                                         <img src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $detail[0]['foto3_informasi']; ?>"
-                                            class="d-block w-100" alt="">
+                                            data-src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $detail[0]['foto3_informasi']; ?>"
+                                            class="d-block w-100 lazyload" alt="">
                                     </div>
                                     <?php } ?>
                                 </div>
@@ -111,8 +114,9 @@
                                                     class="single-post align-items-center align-items-lg-start media p-3">
                                                     <!-- Post Thumb -->
                                                     <div class="post-thumb avatar-md">
-                                                        <img class="align-self-center"
+                                                        <img class="align-self-center lazyload"
                                                             src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $data['foto1_informasi']; ?>"
+                                                            data-src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $data['foto1_informasi']; ?>"
                                                             alt="">
                                                     </div>
                                                     <div class="post-content media-body pl-3">

@@ -27,7 +27,9 @@
                 <div class="single-blog res-margin">
                     <!-- Blog Thumb -->
                     <div class="blog-thumb">
-                        <img src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $data['foto1_informasi'] ?>"
+                        <img class="lazyload"
+                            src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $data['foto1_informasi'] ?>"
+                            data-src="<?= base_url() ?>assets/upload/Folder_informasi/foto/<?= $data['foto1_informasi'] ?>"
                             alt="">
                     </div>
                     <!-- Blog Content -->
@@ -41,8 +43,8 @@
                         <!-- Blog Title -->
                         <h3 class="blog-title my-3"><?= $data['judul_informasi'] ?></h3>
                         <?php
-							echo (str_word_count($data['konten_informasi']) > 20 ? substr($data['konten_informasi'], 0, 200) . "... <br>" : $data['konten_informasi'])
-							?>
+                            echo (str_word_count($data['konten_informasi']) > 20 ? substr($data['konten_informasi'], 0, 200) . "... <br>" : $data['konten_informasi'])
+                            ?>
 
                         <a href="<?= base_url() ?>web/detail_pengumuman/<?= $data['id_informasi'] ?>"
                             class="blog-btn mt-3">Read More</a>

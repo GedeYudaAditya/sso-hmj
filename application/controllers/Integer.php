@@ -758,6 +758,7 @@ class Integer extends CI_Controller
 		$this->data['kategori'] = $this->All_model->getOnlyActiveKategoriLomba();
 		$this->data['lomba'] = $this->All_model->getOnlyActiveKategoridanLomba();
 		$this->data['sponsor'] = $this->All_model->getOnlyActiveSponsor();
+		$this->data['pengumuman'] = $this->All_model->getOnlyFivePengumumanInteger();
 		$this->data['berita'] = $this->All_model->getOnlyFiveBeritaInteger();
 		$this->data['kegiatan'] = $active;
 		if (!empty($active)) {

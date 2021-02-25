@@ -3,9 +3,10 @@
         <header class="navbar navbar-sticky navbar-expand-lg navbar-dark">
             <div class="container position-relative">
                 <a class="navbar-brand" href="<?= base_url() ?>eors/home">
-                    <img class="navbar-brand-regular" src="<?= base_url() ?>assets/img/logo/NAV.png" alt="brand-logo" />
-                    <img class="navbar-brand-sticky" src="<?= base_url() ?>assets/img/logo/NAV.png"
-                        alt="sticky brand-logo" />
+                    <img class="navbar-brand-regular lazyload" src="<?= base_url() ?>assets/img/logo/NAV.png"
+                        data-src="<?= base_url() ?>assets/img/logo/NAV.png" alt="brand-logo" />
+                    <img class="navbar-brand-sticky lazyload" data-src="<?= base_url() ?>assets/img/logo/NAV.png"
+                        src="<?= base_url() ?>assets/img/logo/NAV.png" alt="sticky brand-logo" />
                 </a>
             </div>
         </header>
@@ -21,7 +22,8 @@
                     <div class="col-12 col-md-5 order-0 order-lg-1 order-md-1">
                         <!-- Welcome Thumb -->
                         <div class=" welcome-thumb" data-aos="fade-right" data-aos-delay="500" data-aos-duration="1000">
-                            <img src="<?= base_url() ?>assets/img/maskot/welcome.png" style="max-width: unset;"
+                            <img src="<?= base_url() ?>assets/img/maskot/welcome.png" class="lazyload"
+                                data-src="<?= base_url() ?>assets/img/maskot/welcome.png" style="max-width: unset;"
                                 alt="Maskot">
                         </div>
                     </div>
@@ -122,7 +124,9 @@
                         <div class="single-blog res-margin">
                             <!-- Blog Thumb -->
                             <div class="t-cards blog-thumb">
-                                <img src="<?= base_url() ?>assets/upload/Folder_<?= $data['nama_kegiatan'] ?>/<?= $data['icon_kegiatan'] ?>"
+                                <img class="lazyload"
+                                    data-src="<?= base_url() ?>assets/upload/Folder_<?= $data['nama_kegiatan'] ?>/<?= $data['icon_kegiatan'] ?>"
+                                    src="<?= base_url() ?>assets/upload/Folder_<?= $data['nama_kegiatan'] ?>/<?= $data['icon_kegiatan'] ?>"
                                     alt="">
                             </div>
                             <!-- Blog Content -->
@@ -167,7 +171,8 @@
                     <div class="col-lg-12 row justify-content-center">
                         <div class="col-img-waiting text-center">
                             <img src="<?= base_url() ?>assets/img/maskot/waiting.jpg" width="450px"
-                                class="img-responsive" alt="">
+                                class="img-responsive lazyload"
+                                data-src="<?= base_url() ?>assets/img/maskot/waiting.jpg" alt="">
                             <h3 class="text-gray font-italic">Lah, kok gak ada :(</h3>
                         </div>
                     </div>
@@ -328,9 +333,11 @@
                             <div class="footer-items">
                                 <!-- Logo -->
                                 <div class="navbar-brand">
-                                    <img class="logo" src="<?= base_url() ?>assets/img/logo/UNDIKSHA.png"
-                                        alt="Logo HMJ TI" style="height: 4.8rem;" />
-                                    <img class="logo" src="<?= base_url() ?>assets/img/logo/HMJ.png" alt="Logo HMJ TI"
+                                    <img class="logo lazyload" data-src="<?= base_url() ?>assets/img/logo/UNDIKSHA.png"
+                                        src="<?= base_url() ?>assets/img/logo/UNDIKSHA.png" alt="Logo HMJ TI"
+                                        style="height: 4.8rem;" />
+                                    <img class="logo lazyload" data-src="<?= base_url() ?>assets/img/logo/HMJ.png"
+                                        src="<?= base_url() ?>assets/img/logo/HMJ.png" alt="Logo HMJ TI"
                                         style="height: 4.8rem;" />
                                 </div>
                                 <p class="mt-2 mb-3">

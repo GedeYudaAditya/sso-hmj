@@ -13,7 +13,7 @@
                         Teknik Informatika Undiksha.</p>
                     <!-- Copyright Area -->
                     <div class="copyright-area border-0 pt-3">
-                        Copyrights &copy; <?= date("Y");?> HMJ TI Undiksha. All rights reserved.
+                        Copyrights &copy; <?= date("Y"); ?> HMJ TI Undiksha. All rights reserved.
                     </div>
                 </div>
             </div>
@@ -45,6 +45,8 @@
 <?php if ($search == true) { ?>
 <script src="<?= base_url() ?>assets/js/search-card.js"></script>
 <?php } ?>
+<!-- Lazyload -->
+<script src="<?= base_url() ?>assets/js/plugins/lazysizes.min.js" async=""></script>
 </body>
 
 </html>

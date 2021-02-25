@@ -66,7 +66,8 @@
                         </div>
                         <!-- Quotation Icon -->
                         <div class="quot-icon">
-                            <img class="avatar-md" src="<?= base_url() ?>assets/img/icon/quote.png" alt="" />
+                            <img class="avatar-md lazyload" src="<?= base_url() ?>assets/img/icon/quote.png"
+                                data-src="<?= base_url() ?>assets/img/icon/quote.png" alt="" />
                         </div>
                     </div>
                 </div>

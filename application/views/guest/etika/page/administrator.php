@@ -50,7 +50,9 @@
                                         <div class="col mr-2 text-center">
                                             <h2 class="font-weight-bold text-primary text-uppercase mb-2 text-center">
                                                 <?= $data['no_urut'] ?></h2>
-                                            <img src="<?= base_url() ?>assets/upload/Folder_etika/<?= $data['foto'] ?>"
+                                            <img class="lazyload"
+                                                data-src="<?= base_url() ?>assets/upload/Folder_etika/<?= $data['foto'] ?>"
+                                                src="<?= base_url() ?>assets/upload/Folder_etika/<?= $data['foto'] ?>"
                                                 alt="" width="60%">
                                             <h5 class="mb-4 mt-5"><?= $data['nama_ketua'] ?> -
                                                 <?= $data['nama_wakil'] ?>

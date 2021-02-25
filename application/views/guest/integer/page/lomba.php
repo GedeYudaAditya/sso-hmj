@@ -52,7 +52,9 @@
                 <div class="single-blog res-margin">
                     <!-- Blog Thumb -->
                     <div class="blog-thumb t-cards">
-                        <img src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_lomba/<?= $data['icon_lomba_integer'] ?>"
+                        <img class="lazyload"
+                            data-src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_lomba/<?= $data['icon_lomba_integer'] ?>"
+                            src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_lomba/<?= $data['icon_lomba_integer'] ?>"
                             alt="">
                     </div>
                     <!-- Blog Content -->

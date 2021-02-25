@@ -144,7 +144,9 @@
                                             Ketua HMJ</div>
                                         <div class="img-responsive">
                                             <?php if (!empty($select_kepengurusan)) { ?>
-                                            <img src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['ketua_foto'] ?>"
+                                            <img class="lazyload"
+                                                data-src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['ketua_foto'] ?>"
+                                                src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['ketua_foto'] ?>"
                                                 alt="" width="400px">
                                             <?php } else { ?>
                                             <div class="p mb-0  text-gray-500">
@@ -186,7 +188,9 @@
                                             Wakil Ketua HMJ</div>
                                         <div class="img-responsive">
                                             <?php if (!empty($select_kepengurusan)) { ?>
-                                            <img src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['wakil_foto'] ?>"
+                                            <img class="lazyload"
+                                                data-src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['wakil_foto'] ?>"
+                                                src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['wakil_foto'] ?>"
                                                 alt="" width="400px">
 
                                             <?php } else { ?>
@@ -275,7 +279,9 @@
                                         <div class="img-responsive">
                                             <?php if (!empty($select_kepengurusan)) { ?>
 
-                                            <img src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['landscape_struktur_hmj'] ?>"
+                                            <img class="lazyload"
+                                                data-src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['landscape_struktur_hmj'] ?>"
+                                                src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['landscape_struktur_hmj'] ?>"
                                                 alt="" width="400px">
                                             <?php } else { ?>
                                             <div class="p mb-0  text-gray-500">
@@ -297,7 +303,9 @@
                                             Organisasi Vertikal (Mobile Version)</div>
                                         <div class="img-responsive">
                                             <?php if (!empty($select_kepengurusan)) { ?>
-                                            <img src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['vertikal_struktur_hmj'] ?>"
+                                            <img data-src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['vertikal_struktur_hmj'] ?>"
+                                                class="lazyload"
+                                                src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $select_kepengurusan[0]['vertikal_struktur_hmj'] ?>"
                                                 alt="" width="400px">
                                             <?php } else { ?>
                                             <div class="p mb-0  text-gray-500">
@@ -373,7 +381,9 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="img-responsive pb-3">
-                                            <img src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $data['ketua_foto'] ?>"
+                                            <img class="lazyload"
+                                                data-src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $data['ketua_foto'] ?>"
+                                                src="<?= base_url() ?>assets/upload/Folder_<?= $select_kepengurusan[0]['nama_hmj'] ?>/<?= $data['ketua_foto'] ?>"
                                                 alt="" width="400px">
                                         </div>
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">

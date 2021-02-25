@@ -70,7 +70,9 @@
                                     <td><?= $i++ ?></td>
                                     <td><?= $data['no_urut'] ?></td>
                                     <td><img src="<?= base_url() ?>assets/upload/Folder_etika/<?= $data['foto'] ?>"
-                                            alt="Foto Kandidat" width="175px">
+                                            alt="Foto Kandidat" class="lazyload"
+                                            data-src="<?= base_url() ?>assets/upload/Folder_etika/<?= $data['foto'] ?>"
+                                            width="175px">
                                     </td>
                                     <td><?= $data['nama_ketua'] ?></td>
                                     <td><?= $data['nama_wakil'] ?></td>

@@ -13,7 +13,8 @@
             <div class="col-12 col-md-5 col-lg-6">
                 <!-- Welcome Thumb -->
                 <div class="welcome-thumb mx-auto" data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000">
-                    <img src="<?= base_url() ?>assets/img/maskot/welcome.png" class="h-100 mw-auto"
+                    <img src="<?= base_url() ?>assets/img/maskot/welcome.png"
+                        data-src="<?= base_url() ?>assets/img/maskot/welcome.png" class="h-100 mw-auto lazyload"
                         style="max-width: unset;" alt="Maskot TI" />
                 </div>
             </div>
@@ -104,7 +105,8 @@
                 <div class="image-box text-center icon-1 p-4 wow fadeInLeft" data-wow-delay="0.4s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/logo/PTI.png" alt="PTI Icon" />
+                        <img class="avatar-sm lazyload" src="<?= base_url() ?>assets/img/logo/PTI.png"
+                            data-src="<?= base_url() ?>assets/img/logo/PTI.png" alt="PTI Icon" />
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">
@@ -124,7 +126,8 @@
                 <div class="image-box text-center icon-1 p-4 wow fadeInDown" data-wow-delay="0.4s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/logo/SI.png" alt="SI Icon" />
+                        <img class="avatar-sm lazyload" src="<?= base_url() ?>assets/img/logo/SI.png"
+                            data-src="<?= base_url() ?>assets/img/logo/SI.png" alt="SI Icon" />
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">
@@ -144,7 +147,8 @@
                 <div class="image-box text-center icon-1 p-4 wow fadeInUp" data-wow-delay="0.2s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/logo/ILKOM.png" alt="Ilkom Icon" />
+                        <img class="avatar-sm lazyload" src="<?= base_url() ?>assets/img/logo/ILKOM.png"
+                            data-src="<?= base_url() ?>assets/img/logo/ILKOM.png" alt="Ilkom Icon" />
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">
@@ -164,7 +168,8 @@
                 <div class="image-box text-center icon-1 p-4 wow fadeInRight" data-wow-delay="0.4s">
                     <!-- Featured Image -->
                     <div class="featured-img mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/logo/MI.png" alt="MI Icon" />
+                        <img class="avatar-sm lazyload" src="<?= base_url() ?>assets/img/logo/MI.png"
+                            data-src="<?= base_url() ?>assets/img/logo/MI.png" alt="MI Icon" />
                     </div>
                     <!-- Icon Text -->
                     <div class="icon-text">
@@ -283,7 +288,9 @@
             <div class="col-12 col-lg-6 order-1 order-lg-2 d-none d-lg-block">
                 <!-- Service Thumb -->
                 <div class="service-thumb row justify-content-center  mx-auto wow fadeInRight">
-                    <img src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['ketua_foto'] ?>"
+                    <img class="lazyload"
+                        src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['ketua_foto'] ?>"
+                        data-src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['ketua_foto'] ?>"
                         alt="" />
                 </div>
                 <div class="col mt-3 text-center justify-content-center wow fadeInUp">
@@ -303,7 +310,9 @@
             <div class="col-12 col-lg-6 order-2 order-lg-1 d-none d-lg-block">
                 <!-- Discover Thumb -->
                 <div class="row justify-content-center service-thumb mx-auto pt-5 pt-lg-0 wow fadeInLeft">
-                    <img src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['wakil_foto'] ?>"
+                    <img class="lazyload"
+                        src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['wakil_foto'] ?>"
+                        data-src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['wakil_foto'] ?>"
                         alt="" />
                 </div>
                 <div class="col mt-3 text-center justify-content-center wow fadeInUp">
@@ -353,11 +362,15 @@
         </div>
         <div class="row justify-content-center">
             <div class="service-thumb mx-auto wow zoomIn  d-none d-lg-block">
-                <img src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['landscape_struktur_hmj'] ?>"
+                <img class="lazyload"
+                    src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['landscape_struktur_hmj'] ?>"
+                    data-src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['landscape_struktur_hmj'] ?>"
                     alt="" />
             </div>
             <div class="service-thumb mx-auto wow zoomIn  d-sm-none">
-                <img src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['vertikal_struktur_hmj'] ?>"
+                <img class="lazyload"
+                    src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['vertikal_struktur_hmj'] ?>"
+                    data-src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $kepengurusan[0]['vertikal_struktur_hmj'] ?>"
                     alt="" />
             </div>
         </div>
@@ -391,8 +404,8 @@
         <div class="row justify-content-center">
             <!-- Ulang disini -->
             <?php
-			$i = 1;
-			foreach ($bidang as $data) : ?>
+            $i = 1;
+            foreach ($bidang as $data) : ?>
             <div class="col-12 col-md-6 col-lg-4 res-margin mb-4 wow fadeInUp">
                 <!-- Single Review -->
                 <div class="single-review card">
@@ -412,8 +425,9 @@
                     <div class="reviewer media bg-gray p-4">
                         <!-- Reviewer Thumb -->
                         <div class="reviewer-thumb">
-                            <img class="avatar-lg radius-100"
+                            <img class="avatar-lg radius-100 lazyload"
                                 src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $data['ketua_foto'] ?>"
+                                data-src="<?= base_url() ?>assets/upload/Folder_<?= $kepengurusan[0]['nama_hmj'] ?>/<?= $data['ketua_foto'] ?>"
                                 alt="" />
                         </div>
                         <!-- Reviewer Media -->

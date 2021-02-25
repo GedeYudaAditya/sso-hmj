@@ -74,7 +74,9 @@
                                      </td>
                                      <td><?= $data['nama_integer']; ?></td>
                                      <td><img src="<?= base_url() ?>assets/upload/Folder_integer_website/foto/<?= $data['logo_integer']; ?>"
-                                             alt="" width="150px" style="background-color: #eaeaea;"></td>
+                                             alt="" class="lazyload"
+                                             data-src="<?= base_url() ?>assets/upload/Folder_integer_website/foto/<?= $data['logo_integer']; ?>"
+                                             width="150px" style="background-color: #eaeaea;"></td>
                                      <td><a href="<?= base_url() ?>assets/upload/Folder_integer_website/video/<?= $data['video_integer']; ?>"
                                              class="btn btn-primary btn-sm btn-icon-split">
                                              <span class="icon text-white-50">
@@ -151,7 +153,9 @@
                                      <td><?= $data['deskripsi_sponsor_integer']; ?></td>
                                      <td style="text-align: center;"> <img
                                              src="<?= base_url() ?>assets/upload/Folder_integer_website/sponsor/<?= $data['foto_sponsor_integer']; ?>"
-                                             alt="" width="50px"></td>
+                                             alt="" width="50px" class="lazyload"
+                                             data-src="<?= base_url() ?>assets/upload/Folder_integer_website/sponsor/<?= $data['foto_sponsor_integer']; ?>">
+                                     </td>
                                      <td><?= $data['create_by']; ?></td>
                                      <td><?= $data['create_at']; ?></td>
                                      <td> <?php if ($group[0]['group_id'] == "1" || $group[0]['group_id'] == "2") { ?>

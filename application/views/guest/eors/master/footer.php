@@ -22,6 +22,9 @@
 <script src="<?= base_url() ?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url() ?>assets/js/table.js"></script>
+
+<!-- Lazyload -->
+<script src="<?= base_url() ?>assets/js/plugins/lazysizes.min.js" async=""></script>
 </body>
 
 </html>

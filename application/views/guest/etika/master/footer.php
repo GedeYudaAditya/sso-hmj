@@ -22,6 +22,9 @@ const baseURL = "<?php echo base_url(); ?>";
 <?php endif;  ?>
 <!-- Active js -->
 <script src="<?= base_url() ?>assets/js/active.js"></script>
+
+<!-- Lazyload -->
+<script src="<?= base_url() ?>assets/js/plugins/lazysizes.min.js" async=""></script>
 </body>
 
 

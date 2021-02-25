@@ -3,9 +3,10 @@
     <header class="navbar navbar-sticky navbar-expand-lg navbar-dark">
         <div class="container position-relative">
             <a class="navbar-brand" href="<?= base_url() ?>/eors/home">
-                <img class="navbar-brand-regular" src="<?= base_url() ?>assets/img/logo/NAV.png" alt="brand-logo" />
-                <img class="navbar-brand-sticky" src="<?= base_url() ?>assets/img/logo/NAV.png"
-                    alt="sticky brand-logo" />
+                <img class="navbar-brand-regular lazyload" src="<?= base_url() ?>assets/img/logo/NAV.png"
+                    data-src="<?= base_url() ?>assets/img/logo/NAV.png" alt="brand-logo" />
+                <img class="navbar-brand-sticky lazyload" data-src="<?= base_url() ?>assets/img/logo/NAV.png"
+                    src="<?= base_url() ?>assets/img/logo/NAV.png" alt="sticky brand-logo" />
             </a>
         </div>
     </header>
@@ -222,7 +223,8 @@
                     <div class="footer-items text-center">
                         <!-- Logo -->
                         <a class="navbar-brand" href="#">
-                            <img class="logo" src="<?= base_url() ?>assets/img/logo/NAV.png" alt="">
+                            <img class="logo lazyload" src="<?= base_url() ?>assets/img/logo/NAV.png"
+                                data-src="<?= base_url() ?>assets/img/logo/NAV.png" alt="">
                         </a>
                         <p class="mt-2 mb-3">Seluruh konten dibuat dan diunggah oleh Himpunan Mahasiswa Jurusan
                             Teknik Informatika Undiksha.</p>

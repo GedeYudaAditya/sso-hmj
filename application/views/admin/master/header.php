@@ -37,8 +37,11 @@
 	        <!-- Sweetalert -->
 	        <link href="<?= base_url() ?>assets/css/sweetalert2.min.css" rel="stylesheet" type="text/css">
 	        <link rel="shortcut icon" href="<?= base_url() ?>assets/img/sso-logo.ico" type="image/x-icon">
+	        <!-- JQUREY Plugin -->
 	        <script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
-	        <!-- CK EDITOR -->
+	        <!-- Lazyload Plugin -->
+	        <script src="<?= base_url() ?>assets/js/plugins/lazysizes.min.js" async=""></script>
+
 	    </head>
 
 	    <body id="page-top">
@@ -52,7 +55,8 @@
 	                <a class="sidebar-brand d-flex align-items-center justify-content-center"
 	                    href="<?= base_url() ?>sso_hmj">
 	                    <div class="sidebar-brand-icon rotate-n-15">
-	                        <img src="<?= base_url() ?>assets/img/sso-logo.png" alt="" width="60rem">
+	                        <img src="<?= base_url() ?>assets/img/sso-logo.png" class="lazyload"
+	                            data-src="<?= base_url() ?>assets/img/sso-logo.png" alt="sso-logo" width="60rem">
 	                    </div>
 	                    <div class="sidebar-brand-text mx-3">SSO Informatics</div>
 	                </a>

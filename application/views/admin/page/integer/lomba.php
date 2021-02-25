@@ -44,7 +44,9 @@
                                  <tr>
                                      <td style="text-align: center;"> <img
                                              src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_kategori/<?= $data['icon_kategori_lomba_integer']; ?>"
-                                             alt="" width="50px"></td>
+                                             alt="" width="50px" class="lazyload"
+                                             data-src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_kategori/<?= $data['icon_kategori_lomba_integer']; ?>">
+                                     </td>
                                      <td><?= $data['nama_kategori_lomba_integer']; ?></td>
                                      <td><?= $data['deskripsi_kategori_lomba_integer']; ?></td>
                                      <td><?= $data['create_by']; ?></td>
@@ -99,7 +101,9 @@
                                  <tr>
                                      <td><?= $data['nama_kategori_lomba_integer']; ?></td>
                                      <td><img src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_lomba/<?= $data['icon_lomba_integer']; ?>"
-                                             alt="" width="50px"></td>
+                                             alt="" width="50px" class="lazyload"
+                                             data-src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_lomba/<?= $data['icon_lomba_integer']; ?>">
+                                     </td>
                                      <td><?= $data['nama_lomba_integer']; ?></td>
                                      <td><?= $data['deskripsi_lomba_integer']; ?></td>
                                      <td><?= date('d-m-Y', strtotime($data['waktu_mulai_pendaftaran'])) ?> -

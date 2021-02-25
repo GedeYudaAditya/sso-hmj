@@ -2,8 +2,9 @@
 <section id="intro">
     <div id="intro-video" class="row justify-content-center">
         <video autoplay disablePictureInPicture muted loop>
-            <source
+            <source class="lazyload"
                 src="<?= base_url() ?>assets/upload/Folder_integer_website/video/<?= $kegiatan[0]['video_integer'] ?>"
+                data-src="<?= base_url() ?>assets/upload/Folder_integer_website/video/<?= $kegiatan[0]['video_integer'] ?>"
                 type="video/mp4">
         </video>
     </div>
@@ -12,8 +13,9 @@
             <h1 id="getAnimate" data-first="HMJ TI UNDIKSHA" data-sec="PROUDLY PRESENT">
             </h1>
             <div id="titleInteger" class="d-none">
-                <img
-                    src="<?= base_url() ?>assets/upload/Folder_integer_website/foto/<?= $kegiatan[0]['logo_integer'] ?>">
+                <img class="lazyload"
+                    src="<?= base_url() ?>assets/upload/Folder_integer_website/foto/<?= $kegiatan[0]['logo_integer'] ?>"
+                    data-src="<?= base_url() ?>assets/upload/Folder_integer_website/foto/<?= $kegiatan[0]['logo_integer'] ?>">
                 <!-- <h1><?= strtoupper($kegiatan[0]['nama_integer']) ?></h1> -->
             </div>
 
@@ -36,14 +38,15 @@
                     <p class="my-4"><?= $kegiatan[0]['deskripsi_integer'] ?></p>
                 </div>
             </div>
-            <div class="col-12 col-md-5 d-none d-lg-block"">
-                        <!-- Welcome Thumb -->
-                        <div class=" welcome-thumb" data-aos="fade-right" data-aos-delay="500"
-                data-aos-duration="1000">
-                <img src="<?= base_url() ?>assets/img/maskot/welcome.png" style="max-width: unset;" alt="Maskot">
+            <div class="col-12 col-md-5 d-none d-lg-block">
+                <!-- Welcome Thumb -->
+                <div class=" welcome-thumb" data-aos="fade-right" data-aos-delay="500" data-aos-duration="1000">
+                    <img class="lazyload" src="<?= base_url() ?>assets/img/maskot/welcome.png"
+                        data-src="<?= base_url() ?>assets/img/maskot/welcome.png" style="max-width: unset;"
+                        alt="Maskot">
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 <!-- ***** Welcome Area End ***** -->
@@ -160,7 +163,9 @@ foreach ($kategori as $data) {
             <div class="col-12 col-lg-6 order-1 order-lg-1">
                 <!-- Discover Thumb -->
                 <div class="service-thumb discover-thumb mx-auto text-center wow fadeInLeft">
-                    <img src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_kategori/<?= $data['icon_kategori_lomba_integer'] ?>"
+                    <img class="lazyload"
+                        src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_kategori/<?= $data['icon_kategori_lomba_integer'] ?>"
+                        data-src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_kategori/<?= $data['icon_kategori_lomba_integer'] ?>"
                         alt="">
                 </div>
             </div>
@@ -202,7 +207,9 @@ foreach ($kategori as $data) {
             <div class="col-12 col-lg-6 order-1 order-lg-2">
                 <!-- Discover Thumb -->
                 <div class="service-thumb discover-thumb mx-auto text-center wow fadeInRight">
-                    <img src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_kategori/<?= $data['icon_kategori_lomba_integer'] ?>"
+                    <img class="lazyload"
+                        src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_kategori/<?= $data['icon_kategori_lomba_integer'] ?>"
+                        data-src="<?= base_url() ?>assets/upload/Folder_integer_website/icon_kategori/<?= $data['icon_kategori_lomba_integer'] ?>"
                         alt="">
                 </div>
             </div>
@@ -263,7 +270,8 @@ foreach ($kategori as $data) {
                 <div class="single-work text-center p-3">
                     <!-- Work Icon -->
                     <div class="work-icon">
-                        <img class="avatar-md" src="<?= base_url() ?>assets/img/icon/work/register.png" alt="">
+                        <img class="avatar-md lazyload" src="<?= base_url() ?>assets/img/icon/work/register.png"
+                            data-src="<?= base_url() ?>assets/img/icon/work/register.png" alt="">
                     </div>
                     <h3 class="text-white py-3">Registrasi</h3>
                     <p class="text-white">Pilihlah lomba yang akan diikuti</p>
@@ -274,7 +282,8 @@ foreach ($kategori as $data) {
                 <div class="single-work text-center p-3">
                     <!-- Work Icon -->
                     <div class="work-icon">
-                        <img class="avatar-md" src="<?= base_url() ?>assets/img/icon/work/competence.png" alt="">
+                        <img class="avatar-md lazyload" src="<?= base_url() ?>assets/img/icon/work/competence.png"
+                            data-src="<?= base_url() ?>assets/img/icon/work/competence.png" alt="">
                     </div>
                     <h3 class="text-white py-3">Bertanding</h3>
                     <p class="text-white">Ikuti perlombaan dan berjuang sekuat tenaga</p>
@@ -285,7 +294,8 @@ foreach ($kategori as $data) {
                 <div class="single-work text-center p-3">
                     <!-- Work Icon -->
                     <div class="work-icon">
-                        <img class="avatar-md" src="<?= base_url() ?>assets/img/icon/work/winning.png" alt="">
+                        <img class="avatar-md lazyload" src="<?= base_url() ?>assets/img/icon/work/winning.png"
+                            data-src="<?= base_url() ?>assets/img/icon/work/winning.png" alt="">
                     </div>
                     <h3 class="text-white py-3">Juara</h3>
                     <p class="text-white">Raihlah juara dan buktikan siapa dirimu</p>
@@ -324,13 +334,13 @@ foreach ($kategori as $data) {
                             <div class="plan-description text-left overflow-auto" style="height: 15rem;">
                                 <ul class="plan-features">
                                     <li class="border-bottom"></li>
-                                    <?php foreach ($berita as $data) {
-                                        if ($data['kategori_berita_integer'] == 2) {
+                                    <?php foreach ($berita as $data_pengumuman) {
+                                        if ($data_pengumuman['kategori_berita_integer'] == 2) {
                                     ?>
                                     <li class="border-bottom py-3">
                                         <a
-                                            href="<?= base_url() ?>integer/detail_kabar_integer/<?= $data['id_berita_integer'] ?>">
-                                            <?= $data['nama_berita_integer'] ?>
+                                            href="<?= base_url() ?>integer/detail_kabar_integer/<?= $data_pengumuman['id_berita_integer'] ?>">
+                                            <?= $data_pengumuman['nama_berita_integer'] ?>
                                         </a>
                                     </li>
                                     <?php }
@@ -359,13 +369,13 @@ foreach ($kategori as $data) {
                             <div class="plan-description text-left overflow-auto" style="height: 15rem;">
                                 <ul class="plan-features">
                                     <li class="border-bottom"></li>
-                                    <?php foreach ($berita as $data) {
-                                        if ($data['kategori_berita_integer'] == 1) {
+                                    <?php foreach ($pengumuman as $data_berita) {
+                                        if ($data_berita['kategori_berita_integer'] == 1) {
                                     ?>
                                     <li class="border-bottom py-3">
                                         <a
-                                            href="<?= base_url() ?>integer/detail_kabar_integer/<?= $data['id_berita_integer'] ?>">
-                                            <?= $data['nama_berita_integer'] ?>
+                                            href="<?= base_url() ?>integer/detail_kabar_integer/<?= $data_berita['id_berita_integer'] ?>">
+                                            <?= $data_berita['nama_berita_integer'] ?>
                                         </a>
                                     </li>
                                     <?php }
@@ -400,7 +410,9 @@ foreach ($kategori as $data) {
                 <!-- Single Brand -->
                 <?php foreach ($sponsor as $data) { ?>
                 <div class="single-brand p-3 d-flex justify-content-center align-items-center">
-                    <img src="<?= base_url() ?>assets/upload/Folder_integer_website/sponsor/<?= $data['foto_sponsor_integer'] ?>"
+                    <img class="lazyload"
+                        src="<?= base_url() ?>assets/upload/Folder_integer_website/sponsor/<?= $data['foto_sponsor_integer'] ?>"
+                        data-src="<?= base_url() ?>assets/upload/Folder_integer_website/sponsor/<?= $data['foto_sponsor_integer'] ?>"
                         style="height: 5rem;" alt="">
                 </div>
                 <?php } ?>
@@ -730,8 +742,8 @@ foreach ($kategori as $data) {
                                             TI Undiksha <span class="text-primary">@integer.hmjtiundiksha</span> atau
                                             dapat
                                             menghubungi administrator website melalui No Wa berikut <a
-                                                href="https://api.whatsapp.com/send?phone=6281915656865&text=Terdapat%20masalah%20pada%20website%20INTEGER,%20mhon%20bantuannya%20untuk%20memperbaiki"><span
-                                                    class="text-primary">081915656865</span></a>
+                                                href="https://api.whatsapp.com/send?phone=<?=nomor_admin?>&text=Terdapat%20masalah%20pada%20website%20INTEGER,%20mhon%20bantuannya%20untuk%20memperbaiki"><span
+                                                    class="text-primary">+<?=nomor_admin?></span></a>
                                         </div>
                                     </div>
                                 </div>

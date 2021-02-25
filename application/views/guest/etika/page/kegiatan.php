@@ -41,7 +41,9 @@
                 <div class="image-box icon-1 p-5 wow fadeInLeft" data-aos-duration="2s" data-wow-delay="0.4s">
                     <!-- Featured Image -->
                     <div class="featured-img text-center mb-3">
-                        <img class="avatar-sm" src="<?= base_url() ?>assets/img/icon/featured-img/support.png" alt="">
+                        <img class="avatar-sm lazyload"
+                            data-src="<?= base_url() ?>assets/img/icon/featured-img/support.png"
+                            src="<?= base_url() ?>assets/img/icon/featured-img/support.png" alt="">
                     </div>
                     <?php
                         $saat_ini = date_create(date('Y-m-d H:i:s'));
@@ -130,7 +132,8 @@
                 <div class="footer-items text-center">
                     <!-- Logo -->
                     <a class="navbar-brand" href="#">
-                        <img class="logo" src="<?= base_url() ?>assets/img/logo/NAV.png" alt="">
+                        <img class="logo lazyload" src="<?= base_url() ?>assets/img/logo/NAV.png"
+                            data-src="<?= base_url() ?>assets/img/logo/NAV.png" alt="">
                     </a>
                     <p class="mt-2 mb-3">Seluruh konten dibuat dan diunggah oleh Himpunan Mahasiswa Jurusan
                         Teknik Informatika Undiksha.</p>

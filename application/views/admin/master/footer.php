@@ -1,4 +1,5 @@
 <?php if ($flip == "true") { ?>
+<!-- Flip Plugin -->
 <script type="text/javascript" src="<?= base_url() ?>assets/js/viewer.js"></script>
 <?php } else { ?>
 
@@ -24,31 +25,42 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
-<!-- Bootstrap core JavaScript-->
 
 
+<!-- Javascript Plugin-->
 <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
 <script src="<?= base_url() ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Time -->
-<!-- Sweetalert -->
+<!-- Sweetalert plugin-->
 <script src="<?= base_url() ?>assets/js/sweetalert2.all.min.js"></script>
 <script src="<?= base_url() ?>assets/js/sb-admin-2.min.js"></script>
 
+<!-- Chart plugin -->
 <script src="<?= base_url() ?>assets/vendor/chart.js/Chart.min.js"></script>
 <?php if ($active == "10" && $flip == "administrator") { ?>
-<!-- Page level custom scripts -->
 <script src="<?= base_url() ?>assets/js/chart.js"></script>
 <?php } ?>
+<?php if ($ckeditor == "etika") { ?>
+<script src="<?= base_url() ?>assets/js/ckeditor/etika.js"></script>
+<script src="<?= base_url() ?>assets/js/plugins/jquery-qrcode-0.18.0.js"></script>
+<script src="<?= base_url() ?>assets/vendor/chart.js/Chart.js"></script>
+<script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
+<?php } ?>
+<?php if ($ckeditor == "etika_diagram") { ?>
+<script>
+const baseURL = "<?php echo base_url(); ?>";
+</script>
+<script src="<?= base_url() ?>assets/vendor/chart.js/Chart.js"></script>
+<script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
+<?php } ?>
 
-<!-- Data Table-->
+<!-- Datatable Plugin-->
 <script src="<?= base_url() ?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url() ?>assets/js/demo/datatables-demo.js"></script>
 <script src="<?= base_url() ?>assets/js/table.js"></script>
-<!-- Ckeditor -->
+
+<!-- Ckeditor plugin -->
 <?php if ($active == "4" || $active == "10" || $active == "5") { ?>
 <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 <?php if ($ckeditor == "web") { ?>
@@ -60,21 +72,9 @@
 <?php if ($ckeditor == "integer") { ?>
 <script src="<?= base_url() ?>assets/js/ckeditor/integer.js"></script>
 <?php } ?>
-<?php if ($ckeditor == "etika") { ?>
-<script src="<?= base_url() ?>assets/js/ckeditor/etika.js"></script>
-<script src="<?= base_url() ?>assets/js/plugins/jquery-qrcode-0.18.0.js"></script>
-<script src="<?= base_url() ?>assets/vendor/chart.js/Chart.js"></script>
-<script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
+<?php } ?>
 
-<?php } ?>
-<?php if ($ckeditor == "etika_diagram") { ?>
-<script>
-const baseURL = "<?php echo base_url(); ?>";
-</script>
-<script src="<?= base_url() ?>assets/vendor/chart.js/Chart.js"></script>
-<script src="<?= base_url() ?>assets/js/chartEtika.js"></script>
-<?php } ?>
-<?php } ?>
+
 <?php } ?>
 </body>
 

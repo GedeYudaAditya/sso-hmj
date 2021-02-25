@@ -419,7 +419,9 @@
                                             Pendaftar</div>
                                         <div class="img-responsive">
                                             <img src="<?= base_url() ?>assets/upload/Folder_<?= $kegiatan[0]['nama_kegiatan'] ?>/<?= $pendaftar[0]['file_foto'] ?>"
-                                                width="100px" alt="">
+                                                width="100px" class="lazyload"
+                                                data-src="<?= base_url() ?>assets/upload/Folder_<?= $kegiatan[0]['nama_kegiatan'] ?>/<?= $pendaftar[0]['file_foto'] ?>"
+                                                alt="">
                                         </div>
                                     </div>
                                 </div>
