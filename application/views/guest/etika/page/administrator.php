@@ -43,7 +43,7 @@
                     <div class="row col-lg-12">
                         <?php if ($pemilih[0]['has_voting'] == 0) : ?>
                         <?php foreach ($kandidat as $data) : ?>
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-4 col-md-6 mt-3">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">

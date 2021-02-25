@@ -99,9 +99,9 @@
                                     <td><?= $data['perangkat'] ?></td>
                                     <?php endif; ?>
                                     <td><?= $data['nama_pemilih'] ?></td>
-                                    <?php if(!empty($data['email'])): ?>
+                                    <?php if (!empty($data['email'])) : ?>
                                     <td><?= $data['email'] ?></td>
-                                    <?php else: ?>
+                                    <?php else : ?>
                                     <td> <span class="text-danger">Tidak Ada Email</span></td>
                                     <?php endif; ?>
                                     <td><?= $data['username'] ?></td>
@@ -131,7 +131,7 @@
                                         </a>
                                         <?php endif; ?>
                                     </td>
-                                    <td><?php if (empty($data['manage_by']) && $kegiatan[0]['mode'] == "0") :
+                                    <td><?php if (empty($data['manage_by']) && $kegiatan[0]['mode'] == "0" && $kegiatan[0]['mode'] == "2") :
                                                     echo "Email";
                                                 elseif (empty($data['manage_by']) && $kegiatan[0]['mode'] == "1") :
                                                     echo "";

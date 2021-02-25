@@ -74,6 +74,8 @@
                             <li>
                                 <?php if ($data['mode'] == "1") : ?>
                                 <p>Manual</p>
+                                <?php elseif ($data['mode'] == "2") : ?>
+                                <p>Semi Otomatis</p>
                                 <?php else : ?>
                                 <p>Otomatis</p>
                                 <?php endif; ?>

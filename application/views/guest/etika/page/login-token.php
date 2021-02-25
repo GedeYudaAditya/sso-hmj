@@ -24,6 +24,18 @@
                         melakukan pemilihan pada rentang waktu kegiatan pemilihan</p>
                 </div>
             </div>
+            <?php elseif ($kegiatan[0]["mode"] == 2) : ?>
+            <div class="col-12 col-lg-7">
+                <div class="welcome-intro">
+                    <h1 class="text-white">Selamat Memilih</h1>
+                    <p class="text-white my-4 text-justify">Untuk mulai melakukan pemilihan, Anda dapat login
+                        menggunakan Username dan Token masing-masing. Jika Anda belum memiliki token, silahkan
+                        pilih "Request Token", Username dan Token akan dikirim melalui Email yang dimasukkan. Pastikan
+                        Token dalam
+                        keadaan Aktif dan Anda
+                        melakukan pemilihan pada rentang waktu kegiatan pemilihan</p>
+                </div>
+            </div>
             <?php endif; ?>
             <div class="col-12 col-md-8 col-lg-5">
                 <!-- Contact Box -->
@@ -81,16 +93,29 @@
                             <?php if ($kegiatan[0]["mode"] == 0) : ?>
                             <div class="col-12">
                                 <span class="d-block pt-2 ">Belum Memiliki Token?
-                                    <?php if (new DateTime(date('Y-m-d H:i:s')) < new DateTime($kegiatan[0]['waktu_mulai'])) : ?>
-                                    <a href="#" data-toggle="modal" data-target="#info-1">Verifikasi
+
+                                    <?php if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($kegiatan[0]['waktu_selesai'])) : ?>
+                                    <a
+                                        href="<?= base_url() ?>etika/verifikasi_akun/<?= base64_encode(base64_encode($kegiatan[0]['id_kegiatan'])) ?>">Verifikasi
                                         Akun</a></span>
-                                <?php elseif (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($kegiatan[0]['waktu_mulai']) && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($kegiatan[0]['waktu_selesai'])) : ?>
-                                <a
-                                    href="<?= base_url() ?>etika/verifikasi_akun/<?= base64_encode(base64_encode($kegiatan[0]['id_kegiatan'])) ?>">Verifikasi
-                                    Akun</a></span>
                                 <?php else : ?>
                                 <a href="#" data-toggle="modal" data-target="#info-2">Verifikasi
                                     Akun</a></span>
+                                <?php endif ?>
+                                <button class="btn btn-bordered w-100 mt-3 mt-sm-4" name="submit" value="Submit"
+                                    type="submit">Masuk</button>
+                            </div>
+                            <?php elseif ($kegiatan[0]["mode"] == 2) : ?>
+                            <div class="col-12">
+                                <span class="d-block pt-2 ">Belum Memiliki Token?
+                                    <?php if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($kegiatan[0]['waktu_selesai'])) : ?>
+                                    <a
+                                        href="<?= base_url() ?>etika/request_token/<?= base64_encode(base64_encode($kegiatan[0]['id_kegiatan'])) ?>">Request
+                                        Token
+                                    </a></span>
+                                <?php else : ?>
+                                <a href="#" data-toggle="modal" data-target="#info-2">Request
+                                    Token</a></span>
                                 <?php endif ?>
                                 <button class="btn btn-bordered w-100 mt-3 mt-sm-4" name="submit" value="Submit"
                                     type="submit">Masuk</button>

@@ -92,7 +92,11 @@
                                     <td><?= $i++ ?></td>
                                     <td><?= $data['nim'] ?></td>
                                     <td><?= $data['nama_pemilih'] ?></td>
+                                    <?php if (!empty($data['email'])) : ?>
                                     <td><?= $data['email'] ?></td>
+                                    <?php else : ?>
+                                    <td> <span class="text-danger">Tidak Ada Email</span></td>
+                                    <?php endif; ?>
                                     <td><?= $data['prodi'] ?></td>
                                     <td><?= $data['semester'] ?></td>
                                     <?php if ($group[0]['group_id'] == "1") { ?>

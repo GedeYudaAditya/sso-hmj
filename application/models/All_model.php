@@ -1425,6 +1425,16 @@ class All_model extends CI_Model
 		);
 		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
 	}
+	public function createTokenSemiOtomatis($token, $time, $id_pemilih, $admin, $email)
+	{
+		$query = array(
+			'token' => $token,
+			'email' => $email,
+			'token_valid_until' => $time,
+			'manage_by' => $admin,
+		);
+		return $this->db->where('id_pemilih=' . $id_pemilih)->update('s5_pemilih', $query);
+	}
 	public function addIpLogin($ip, $id_pemilih, $browser, $sistem_operasi)
 	{
 		$query = array(

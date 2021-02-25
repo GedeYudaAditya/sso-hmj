@@ -76,7 +76,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Nama Pemilih</div>
+                                                    Prodi Pemilih</div>
                                                 <select name="prodi" id="prodi"
                                                     class="form-control form-control-select">
                                                     <option value="">Pilih Prodi Pemilih</option>

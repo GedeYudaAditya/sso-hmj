@@ -46,12 +46,12 @@
                             <tbody>
                                 <!-- Lakukan foreach disini untuk menampilkan isi data dari kegiatan -->
                                 <?php
-                                    $i = 1;
-                                    foreach($kegiatan as $data):?>
+                                $i = 1;
+                                foreach ($kegiatan as $data) : ?>
                                 <tr>
-                                    <td><?=$i++?></td>
+                                    <td><?= $i++ ?></td>
                                     <td>
-                                        <?php if (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($data['waktu_mulai'])  && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($data['waktu_selesai'])  ) { ?>
+                                        <?php if (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($data['waktu_mulai'])  && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($data['waktu_selesai'])) { ?>
                                         <a href="#" class="btn btn-success btn-sm btn-icon-split mb-4">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-check"></i>
@@ -65,19 +65,19 @@
                                             </span>
                                             <span class="text">Nonaktif</span>
                                         </a>
-                                        <?php }else{ ?>
+                                        <?php } else { ?>
                                         <a href="#" class="btn btn-info btn-sm btn-icon-split mb-4">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-flag"></i>
                                             </span>
                                             <span class="text">Berakhir</span>
                                         </a>
-                                        <?php }?>
+                                        <?php } ?>
                                     </td>
-                                    <td><?= $data['nama_kegiatan']?></td>
-                                    <td><?= $data['deskripsi']?></td>
-                                    <td><?= $data['waktu_mulai']?></td>
-                                    <td><?= $data['waktu_selesai']?></td>
+                                    <td><?= $data['nama_kegiatan'] ?></td>
+                                    <td><?= $data['deskripsi'] ?></td>
+                                    <td><?= $data['waktu_mulai'] ?></td>
+                                    <td><?= $data['waktu_selesai'] ?></td>
                                     <td><a href="<?= base_url() ?>etika/administrator/<?= base64_encode(base64_encode($data['id_kegiatan'])) ?>"
                                             class="btn btn-primary btn-sm btn-icon-split">
                                             <span class="icon text-white-50">
@@ -87,14 +87,16 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <?php if($data['mode'] == "0"){
-                                        echo "Voting Otomatis";
-                                    }else{
-                                        echo "Voting Manual";
-                                    } ?>
+                                        <?php if ($data['mode'] == "0") {
+                                                echo "Voting Otomatis";
+                                            } else if ($data['mode'] == "2") {
+                                                echo "Voting Semi Otomatis";
+                                            } else {
+                                                echo "Voting Manual";
+                                            } ?>
                                     </td>
-                                    <td><?= $data['created_date']?></td>
-                                    <td><?= $data['created_by']?></td>
+                                    <td><?= $data['created_date'] ?></td>
+                                    <td><?= $data['created_by'] ?></td>
                                     <?php if ($group[0]['group_id'] == "1") { ?>
                                     <td>
                                         <a href="<?= base_url() ?>etika/ubah_kegiatan/<?= base64_encode(base64_encode($data['id_kegiatan'])) ?>"

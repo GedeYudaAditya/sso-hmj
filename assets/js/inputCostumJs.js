@@ -46,6 +46,20 @@ const checkProdi = () => {
 	}
 }
 
+const checkEmail = () =>{
+	let email = document.getElementById('email_undiksha').value;
+	let strArray = email.split("@");
+	if (strArray[1] != "") {
+		if (strArray[1] == "undiksha.ac.id") {
+			document.getElementById('tombol_request').disabled = false;
+			document.getElementById('pesan').style.display = "none";
+		} else {
+			document.getElementById('tombol_request').disabled = true;
+			document.getElementById('pesan').style.display = "block";
+		}
+	}
+}
+
 $(document).ready(function () {
 	const success = $(".berhasil").data("berhasil");
 	if (success) {

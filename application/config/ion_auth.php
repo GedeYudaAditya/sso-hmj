@@ -215,6 +215,7 @@ $config['email_templates'] = 'auth/email/';
 $config['email_activate'] = 'activate.tpl.php';
 $config['email_token'] = 'token.tpl.php';
 $config['email_information'] = 'information.tpl.php';
+$config['email_voting_success'] = 'voting.tpl.php';
 /*
  | -------------------------------------------------------------------------
  | Forgot Password Email Template

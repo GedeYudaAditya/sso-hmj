@@ -290,15 +290,8 @@
                             <div class="list-box media">
                                 <span class="icon align-self-center"><i class="fas fa-check"></i></span>
                                 <span class="media-body pl-3">
-                                    <p>Mode pada EVOTING dibagi menjadi 2, Mode Otomatis
-                                        dan Mode Manual. Jika Mode EVOTING kegiatan adalah Otomatis, Username
-                                        dan
-                                        Token akan dikirimkan melalui email ketika Anda melakukan verifikasi
-                                        Login
-                                        pada saat berlangsungnya kegiatan. Jika Mode EVOTING kegiatan adalah
-                                        Manual,
-                                        Username dan Token akan dikirimkan oleh panitia maksimal H-1 sebelum
-                                        kegiatan berlangsung</p>
+                                    <p>Terdapat 3 mode evoting yaitu Otomatis, Semi Otomatis, dan Manual. Metode Evoting
+                                        yang digunakan akan diinformasikan oleh Panitia </p>
                                 </span>
                             </div>
                         </li>
@@ -459,6 +452,8 @@
                                     <li>
                                         <?php if ($data['mode'] == "1") : ?>
                                         <p>Manual</p>
+                                        <?php elseif ($data['mode'] == "2") : ?>
+                                        <p>Semi Otomatis</p>
                                         <?php else : ?>
                                         <p>Otomatis</p>
                                         <?php endif; ?>
@@ -623,21 +618,24 @@
                                         <h2 class="mb-0">
                                             <button class="btn collapsed p-2" type="button" data-toggle="collapse"
                                                 data-target="#collapseSeven">
-                                                Apakah perbedaan Mode Otomatis dan Manual?
+                                                Apakah perbedaan Mode Otomatis, Semi Otomatis, dan Manual?
                                             </button>
                                         </h2>
                                     </div>
                                     <div id="collapseSeven" class="collapse" data-parent="#apolo-accordion">
                                         <!-- Card Body -->
                                         <div class="card-body">
-                                            Yang membedakan dari kedua mode tersebut hanyalah cara anda
+                                            Yang membedakan dari ketiga mode tersebut hanyalah cara anda
                                             mendapatkan token dan username. Jika mode kegiatan evoting adalah
                                             Manual, itu menandakan token dan username pemilihan akan diberikan
                                             oleh panitia melalui pengumuman baik di Instagram, Grup Korti, dan
-                                            Media Lainnya. Sementara itu jika mode kegiatan evoting adalah
-                                            Otomatis, maka anda harus membuat sendiri token dan username Anda
-                                            melalui sistem, sistem akan otomatis mengirimkan token dan username
-                                            melalui email Anda.
+                                            Media Sosial Lainnya. Sementara itu jika mode kegiatan evoting adalah
+                                            Otomatis, maka anda harus memverifikasi diri anda untuk mendapatkan token
+                                            dan username yang akan dikirimkan melalui email yang sudah didapatkan dari
+                                            UPT TIK. Dan jika mode kegiatan evoting adalah Semi Otomatis, maka anda
+                                            harus memverifikasi diri anda serta memasukkan email Undiksha agar sistem
+                                            dapat mengirimkan username dan token pemilihan.
+
                                         </div>
                                     </div>
                                 </div>

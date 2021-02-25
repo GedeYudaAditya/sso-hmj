@@ -89,9 +89,12 @@
                         <?php
                         $otomatis = "";
                         $manual = "";
+                        $semi_otomatis = "";
                         if ($kegiatan[0]['mode'] == "0") {
                             $otomatis = "selected";
-                        } else {
+                        } else if ($kegiatan[0]['mode'] == "2") {
+                            $semi_otomatis = "selected";
+                        }  else {
                             $manual = "selected";
                         }
 
@@ -107,12 +110,18 @@
                                                 <select name="mode" class="form-control form-control-select" required
                                                     id="mode">
                                                     <option value="">Pilih Mode Voting</option>
-                                                    <option value="0" <?= $otomatis ?>>Mode Otomatis - Token dirikim dan
-                                                        dibuat melalui
-                                                        email pemilih</option>
-                                                    <option value="1" <?= $manual ?>>Mode Manual - Token dikirim dan
-                                                        dibuat manual oleh
-                                                        panitia, kemudian diberikan ke pemilih
+                                                    <option value="0" <?= $otomatis ?>>Mode Otomatis - Token dikirim
+                                                        melalui
+                                                        email pemilih berdasarkan data email yang didapat dari UPT TIK
+                                                    </option>
+                                                    <option value="2" <?= $semi_otomatis ?>>Mode Semi Otomatis - Data
+                                                        Username dan Token
+                                                        dikirim melalui email
+                                                        yang dimasukkan pemilih
+                                                    <option value="1" <?= $manual ?>>Mode Manual - Data username dan
+                                                        token dikirim
+                                                        manual oleh
+                                                        panitia melalui Media Sosial
                                                     </option>
                                                 </select>
                                             </div>
