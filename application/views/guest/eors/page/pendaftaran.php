@@ -70,8 +70,8 @@
                                 <?php if ($kegiatan[0]['upload_file'] == 1) { ?>
                                 <div class="form-group">
                                     <label for="foto">Foto</label>
-                                    <input type="file" class="form-control-file" name="file_foto" id="file_foto"
-                                        required>
+                                    <input type="file" class="form-control-file" accept="image/*" name="file_foto"
+                                        id="file_foto" required>
                                     <small id="fotoHelp" class="form-text text-muted">Gunakan foto berjas atau formal
                                         dengan
                                         latar
@@ -81,7 +81,8 @@
                                 <!-- Documents -->
                                 <div class="form-group">
                                     <label for="foto">Dokumen Pendaftaran </label>
-                                    <input type="file" class="form-control-file" name="file_dokumen" id="file_dokumen">
+                                    <input type="file" class="form-control-file" accept=".pdf,.zip" name="file_dokumen"
+                                        id="file_dokumen">
                                     <small id="fotoHelp" class="form-text text-muted">Silahkan di cek terkait dokumen
                                         yang
                                         dikumpul pada bagian persyaratan dan ketentuan, format *.pdf atau *.zip maks 5

@@ -23,8 +23,8 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Foto Kandidat</div>
-                                                <input type="file" class="form-control form-control-user" name="file"
-                                                    required>
+                                                <input type="file" accept=".jpg, .png"
+                                                    class="form-control form-control-user" name="file" required>
                                             </div>
                                         </div>
                                     </div>

@@ -57,8 +57,9 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Foto Ketua HMJ (*.jpg, *.png maks 1Mb)</div>
-                                                <input type="file" class="form-control form-control-user"
-                                                    id="foto_ketua" name="foto_ketua">
+                                                <input type="file" accept=".jpg, .png"
+                                                    class="form-control form-control-user" id="foto_ketua"
+                                                    name="foto_ketua">
                                             </div>
                                         </div>
                                     </div>
@@ -90,8 +91,9 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Foto Wakil Ketua HMJ(*.jpg *.png maks 1Mb)</div>
-                                                <input type="file" class="form-control form-control-user"
-                                                    id="foto_wakil" name="foto_wakil">
+                                                <input type="file" accept=".jpg, .png"
+                                                    class="form-control form-control-user" id="foto_wakil"
+                                                    name="foto_wakil">
                                             </div>
                                         </div>
                                     </div>
@@ -153,8 +155,9 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Struktur Organisasi Landscape (Desktop)(*.jpg, *.png maks 1Mb)</div>
-                                                <input type="file" class="form-control form-control-user"
-                                                    id="foto_landscape" name="foto_landscape">
+                                                <input type="file" accept=".jpg, .png"
+                                                    class="form-control form-control-user" id="foto_landscape"
+                                                    name="foto_landscape">
                                             </div>
                                         </div>
                                     </div>
@@ -169,8 +172,9 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Struktur Organisasi Vertikal (Mobile)(*.jpg, *.png maks 1Mb)</div>
-                                                <input type="file" class="form-control form-control-user"
-                                                    id="foto_vertikal" name="foto_vertikal">
+                                                <input type="file" accept=".jpg, .png"
+                                                    class="form-control form-control-user" id="foto_vertikal"
+                                                    name="foto_vertikal">
                                             </div>
                                         </div>
                                     </div>

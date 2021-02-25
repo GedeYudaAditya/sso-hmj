@@ -23,8 +23,9 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Logo Kegiatan (*.jpg,*.png maks 1Mb)</div>
-                                                <input type="file" class="form-control form-control-user" id="logo"
-                                                    name="logo" required>
+                                                <input type="file" accept=".png, .jpg"
+                                                    class="form-control form-control-user" id="logo" name="logo"
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
@@ -39,8 +40,8 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Video Throwback (durasi maks 1 menit, *.mp4, maks 10 Mb)</div>
-                                                <input type="file" class="form-control form-control-user" id="video"
-                                                    name="video" required>
+                                                <input type="file" accept=".mp4" class="form-control form-control-user"
+                                                    id="video" name="video" required>
                                             </div>
                                         </div>
                                     </div>
@@ -57,7 +58,8 @@
                                                     File Informasi Peserta (Format *.pdf,.*zip , maks 10
                                                     Mb)
                                                 </div>
-                                                <input type="file" class="form-control form-control-user" id="file_info"
+                                                <input type="file" accept=".pdf, .zip"
+                                                    class="form-control form-control-user" id="file_info"
                                                     name="file_info" required>
                                             </div>
                                         </div>

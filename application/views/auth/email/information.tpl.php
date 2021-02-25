@@ -187,7 +187,7 @@
                     <tr>
                         <td bgcolor="#ffffff" align="left"
                             style="padding: 0px 30px 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">Anda dapat melihat live count pendaftaran pada kegiatan <span
+                            <p style="margin: 0;">Anda dapat gabung ke grup umum pendaftar kegiatan <span
                                     style="color:#2c91fb;"><?= ucwords($kegiatan) ?></span> melalui Tombol berikut
                                 :</p>
                         </td>
@@ -200,10 +200,9 @@
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td align="center" style="border-radius: 3px;" bgcolor="#2c91fb"><a
-                                                        href="<?php echo site_url('eors/daftar_sekarang/' . urldecode($kegiatan)) ?>"
-                                                        target="_blank"
-                                                        style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Live
-                                                        Count</a></td>
+                                                        href="<?php echo $link ?>" target="_blank"
+                                                        style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Gabung
+                                                        Grup</a></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -225,7 +224,7 @@
                                 <?php echo sprintf(
                                     // lang('email_forgot_password_subheading'),
                                     anchor(
-                                        'eors/daftar_sekarang/' . urldecode($kegiatan)
+                                        $link
                                         // lang('email_forgot_password_link')
                                     )
                                 ); ?>

@@ -45,6 +45,7 @@ class Eors extends CI_Controller
             $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
             $this->form_validation->set_rules('tanggal_selesai', 'Tanggal Selesai', 'required');
             $this->form_validation->set_rules('target_pendaftar', 'Target Pendaftar', 'required');
+            $this->form_validation->set_rules('link_group', 'Link Group Umum', 'required|valid_url');
             $this->form_validation->set_rules('data_pribadi', 'Pengaturan Data Pribadi', 'required');
             $this->form_validation->set_rules('data_pendidikan', 'Pengaturan Data Pendidikan', 'required');
             $this->form_validation->set_rules('wawancara', 'Pengaturan Wawancara', 'required');
@@ -480,6 +481,7 @@ class Eors extends CI_Controller
                                     'nim_pendaftar' => $_POST['nim'],
                                     'username' => $_POST['nama_lengkap'],
                                     'time' => date('d F Y H:i:s') . ' WITA',
+                                    'link' => $data_kegiatan[0]['link_group'],
                                 ];
                                 $template = $this->config->item('email_information', 'ion_auth');
                                 $email = $_POST['email'];
@@ -816,6 +818,7 @@ class Eors extends CI_Controller
                                 'nim_pendaftar' => $_POST['nim'],
                                 'username' => $_POST['nama_lengkap'],
                                 'time' => date('d F Y H:i:s') . ' WITA',
+                                'link' => $data_kegiatan[0]['link_group'],
                             ];
                             $template = $this->config->item('email_information', 'ion_auth');
                             $email = $_POST['email'];

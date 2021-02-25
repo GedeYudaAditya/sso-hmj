@@ -27,7 +27,9 @@
              <div class="card-body">
                  <p>This Website Create Using Codeigniter 3 <br>
                      Development by Tim Development System HMJ TI Undiksha 2020 <br>
-                     Version 2021.1.0
+                     Repository <a href="https://github.com/deyan-ardi/sso-hmj">[ https://github.com/deyan-ardi/sso-hmj
+                         ]</a> <br>
+                     Version <?= date('Y') ?>.<?= date('Y') % 3 ?>.<?= date('Y') * date('m') / 4 ?> - Blockchain <br>
                  </p>
              </div>
          </div>

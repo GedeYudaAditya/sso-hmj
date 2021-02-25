@@ -23,7 +23,8 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     No Urut</div>
-                                                <input type="number" class="form-control form-control-user" id="ketua"
+                                                <input type="number" accept=".jpg, .png"
+                                                    class="form-control form-control-user" id="ketua"
                                                     aria-describedby="no_urut" min="0"
                                                     placeholder="Masukkan Nama Kegiatan" name="no_urut" required
                                                     value="<?= $kandidat[0]['no_urut'] ?>">

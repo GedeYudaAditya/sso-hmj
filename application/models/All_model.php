@@ -950,6 +950,7 @@ class All_model extends CI_Model
 			'nama_kegiatan' => $this->input->post('nama_kegiatan', true),
 			'deskripsi' => $this->input->post('deskripsi', false),
 			'persyaratan' => $this->input->post('persyaratan', false),
+			'link_group' => $this->input->post('link_group', false),
 			'tgl_mulai' => $date_mulai,
 			'tgl_akhir' => $date_akhir,
 			'aktivasi' => 0,

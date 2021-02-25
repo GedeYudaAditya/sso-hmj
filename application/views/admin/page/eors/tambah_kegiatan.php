@@ -24,7 +24,7 @@
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Icon Kegiatan</div>
                                                 <input type="file" class="form-control form-control-user"
-                                                    id="icon_kegiatan" name="icon_kegiatan" required>
+                                                    id="icon_kegiatan" name="icon_kegiatan" accept="image/*" required>
                                             </div>
                                         </div>
                                     </div>
@@ -111,6 +111,24 @@
                                                     aria-describedby="tanggal_selesai" name="tanggal_selesai" required
                                                     value="<?= set_value('tanggal_selesai') ?>"
                                                     min="<?= date('Y-m-d') ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12 mb-3">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    Link Group Pendaftar</div>
+                                                <input type="url" min="0" class="form-control form-control-user"
+                                                    id="ketua" aria-describedby="link_group"
+                                                    placeholder="Masukkan Link Group Umum Pendaftar Kegiatan"
+                                                    name="link_group" required value="<?= set_value('link_group') ?>">
                                             </div>
                                         </div>
                                     </div>

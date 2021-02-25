@@ -23,8 +23,9 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Foto Slide 1 (*.jpg,*.png maks 1Mb)</div>
-                                                <input type="file" class="form-control form-control-user" id="foto_1"
-                                                    name="foto_1" required>
+                                                <input type="file" accept=".jpg, .png"
+                                                    class="form-control form-control-user" id="foto_1" name="foto_1"
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
@@ -39,8 +40,8 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Foto Slide 2 (*.jpg,*.png maks 1Mb)</div>
-                                                <input type="file" class="form-control form-control-user" id="foto_2"
-                                                    name="foto_2">
+                                                <input type="file" accept=".jpg, .png"
+                                                    class="form-control form-control-user" id="foto_2" name="foto_2">
                                             </div>
                                         </div>
                                     </div>
@@ -55,8 +56,8 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Foto Slide 3 (*.jpg,*.png maks 1Mb)</div>
-                                                <input type="file" class="form-control form-control-user" id="foto_3"
-                                                    name="foto_3">
+                                                <input type="file" accept=".jpg, .png"
+                                                    class="form-control form-control-user" id="foto_3" name="foto_3">
                                             </div>
                                         </div>
                                     </div>
@@ -145,7 +146,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     File Dokumen (*.pdf maks 10 Mb)</div>
-                                                <input type="file" class="form-control form-control-user"
+                                                <input type="file" accept=".pdf" class="form-control form-control-user"
                                                     id="file_dokumen" name="file">
                                             </div>
                                         </div>

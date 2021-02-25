@@ -61,9 +61,9 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Foto Koordinator (*.jpg maks 500kb)</div>
-                                                <input type="file" class="form-control form-control-user" id="file"
-                                                    name="file">
+                                                    Foto Koordinator (*.jpg, *.png maks 1Mb)</div>
+                                                <input type="file" accept=".jpg, .png"
+                                                    class="form-control form-control-user" id="file" name="file">
                                             </div>
                                         </div>
                                     </div>
