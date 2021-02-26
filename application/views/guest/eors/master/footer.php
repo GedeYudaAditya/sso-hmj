@@ -1,5 +1,5 @@
 <!-- ***** All jQuery Plugins ***** -->
-
+<input type="hidden" name="nama_kegiatan" id="nama_kegiatan" value="<?= $kegiatan[0]['nama_kegiatan'] ?>">
 <!-- jQuery(necessary for all JavaScript plugins) -->
 <script src="<?= base_url() ?>assets/js/jquery/jquery-3.3.1.min.js"></script>
 

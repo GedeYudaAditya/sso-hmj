@@ -78,7 +78,7 @@
                             </div>
                             <div class="col-12">
                                 <span class="d-block pt-2 mt-4 border-top">Terjadi Masalah? <a
-                                        href="index.html#contact">Hubungi Kami</a></span>
+                                        href="<?= base_url() ?>etika/home#contact">Hubungi Kami</a></span>
                             </div>
                         </div>
                     </form>

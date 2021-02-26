@@ -154,7 +154,7 @@
                                         required></textarea>
                                 </div>
                                 <!-- Email -->
-                                <div class="form-group" onkeyup="checkEmail()">
+                                <div class="form-group">
                                     <label for="email">Alamat Email</label>
                                     <input type="email" class="form-control" id="email_undiksha" name="email"
                                         aria-describedby="emailHelp" required>
@@ -436,4 +436,3 @@
     </footer>
     <!--====== Footer Area End ======-->
 </div>
-<input type="hidden" name="nama_kegiatan" id="nama_kegiatan" value="<?= $kegiatan[0]['nama_kegiatan'] ?>">

@@ -11,7 +11,7 @@
                         dengan database pemilihan, Username dan Token Pemilihan akan dikirimkan melalui email.</p>
                 </div>
             </div>
-            <div class="col-12 col-md-8 col-lg-5 mt-5">
+            <div class="col-12 col-md-8 col-lg-5 mt-5 mb-3">
                 <!-- Contact Box -->
                 <div class="contact-box bg-white text-center rounded p-4 p-sm-5 mt-5 mt-lg-0 shadow-lg">
                     <!-- Contact Form -->
@@ -35,7 +35,7 @@
                                             required="required">
                                     </div>
                                 </div>
-                                <div class="form-group" onkeyup="checkEmail()">
+                                <div class="form-group">
                                     <div class="input-group ">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
@@ -76,21 +76,14 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                                    <label class="form-check-label contact-bottom" for="exampleCheck1"><span
-                                            class="d-inline-block mt-3">Saya telah mengisi data dengan
-                                            benar</span></label>
-                                </div>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-bordered w-100 mt-3" name="submit" disabled id="tombol_request"
                                     value="Submit" type="submit">Request Token</button>
                             </div>
                             <div class="col-12">
-                                <span class="d-block pt-2 mt-4 border-top">Terjadi Masalah? <a
-                                        href="index.html#contact">Hubungi Kami</a></span>
+                                <span class="d-block pt-2 mt-3 border-top">Terjadi Masalah? <a
+                                        href="<?=base_url()?>etika/home#contact">Hubungi Kami</a></span>
                             </div>
                         </div>
                     </form>

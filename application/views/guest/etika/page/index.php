@@ -51,7 +51,7 @@
                                 <div class="contact-bottom">
                                     <span class="d-inline-block mt-3">Jika Hak Pilih Anda belum terdata,
                                         silahkan hubungi <a
-                                            href="<?= base_url() ?>https://api.whatsapp.com/send?phone=<?= nomor_admin ?>&text=Hak%20pilih%20saya%20belum%20terdaftar">Admin
+                                            href="https://api.whatsapp.com/send?phone=<?= nomor_admin ?>&text=Hak%20pilih%20saya%20belum%20terdaftar">Admin
                                             Website</a> atau dapat melalui <a href="<?= base_url() ?>#contact"
                                             class="scroll">Email Kami</a></span>
                                 </div>
