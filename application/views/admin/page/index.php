@@ -2,18 +2,25 @@
 <div class="container-fluid">
     <?php if ($this->session->flashdata('message')) : ?>
     <div class="modal fade" id="modalInfoLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content ">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Welcome <?= ucfirst($group[0]['first_name']); ?></h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Selamat Datang, <span class="text-primary">
+                            <?= ucfirst($group[0]['first_name']); ?></span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Your Logged In Successfully, Have a Nice Day :)<br>
-                        ~ Admin
+                    <p class="mb-5">Login Berhasil, Semoga Harimu Menyenangkan :)<br>
+                        Mohon jaga username dan password Anda <br>
+                        ~ Admin HMJ TI Undiksha
                     </p>
+                    <hr>
+                    <p class="text-center text-primary" style="font-size: 14px;">SSO HMJ Undiksha
+                        2.<?= date('Y') % 3 ?>.<?= date('Y') * date('m') / 5 ?>
+                        -
+                        Blockchain <br></p>
                 </div>
             </div>
         </div>

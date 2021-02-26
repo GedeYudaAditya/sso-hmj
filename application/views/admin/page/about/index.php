@@ -29,7 +29,8 @@
                      Development by Ganatech <br>
                      Repository <a href="https://github.com/deyan-ardi/sso-hmj">[ https://github.com/deyan-ardi/sso-hmj
                          ]</a> <br>
-                     Version <?= date('Y') ?>.<?= date('Y') % 3 ?>.<?= date('Y') * date('m') / 4 ?> - Blockchain <br>
+                     SSO HMJ Undiksha 2.<?= date('Y') % 3 ?>.<?= date('Y') * date('m') / 5 ?> -
+                     Blockchain <br>
                  </p>
              </div>
          </div>
