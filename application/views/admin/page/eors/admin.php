@@ -145,7 +145,7 @@
                                      <?php } else { ?>
                                      <td><?= $data['diterima_di'] ?></td>
                                      <?php } ?>
-                                     <td>2011/04/25</td>
+                                     <td><?= $data['create_at'] ?> WITA</td>
                                      <?php if ($group[0]['group_id'] == "1") { ?>
                                      <td>
                                          <a href="<?= base_url() ?>eors/detail_pendaftar/<?= $id_halaman ?>/<?= $data['id_informasi'] ?>"
