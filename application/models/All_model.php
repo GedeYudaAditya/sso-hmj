@@ -1398,9 +1398,9 @@ class All_model extends CI_Model
 	{
 		return $this->db->where('id_kegiatan=' . $id_kegiatan)->delete('s5_pemilih');
 	}
-	public function cekDataPemilih($nama, $nim, $email)
+	public function cekDataPemilih($nama, $nim, $email, $id_kegiatan)
 	{
-		return $this->db->where('nama_pemilih=' . "'$nama'")->or_where('email=' . "'$email'")->or_where('nim=' . "'$nim'")->get('s5_pemilih')->num_rows();
+		return $this->db->where('nama_pemilih=' . "'$nama'")->where('email=' . "'$email'")->where('nim=' . "'$nim'")->where('id_kegiatan=' . $id_kegiatan)->get('s5_pemilih')->num_rows();
 	}
 	public function inputDataPemilih($id_kegiatan)
 	{

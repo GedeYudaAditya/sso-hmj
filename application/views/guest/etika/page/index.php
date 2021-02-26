@@ -309,22 +309,22 @@
                     <div class="icon-box d-flex mt-3">
                         <div class="service-icon">
                             <a
-                                href="<?= base_url() ?>https://api.whatsapp.com/send?phone=<?= nomor_admin ?>&text=Hak%20pilih%20saya%20belum%20terdaftar">
+                                href="https://api.whatsapp.com/send?phone=<?= nomor_admin ?>&text=Hak%20pilih%20saya%20belum%20terdaftar">
                                 <span><i class="fab fa-whatsapp"></i></span>
                             </a>
                         </div>
                         <div class="service-icon px-3">
-                            <a href="<?= base_url() ?>mailto:hmjtiundiksha@gmail.com">
+                            <a href="mailto:hmjtiundiksha@gmail.com">
                                 <span><i class="fas fa-envelope"></i></span>
                             </a>
                         </div>
                         <div class="service-icon">
-                            <a href="<?= base_url() ?>https://www.instagram.com/hmj_ti.undiksha/">
+                            <a href="https://www.instagram.com/hmj_ti.undiksha/">
                                 <span><i class="fab fa-instagram"></i></span>
                             </a>
                         </div>
                         <div class="service-icon px-3">
-                            <a href="<?= base_url() ?>https://www.facebook.com/hmj.ti.undiksha/?_rdc=2&_rdr">
+                            <a href="https://www.facebook.com/hmj.ti.undiksha/?_rdc=2&_rdr">
                                 <span><i class="fab fa-facebook"></i></span>
                             </a>
                         </div>
@@ -420,7 +420,7 @@
             <div class="col-12 col-sm-10 col-lg-8">
                 <div class="row price-plan-wrapper">
                     <?php foreach ($kegiatan as $data) : ?>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-6 mt-5">
 
                         <!-- Single Price Plan -->
                         <div class="single-price-plan text-center p-5 wow fadeInLeft" data-aos-duration="2s"

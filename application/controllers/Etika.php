@@ -589,7 +589,7 @@ class Etika extends CI_Controller
                         show_404();
                     }
                 } else {
-                    if ($this->All_model->cekDataPemilih($_POST['nama_pemilih'], $_POST['nim_pemilih'], $_POST['email_pemilih']) > 0) {
+                    if ($this->All_model->cekDataPemilih($_POST['nama_pemilih'], $_POST['nim_pemilih'], $_POST['email_pemilih'], $id_kegiatan) > 0) {
                         $this->session->set_flashdata('gagal', 'Ditambahkan, Redudansi Data');
                         redirect('etika/tambah_pemilih/' . base64_encode(base64_encode($id_kegiatan)), 'refresh');
                     } else {
