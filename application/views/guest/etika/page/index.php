@@ -419,6 +419,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-sm-10 col-lg-8">
                 <div class="row price-plan-wrapper">
+                    <?php if(!empty($kegiatan)): ?>
                     <?php foreach ($kegiatan as $data) : ?>
                     <div class="col-12 col-md-6 mt-5">
 
@@ -485,6 +486,13 @@
                         </div>
                     </div>
                     <?php endforeach; ?>
+                    <?php else: ?>
+                    <div class="col-lg-12 row justify-content-center">
+                        <div class="col-img-waiting text-center">
+                            <h3 class="text-gray font-italic">Wahh, belum waktunya pemilihan :(</h3>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

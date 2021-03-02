@@ -35,6 +35,7 @@
             </div>
         </div>
         <div class="row">
+            <?php if (!empty($kegiatan)) : ?>
             <?php foreach ($kegiatan as $data) : ?>
             <div class="col-12 col-md-6 col-lg-4 my-3 res-margin">
                 <!-- Image Box -->
@@ -46,12 +47,12 @@
                             src="<?= base_url() ?>assets/img/icon/featured-img/support.png" alt="">
                     </div>
                     <?php
-                        $saat_ini = date_create(date('Y-m-d H:i:s'));
-                        $kegiatan_mulai = date_create($data['waktu_mulai']);
-                        $kegiatan_selesai =  date_create($data['waktu_selesai']);
-                        $diff_1 = date_diff($saat_ini, $kegiatan_mulai);
-                        $diff_2 = date_diff($saat_ini, $kegiatan_selesai);
-                        if (new Datetime(date('Y-m-d H:i:s')) < new Datetime($data['waktu_mulai'])) : ?>
+                            $saat_ini = date_create(date('Y-m-d H:i:s'));
+                            $kegiatan_mulai = date_create($data['waktu_mulai']);
+                            $kegiatan_selesai =  date_create($data['waktu_selesai']);
+                            $diff_1 = date_diff($saat_ini, $kegiatan_mulai);
+                            $diff_2 = date_diff($saat_ini, $kegiatan_selesai);
+                            if (new Datetime(date('Y-m-d H:i:s')) < new Datetime($data['waktu_mulai'])) : ?>
                     <div class="alert alert-info" role="alert">
                         Dimulai Dalam
                         <?= $diff_1->d . " Hari " . $diff_1->h . " Jam " . $diff_1->i . " Menit" ?>
@@ -102,6 +103,13 @@
                 </div>
             </div>
             <?php endforeach; ?>
+            <?php else : ?>
+            <div class="col-lg-12 row justify-content-center">
+                <div class="col-img-waiting text-center">
+                    <h3 class="text-gray font-italic">Wahh, belum waktunya pemilihan :(</h3>
+                </div>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
