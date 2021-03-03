@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Inang: localhost
--- Waktu pembuatan: 03 Mar 2021 pada 09.32
+-- Waktu pembuatan: 03 Mar 2021 pada 14.40
 -- Versi Server: 5.5.62-0ubuntu0.14.04.1
 -- Versi PHP: 5.6.30-1+deb.sury.org~trusty+1
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=126 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=127 ;
 
 -- --------------------------------------------------------
 
@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `s1_detail_kegiatan` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`id_detail_kegiatan`),
   KEY `id_kegiatan_hmj` (`id_kegiatan_hmj`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=82 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=92 ;
 
 --
 -- Dumping data untuk tabel `s1_detail_kegiatan`
@@ -231,7 +231,16 @@ INSERT INTO `s1_detail_kegiatan` (`id_detail_kegiatan`, `id_kegiatan_hmj`, `nama
 (69, 27, 'SURAT UNDANGAN RAKER - KOORPRODI PTI', '<p>Berikut Surat Undangan Raker untuk Koorprodi PTI</p>\r\n', '15122020235729.pdf', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:57:29', '2020-12-15 23:57:29'),
 (70, 27, 'SURAT UNDANGAN RAKER - KOORPRODI SI', '<p>Berikut Surat Undangan untuk Koorprodi Sistem Informasi</p>\r\n', '15122020235806.pdf', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:58:06', '2020-12-15 23:58:06'),
 (71, 27, 'SURAT UNDANGAN RAKER - PEMB. KEMAHASISWAAN TI', '<p>Berikut Surat Undangan Raker untuk Pembimbing Kemahasiswaan TI</p>\r\n', '15122020235848.pdf', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:58:48', '2020-12-15 23:58:48'),
-(72, 27, 'SURAT UNDANGAN RAKER - SEKRETARIS JURUSAN TI', '<p>Berikut Surat Undangan Raker untuk Sekretaris Jurusan TI</p>\r\n', '15122020235923.pdf', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:59:23', '2020-12-15 23:59:23');
+(72, 27, 'SURAT UNDANGAN RAKER - SEKRETARIS JURUSAN TI', '<p>Berikut Surat Undangan Raker untuk Sekretaris Jurusan TI</p>\r\n', '15122020235923.pdf', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:59:23', '2020-12-15 23:59:23'),
+(82, 29, 'Surat Peminjaman Fasilitas', '<p>Berikut merupakan surat peminjaman fasilitas Zoom terhadap UPT TIK.</p>\r\n', '03032021132551.pdf', 'Budi Setiawan', '2021-03-03 13:25:51', '2021-03-03 13:25:51'),
+(83, 29, 'Proposal Kegiatan IT Mission #3', '<p style="text-align:justify">Berikut merupakan Proposal Kegiatan IT Mission #3</p>\r\n', '03032021132809.pdf', 'Budi Setiawan', '2021-03-03 13:28:09', '2021-03-03 13:28:09'),
+(84, 29, 'LPJ IT Mission #3', '<p>Berikut merupakan File LPJ IT Mission #3</p>\r\n', '03032021133027.pdf', 'Budi Setiawan', '2021-03-03 13:30:27', '2021-03-03 13:30:27'),
+(85, 29, 'Notula Rapat Panitia - 1', '<p>Berikut merupakan Notula Rapat Panitia 1</p>\r\n', '03032021133129.pdf', 'Budi Setiawan', '2021-03-03 13:31:29', '2021-03-03 13:31:29'),
+(86, 29, 'Notula Rapat Panitia - 2', '<p>Berikut merupakan Notula Rapat Panitia 2</p>\r\n', '03032021133206.pdf', 'Budi Setiawan', '2021-03-03 13:32:06', '2021-03-03 13:32:06'),
+(87, 29, 'Notula Rapat Bimbingan - 1', '<p>Berikut merupakan Notula Rapat Bimbingan 1</p>\r\n', '03032021133304.pdf', 'Budi Setiawan', '2021-03-03 13:33:04', '2021-03-03 13:33:04'),
+(88, 29, 'Notula Rapat Bimbingan - 2', '<p>Berikut merupakan Notula Rapat Bimbingan 2</p>\r\n', '03032021133340.pdf', 'Budi Setiawan', '2021-03-03 13:33:40', '2021-03-03 13:33:40'),
+(90, 29, 'Notula Rapat Panitia - 3', '<p>Berikut merupakan Notula Rapat Panitia 3</p>\r\n', '03032021133721.pdf', 'Budi Setiawan', '2021-03-03 13:37:21', '2021-03-03 13:37:21'),
+(91, 29, 'Notula Rapat Panitia - 4', '<p>Berikut merupakan Notula Rapat Panitia 4</p>\r\n', '03032021133748.pdf', 'Budi Setiawan', '2021-03-03 13:37:48', '2021-03-03 13:37:48');
 
 -- --------------------------------------------------------
 
@@ -353,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `s1_kegiatan_hmj` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`id_kegiatan_hmj`),
   KEY `id_hmj` (`id_hmj`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data untuk tabel `s1_kegiatan_hmj`
@@ -363,7 +372,8 @@ INSERT INTO `s1_kegiatan_hmj` (`id_kegiatan_hmj`, `id_hmj`, `nama_kegiatan`, `de
 (24, 16, 'TI Peduli Pencegahan Penyebaran COVID-19', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">Program Kerja ini merupakan program kerja yang dilaksanakan oleh bidang 4 HMJ TI Undiksha. TI Peduli Pencagahan Penyebaran COVID merupakan program kerja yang dilaksanakan HMJ TI Undiksha 2020-2021, program kerja ini dilaksanakan dengan cara membagikan masker dan hand sanitizer gratis kepada masyarakat di sekitaran Kota Singaraja.</span></p>\r\n', 'Admin', '2020-09-01 20:18:23', '2020-09-01 20:18:23'),
 (25, 16, 'IT Mission #1', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">IT Mission #1 adalah kegiatan Webinar yang diadakan oleh Himpunan Mahasiswa Jurusan Teknik Informatika. IT Mission #1 ini diadakan pada tanggal 28 Juni 2020 melalui platform Zoom. Terdapat 3 pemateri utama pada IT Mission #1 ini, yakni Bapak Anditya, S.T, Bapak Ida Bagus Nyoman Pascima, S.Pd., M.Cs. dan Bapak I Made Edy Listartha, S.Kom., M.Kom. Kegiatan ini sudah berjalan dengan baik.</span></p>\r\n', 'I Gede Riyan Ardi Darmawan', '2020-09-01 20:18:59', '2020-09-06 20:26:16'),
 (26, 16, 'IT Mission #2', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">IT Mission #2 adalah kegiatan Webinar yang diadakan oleh Himpunan Mahasiswa Jurusan Teknik Informatika. IT Mission #2 ini diadakan pada tanggal 18 Agustus 2018 melalui platform Zoom. Pada IT Mission #2 ini, HMJ TI Undiksha bekerja sama dengan pihak DANA Wallet Indonesia. Terdapat 4 pemateri pada IT Mission #2 ini, dimana pemateri ini didatangkan langsung dari pihak DANA </span></p>\n', 'Admin', '2020-09-01 20:21:01', '2020-09-01 20:21:01'),
-(27, 16, 'Raker HMJ TI 2020-2021', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">Raker merupakan kegiatan wajib HMJ TI untuk menyosialisasikan Program Kerja selama satu tahun kepengurusan ke seluruh sivitas akademika di lingkungan Jurusan TI. Selain itu bertujuan untuk mengesahkan Program Kerja yang telah disusun. Dilaksanakan pada 4 Oktober 2020 melalui <em>platform</em> Zoom.  Kegiatan ini dihadiri oleh delegasi mahasiswa, ormawa, dosen, & pengurus HMJ TI 2020</span></p>\r\n', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:34:50', '2020-12-15 23:34:50');
+(27, 16, 'Raker HMJ TI 2020-2021', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">Raker merupakan kegiatan wajib HMJ TI untuk menyosialisasikan Program Kerja selama satu tahun kepengurusan ke seluruh sivitas akademika di lingkungan Jurusan TI. Selain itu bertujuan untuk mengesahkan Program Kerja yang telah disusun. Dilaksanakan pada 4 Oktober 2020 melalui <em>platform</em> Zoom.  Kegiatan ini dihadiri oleh delegasi mahasiswa, ormawa, dosen, & pengurus HMJ TI 2020</span></p>\r\n', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:34:50', '2020-12-15 23:34:50'),
+(29, 16, 'IT Mission #3', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">IT Mission #3 adalah kegiatan Webinar Nasional yang diadakan oleh Himpunan Mahasiswa Jurusan Teknik Informatika. IT Mission #3 ini diadakan pada tanggal 23 Januari 2021 melalui platform Zoom. Pada IT Mission #3 ini, HMJ TI Undiksha mengundang narasumber Made Adnyana Ole, beliau merupakan seorang sastrawan dan juga founder dari Tatkala.co</span></p>\r\n', 'Budi Setiawan', '2021-03-03 13:23:05', '2021-03-03 13:26:34');
 
 -- --------------------------------------------------------
 
@@ -971,15 +981,16 @@ CREATE TABLE IF NOT EXISTS `s5_pemilih` (
   PRIMARY KEY (`id_pemilih`),
   KEY `fk_kegiatan_pemilih` (`id_kegiatan`),
   KEY `fk_peemilih_user` (`manage_by`(191))
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data untuk tabel `s5_pemilih`
 --
 
 INSERT INTO `s5_pemilih` (`id_pemilih`, `id_kegiatan`, `ip_address`, `browser`, `perangkat`, `nama_pemilih`, `email`, `nim`, `prodi`, `semester`, `username`, `token`, `token_valid_until`, `has_voting`, `block_time`, `manage_by`, `login_attempt`) VALUES
-(31, 6, '180.249.186.97', 'Firefox 86.0', 'Android', 'I Gede Riyan Ardi Darmawan', 'riyan@undiksha.ac.id', '1815091037', 'Sistem Informasi', 6, '1815091037@evote.com', 'f92hjsm61dvg', '2021-03-05 00:00:00', 0, '0000-00-00 00:00:00', 'By Sistem', 0),
-(32, 6, NULL, NULL, NULL, 'Vina Velina', 'riyan@undiksha.ac.id', '1915051080', 'Pendidikan Teknik Informatika', 4, '1915051080@evote.com', '3crf1tyls9xp', '2021-03-05 00:00:00', 0, NULL, 'By Sistem', 0);
+(31, 6, '180.249.186.97', 'Firefox 86.0', 'Android', 'I Gede Riyan Ardi Darmawan', 'riyan@undiksha.ac.id', '1815091037', 'Sistem Informasi', 6, '1815091037@evote.com', '698kprnt5zw0', '2021-03-05 00:00:00', 0, '0000-00-00 00:00:00', 'Admin', 0),
+(32, 6, '103.76.173.199', 'Firefox 86.0', 'Windows 10', 'Vina Velina', 'dena@undiksha.ac.id', '1915051080', 'Pendidikan Teknik Informatika', 4, '1915051080@evote.com', 'ptcgysnhfq6r', '2021-03-05 00:00:00', 0, '0000-00-00 00:00:00', 'Admin', 0),
+(33, 6, '103.76.173.199', 'Firefox 86.0', 'Windows 10', 'Komang Dewi Sitha Noviyanti', 'dewi.sitha@undiksha.ac.id', '2015091042', 'Sistem Informasi', 2, '2015091042@evote.com', 'd72mt3kl6bn4', '2021-03-05 00:00:00', 0, '0000-00-00 00:00:00', 'Admin', 0);
 
 -- --------------------------------------------------------
 
@@ -998,7 +1009,7 @@ CREATE TABLE IF NOT EXISTS `s5_pilihan` (
   KEY `fk_pilihan_pemilih` (`id_pemilih`),
   KEY `fk_pilihan_kegiatan` (`id_kegiatan`),
   KEY `fk_pilihan_kandidat` (`id_kandidat`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -1039,7 +1050,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$uHtl1dL57NuF7qFzZqUrneKqL2t4c5R6FJhQrEaBjYiRfvqnd755e', 'hmjtiundiksha@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1268889823, 1614702234, 1, 'Admin', '1815091037', 46, '081915656865'),
+(1, '127.0.0.1', 'administrator', '$2y$12$uHtl1dL57NuF7qFzZqUrneKqL2t4c5R6FJhQrEaBjYiRfvqnd755e', 'hmjtiundiksha@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1268889823, 1614750115, 1, 'Admin', '1815091037', 46, '081915656865'),
 (22, '127.0.0.1', NULL, '$2y$10$U22c6tiwhzlmtVXpgQkT8.ZNI.v.gYUPRNoQh/uiY2oDTYIvA6vba', 'irfan@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601478582, 1614421633, 1, 'IRFAN WALHIDAYAH', '1815091002', 38, '08983197636'),
 (23, '127.0.0.1', NULL, '$2y$10$UdZ.NWa/aTPtwQgR0MlO8./sUjlSPRpYuOQB8CsTtZT/cO0TWp9eS', 'jurnalistik@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601478638, 1608459579, 1, 'Sub Bidang Jurnalistik', '1815051083', 40, '081339289008'),
 (24, '127.0.0.1', NULL, '$2y$10$DAWjFjedaWxM7yQEoLhFueum.UMmxHelnKxrFvFzncohmqe.y/v1O', 'riyan@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601992246, 1614423783, 1, 'I Gede Riyan Ardi Darmawan', '1815091037', 44, '081915656865'),
@@ -1055,7 +1066,7 @@ INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activ
 (34, '127.0.0.1', NULL, '$2y$10$OKhDauuCVTkRkLvhykaMJuQWlz7d3Uya40SuoDhszirGWuqcBDsd.', 'beny.indrawan@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1602045362, NULL, 1, 'Gede Beny Indrawan', '1915101002', 45, '087761750517'),
 (35, '127.0.0.1', NULL, '$2y$10$HSg8e7NjHVjaqXtWINX8WOLIQQBYhwgWORvjbtVyzDZvsuHMc6URG', 'ega@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1602045445, NULL, 1, 'I Putu Ega Suwidi Darma', '1805021012', 45, '08523774442'),
 (36, '127.0.0.1', NULL, '$2y$10$bDcwWvWvkxwGuXCTKC7hjuQSRUFGIKRCtc2LwdOW5OlKqBq1C9M.K', 'dwiki.anggara49@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1602045499, NULL, 1, 'I Made Dwiki Pasek Anggara', '1815051078', 45, '089606254400'),
-(39, '103.10.67.173', NULL, '$2y$10$JAQLAotlpzdbzlzux83H1.A.I.fkGqjoesrRdSI4mTyiw8to2xrbq', 'budi.setiawan@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1611459782, 1613304788, 1, 'Budi Setiawan', '1810000000', 40, '081000000000'),
+(39, '103.10.67.173', NULL, '$2y$10$JAQLAotlpzdbzlzux83H1.A.I.fkGqjoesrRdSI4mTyiw8to2xrbq', 'budi.setiawan@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1611459782, 1614748639, 1, 'Budi Setiawan', '1810000000', 40, '081000000000'),
 (47, '180.249.186.50', NULL, '$2y$10$6aa923ne9O3pSh0DKeLyruujtZlX43rGWiKe3fG6uiUm1bZoP6/di', 'pengarah@eors.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1614055199, NULL, 1, 'Sie Pengarah', '1800000000', 45, '081234567890'),
 (48, '180.249.186.50', NULL, '$2y$10$qfCIEfY.2q9dFXjpnp5er.oXoUlG3Nq3TzlotzO72cgk1K5uOOVpW', 'ketupat@eors.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1614055262, 1614423245, 1, 'Ketua Panitia Suksesi', '1800000000', 45, '081234567890');
 
