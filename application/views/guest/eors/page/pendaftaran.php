@@ -89,7 +89,7 @@
                                         id="file_dokumen">
                                     <small id="fotoHelp" class="form-text text-muted">Silahkan di cek terkait dokumen
                                         yang
-                                        dikumpul pada bagian persyaratan dan ketentuan, format *.pdf atau *.zip maks 5
+                                        dikumpul pada bagian persyaratan dan ketentuan, format *.pdf atau *.zip maks 15
                                         Mb</small>
                                 </div>
                                 <?php } ?>

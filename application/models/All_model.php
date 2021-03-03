@@ -1906,7 +1906,8 @@ class All_model extends CI_Model
 			} else {
 				$config['upload_path'] = $folder;
 				$config['allowed_types'] = 'pdf|zip';
-				$config['max_size']  = '5045';
+				// Batas ukuran untuk file yang bisa diupload pada EORS adalah 15 MB
+				$config['max_size']  = '15045';
 			}
 			$config['encrypt_name'] = TRUE;
 			$config['remove_space'] = TRUE;

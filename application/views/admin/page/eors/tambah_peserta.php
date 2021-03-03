@@ -43,7 +43,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Dokumen Pendaftar (*.pdf atau *.zip maks 5 MB)</div>
+                                                    Dokumen Pendaftar (*.pdf atau *.zip maks 15 Mb)</div>
                                                 <input type="file" accept=".pdf, .zip"
                                                     class="form-control form-control-user" id="file_dokumen"
                                                     name="file_dokumen">
