@@ -80,7 +80,9 @@
 
                                         <hr>
                                         <h5>Misi</h5>
-                                        <?= $data['misi'] ?>
+                                        <div class="text-justify">
+                                            <?= $data['misi'] ?>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -99,7 +101,10 @@
                         <?php endforeach; ?>
                         <?php else : ?>
                         <div class="col-lg-12">
-                            <h4 class="text-center">Anda Telah Melakukan EVOTING</h4>
+                            <h6 class="text-center">Anda Telah Melakukan EVOTING, Bukti Sah Pemilihan telah dikirim ke
+                                Email
+                                Anda :)</h6>
+                            <h6 class="text-center"><a href="<?=base_url()?>etika/logout">Keluar dari Sistem >></a></h6>
                         </div>
                         <?php endif; ?>
                     </div>

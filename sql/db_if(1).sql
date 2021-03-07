@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Inang: localhost
--- Waktu pembuatan: 03 Mar 2021 pada 21.34
+-- Waktu pembuatan: 06 Mar 2021 pada 21.15
 -- Versi Server: 5.5.62-0ubuntu0.14.04.1
 -- Versi PHP: 5.6.30-1+deb.sury.org~trusty+1
 
@@ -111,14 +111,7 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=128 ;
-
---
--- Dumping data untuk tabel `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(127, '180.249.187.96', 'mailto:willy@undiksha.ac.id', 1614760560);
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=129 ;
 
 -- --------------------------------------------------------
 
@@ -187,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `s1_detail_kegiatan` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`id_detail_kegiatan`),
   KEY `id_kegiatan_hmj` (`id_kegiatan_hmj`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=92 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=141 ;
 
 --
 -- Dumping data untuk tabel `s1_detail_kegiatan`
@@ -240,7 +233,7 @@ INSERT INTO `s1_detail_kegiatan` (`id_detail_kegiatan`, `id_kegiatan_hmj`, `nama
 (70, 27, 'SURAT UNDANGAN RAKER - KOORPRODI SI', '<p>Berikut Surat Undangan untuk Koorprodi Sistem Informasi</p>\r\n', '15122020235806.pdf', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:58:06', '2020-12-15 23:58:06'),
 (71, 27, 'SURAT UNDANGAN RAKER - PEMB. KEMAHASISWAAN TI', '<p>Berikut Surat Undangan Raker untuk Pembimbing Kemahasiswaan TI</p>\r\n', '15122020235848.pdf', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:58:48', '2020-12-15 23:58:48'),
 (72, 27, 'SURAT UNDANGAN RAKER - SEKRETARIS JURUSAN TI', '<p>Berikut Surat Undangan Raker untuk Sekretaris Jurusan TI</p>\r\n', '15122020235923.pdf', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:59:23', '2020-12-15 23:59:23'),
-(82, 29, 'Surat Peminjaman Fasilitas', '<p>Berikut merupakan surat peminjaman fasilitas Zoom terhadap UPT TIK.&nbsp;</p>\r\n\r\n<p>&nbsp;Dokumentasi kegiatan dapat diakses melalui tautan dibawah ini:</p>\r\n\r\n<p>https://drive.google.com/folderview?id=17u1-TkqjtjEj71ZAbVVrZbK5n5iVHu1K</p>\r\n', '03032021132551.pdf', 'Budi Setiawan  ?&gt;', '2021-03-03 13:25:51', '2021-03-03 20:18:56'),
+(82, 29, 'Surat Peminjaman Fasilitas', '<p>Berikut merupakan surat peminjaman fasilitas Zoom terhadap UPT TIK.&nbsp;</p>\r\n\r\n<p>&nbsp;Dokumentasi kegiatan dapat diakses melalui tautan dibawah ini:</p>\r\n\r\n<p>Link : <a href="https://drive.google.com/drive/folders/17u1-TkqjtjEj71ZAbVVrZbK5n5iVHu1K?usp=sharing">Klik Untuk Melihat Dokumentasi Kegiatan IT Mission 3</a></p>\r\n', '03032021132551.pdf', 'Admin  ?&gt;', '2021-03-03 13:25:51', '2021-03-04 20:02:58'),
 (83, 29, 'Proposal Kegiatan IT Mission #3', '<p style="text-align:justify">Berikut merupakan Proposal Kegiatan IT Mission #3</p>\r\n', '03032021132809.pdf', 'Budi Setiawan', '2021-03-03 13:28:09', '2021-03-03 13:28:09'),
 (84, 29, 'LPJ IT Mission #3', '<p>Berikut merupakan File LPJ IT Mission #3</p>\r\n', '03032021133027.pdf', 'Budi Setiawan', '2021-03-03 13:30:27', '2021-03-03 13:30:27'),
 (85, 29, 'Notula Rapat Panitia - 1', '<p>Berikut merupakan Notula Rapat Panitia 1</p>\r\n', '03032021133129.pdf', 'Budi Setiawan', '2021-03-03 13:31:29', '2021-03-03 13:31:29'),
@@ -248,7 +241,56 @@ INSERT INTO `s1_detail_kegiatan` (`id_detail_kegiatan`, `id_kegiatan_hmj`, `nama
 (87, 29, 'Notula Rapat Bimbingan - 1', '<p>Berikut merupakan Notula Rapat Bimbingan 1</p>\r\n', '03032021133304.pdf', 'Budi Setiawan', '2021-03-03 13:33:04', '2021-03-03 13:33:04'),
 (88, 29, 'Notula Rapat Bimbingan - 2', '<p>Berikut merupakan Notula Rapat Bimbingan 2</p>\r\n', '03032021133340.pdf', 'Budi Setiawan', '2021-03-03 13:33:40', '2021-03-03 13:33:40'),
 (90, 29, 'Notula Rapat Panitia - 3', '<p>Berikut merupakan Notula Rapat Panitia 3</p>\r\n', '03032021133721.pdf', 'Budi Setiawan', '2021-03-03 13:37:21', '2021-03-03 13:37:21'),
-(91, 29, 'Notula Rapat Panitia - 4', '<p>Berikut merupakan Notula Rapat Panitia 4</p>\r\n', '03032021133748.pdf', 'Budi Setiawan', '2021-03-03 13:37:48', '2021-03-03 13:37:48');
+(91, 29, 'Notula Rapat Panitia - 4', '<p>Berikut merupakan Notula Rapat Panitia 4</p>\r\n', '03032021133748.pdf', 'Budi Setiawan', '2021-03-03 13:37:48', '2021-03-03 13:37:48'),
+(92, 33, 'Buku Panduan Integer', '<p>Berikut merupakan buku panduan Umum untuk kegiatan Integer yang berisi peraturan dan teknis masing-masing lomba</p>\r\n', '04032021190333.pdf', 'Admin', '2021-03-04 19:03:33', '2021-03-04 19:03:33'),
+(93, 33, 'LPJ GI', '<p>Berikut merupakan LPJ GI, pada kegiatan Integer ini pendanaan masih dipisah dan didata sebagai GI dan IT2D</p>\r\n', '04032021190500.pdf', 'Admin', '2021-03-04 19:05:00', '2021-03-04 19:05:00'),
+(94, 33, 'LPJ IT2D', '<p>Berikut merupakan LPJ IT2D, pada kegiatan Integer #2 pendanaan masih dibagi menjadi dua kegiatan yakni IT2D dan GI</p>\r\n', '04032021190622.pdf', 'Admin', '2021-03-04 19:06:23', '2021-03-04 19:06:23'),
+(95, 33, 'Notula Rapat Intern', '<p>Berikut merupakan notula rapat kepanitiaan</p>\r\n', '04032021190759.pdf', 'Admin', '2021-03-04 19:07:59', '2021-03-04 19:07:59'),
+(96, 33, 'Notula Rapat Koordinasi Dosen', '<p>Berikut merupakan notula kegiatan rapat bersama dosen</p>\r\n', '04032021190842.pdf', 'Admin', '2021-03-04 19:08:42', '2021-03-04 19:08:42'),
+(97, 33, 'Notula Rapat Kepanitiaan - 1', '<p>Berikut merupakan notula rapat kepanitiaan pertama</p>\r\n', '04032021190917.pdf', 'Admin', '2021-03-04 19:09:17', '2021-03-04 19:09:17'),
+(98, 33, 'Notula Rapat Kepanitiaan - 2', '<p>Berikut merupakan notula rapat kepanitiaan kedua</p>\r\n', '04032021190945.pdf', 'Admin', '2021-03-04 19:09:45', '2021-03-04 19:09:45'),
+(99, 33, 'Notula Rapat Kepanitiaan - 3', '<p>Berikut merupakan notula rapat kepanitiaan ketiga</p>\r\n', '04032021191013.pdf', 'Admin', '2021-03-04 19:10:13', '2021-03-04 19:10:13'),
+(100, 33, 'Notula Rapat Umum Pertama', '<p>Berikut merupakan notula kegiatan rapat umum pertama</p>\r\n', '04032021191039.pdf', 'Admin', '2021-03-04 19:10:39', '2021-03-04 19:10:39'),
+(101, 33, 'Notula Rapat Umum Kedua', '<p>Berikut merupakan notula rapat umum kedua</p>\r\n', '04032021191102.pdf', 'Admin', '2021-03-04 19:11:02', '2021-03-04 19:11:02'),
+(102, 33, 'Proposal Pendaan GI', '<p style="text-align:justify">Berikut merupakan proposal pendanaan GI yang diajukan ke fakultas. Oleh karena pendanaan masih dipisah (GI dan IT2D) maka perlu membuat dua proposal dan LPJ</p>\r\n', '04032021191310.pdf', 'Admin', '2021-03-04 19:13:10', '2021-03-04 19:13:10'),
+(103, 33, 'Proposal Pendanaan IT2D', '<p style="text-align:justify">Berikut merupakan proposal pendanaan IT2D yang diajukan ke fakultas. Oleh karena pendanaan masih dipisah (GI dan IT2D) maka perlu membuat dua proposal dan LPJ</p>\r\n', '04032021191426.pdf', 'Admin', '2021-03-04 19:14:26', '2021-03-04 19:14:26'),
+(104, 33, 'Proposal Integer #2', '<p style="text-align:justify">Berikut merupakan proposal pendanaan Integer yang diajukan ke bendahara.</p>\r\n', '04032021191632.pdf', 'Admin', '2021-03-04 19:16:32', '2021-03-04 19:16:32'),
+(105, 33, 'Proposal Penggalian Dana', '<p>Berikut merupakan proposal penggalian dana yang akan diajukan ke sponsor</p>\r\n', '04032021192053.pdf', 'Admin', '2021-03-04 19:20:53', '2021-03-04 19:20:53'),
+(106, 33, 'Contoh Surat Juri', '<p>Berikut contoh format pembuatan surat juri</p>\r\n', '04032021192204.pdf', 'Admin', '2021-03-04 19:22:04', '2021-03-04 19:22:04'),
+(107, 33, 'Contoh Surat Open Donasi Kegiatan P2M', '<p>Berikut merupakan contoh surat open donasi</p>\r\n', '04032021192305.pdf', 'Admin', '2021-03-04 19:23:05', '2021-03-04 19:23:05'),
+(108, 33, 'Contoh Surat Undangan Narasumber', '<p>Berikut merupakan contoh surat undangan narasumber webinar</p>\r\n', '04032021192551.pdf', 'Admin', '2021-03-04 19:25:51', '2021-03-04 19:25:51'),
+(109, 33, 'Contoh Surat Undangan Kesekolah', '<p>Berikut merupakan contoh surat undangan kesekolah-sekolah</p>\r\n', '04032021192644.pdf', 'Admin', '2021-03-04 19:26:44', '2021-03-04 19:26:44'),
+(110, 33, 'Contoh Surat Delegasi', '<p>Berikut merupakan contoh surat permohonan Delegasi</p>\r\n', '04032021192738.pdf', 'Admin', '2021-03-04 19:27:38', '2021-03-04 19:27:38'),
+(111, 33, 'Contoh Surat Dispensasi Kegiatan', '<p>Berikut merupakan contoh format surat dispensasi kegiatan</p>\r\n', '04032021192827.pdf', 'Admin', '2021-03-04 19:28:27', '2021-03-04 19:28:27'),
+(112, 33, 'Contoh Surat Undangan', '<p style="text-align:justify">Berikut merupakan contoh surat undangan untuk membuka atau menghadiri kegiatan untuk dosen, WR, dll. Untuk contoh surat-surat lainnya dapat dilhat pada link berikut ini</p>\r\n\r\n<p style="text-align:justify">Link : <a href="https://drive.google.com/drive/folders/14viCcZ-t_HfAd7EFbev3-GshJ9X1NN_T?usp=sharing">Klik Untuk Melihat List Dari Surat Selama Integer</a></p>\r\n', '04032021193506.pdf', 'Admin  ?&gt;', '2021-03-04 19:35:06', '2021-03-04 19:49:47'),
+(113, 33, 'Susunan Acara Lomba Essay', '<p>Berikut merupakan susunan acara kegiatan lomba Essay Nasional</p>\r\n', '04032021193900.pdf', 'Admin', '2021-03-04 19:39:00', '2021-03-04 19:39:00'),
+(114, 33, 'Susunan Acara Expo Webinar', '<p>Berikut merupakan susunan acara pada kegiatan expo</p>\r\n', '04032021193939.pdf', 'Admin', '2021-03-04 19:39:39', '2021-03-04 19:39:39'),
+(115, 33, 'Susunan Acara Hacking The Game', '<p>Berikut merupakan susunan acara hacking the game</p>\r\n', '04032021194328.pdf', 'Admin', '2021-03-04 19:43:28', '2021-03-04 19:43:28'),
+(116, 33, 'Susunan Acara Business IT Case', '<p>Berikut merupakan susunan acara lomba business it case</p>\r\n', '04032021194359.pdf', 'Admin', '2021-03-04 19:43:59', '2021-03-04 19:43:59'),
+(117, 33, 'Susunan Acara MGS', '<p>Berikut merupakan susunan acara kegiatan MGS</p>\r\n', '04032021194428.pdf', 'Admin', '2021-03-04 19:44:28', '2021-03-04 19:44:28'),
+(118, 33, 'Susunan Acara UI/UX', '<p>Berikut merupakan susunan acara UI/UX. Untuk Dokumentasi kegiatan INTEGER dapat diakses pada link berikut ini</p>\r\n\r\n<p>Link : <a href="https://drive.google.com/drive/folders/14SgAIbvRysOG36tRP7WecxUSsihLrngM?usp=sharing">Klik Untuk Melihat Dokumentasi Kegiatan INTEGER</a></p>\r\n', '04032021194455.pdf', 'Admin  ?&gt;', '2021-03-04 19:44:55', '2021-03-04 19:49:20'),
+(119, 27, 'AD-ART HMJ TI 2020-2021', '<p>Dokumen ini berisikan hasil kesepakatan pengurus HMJ TI 2020-2021 dengan mahasiswa dan pimpinan di lingkungan jurusan TI terkait dengan Anggaran Dasar dan Anggaran Rumah Tangga HMJ TI selama satu tahun kepengurusan</p>\r\n', '04032021222151.pdf', 'Putu Zasya Eka Satya Nugraha', '2021-03-04 22:21:51', '2021-03-04 22:21:51'),
+(120, 27, 'Susunan Acara Raker HMJ TI 2020-2021', '<p>Dokumen ini memuat susunan acara pada kegiatan Raker HMJ TI 2020-2021</p>\r\n', '04032021222307.pdf', 'Putu Zasya Eka Satya Nugraha', '2021-03-04 22:23:07', '2021-03-04 22:23:07'),
+(121, 27, 'Tata Tertib Raker HMJ TI 2020-2021', '<p>Dokumen ini memuat aturan yang disepakati hingga akhir kegiatan Raker HMJ TI 2020-2021</p>\r\n', '04032021222432.pdf', 'Putu Zasya Eka Satya Nugraha  ?&gt;', '2021-03-04 22:24:32', '2021-03-04 22:24:55'),
+(122, 34, 'Proposal Kegiatan IT Mission #4', '<p>Berikut merupakan file proposal kegiatan IT Mission #4</p>\r\n', '05032021120233.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:02:33', '2021-03-05 12:02:33'),
+(123, 34, 'Surat Peminjaman Fasilitas (akun zoom)', '<p>Berikut merupakan surat peminjaman fasilitas</p>\r\n', '05032021120933.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:09:33', '2021-03-05 12:09:33'),
+(124, 34, 'Surat Undangan Dekan ', '<p>Berikut merupakan file surat undangan untuk Dekan</p>\r\n', '05032021121151.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:11:51', '2021-03-05 12:11:51'),
+(125, 34, 'Surat Undangan Dosen', '<p>Berikut merupakan file surat undangan dosen di lingkungan Teknik Informatika</p>\r\n', '05032021121444.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:14:44', '2021-03-05 12:14:44'),
+(126, 34, 'Surat Undangan Dosen', '<p>Berikut merupakan file surat undangan dosen diluar&nbsp;lingkungan Teknik Informatika</p>\r\n', '05032021121541.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:15:41', '2021-03-05 12:15:41'),
+(127, 34, 'Surat Undangan kepada Narasumber', '<p>Berikut merupakan file surat kepada Narasumber</p>\r\n', '05032021121718.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:17:18', '2021-03-05 12:17:18'),
+(128, 34, 'Notula Rapat Kepanitian 1', '<p>Berikut merupakan notula rapat umum 1&nbsp;kegiatan IT Mission #4</p>\r\n', '05032021121849.pdf', 'Willy Yogantara Sidhi  ?&gt;', '2021-03-05 12:18:49', '2021-03-05 12:21:29'),
+(129, 34, 'Notula Rapat Kepanitian 2', '<p>Berikut merupakan notula&nbsp;Rapat Kepanitian 2 kegiatan IT Mission#4</p>\r\n', '05032021122044.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:20:44', '2021-03-05 12:20:44'),
+(130, 34, 'Notula bimbingan dengan dosen', '<p>Berikut merupakan notula bimbingan kegiatan dengan Bapak Gede Aditra Pradyana, S.Kom., M.Kom.</p>\r\n', '05032021122612.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:26:12', '2021-03-05 12:26:12'),
+(131, 34, 'Notula bimbingan dengan dosen', '<p>Berikut merupakan notula bimbingan kegiatan dengan Ibu Dr. Luh Joni Erawati Dewi, S.T., M.Pd.</p>\r\n', '05032021122842.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:28:42', '2021-03-05 12:28:42'),
+(132, 34, 'Notula Rapat Kepanitian 3', '<p style="text-align:justify">Berikut merupakan notula&nbsp;Rapat Kepanitian 3&nbsp;kegiatan IT Mission#4</p>\r\n', '05032021123007.pdf', 'Willy Yogantara Sidhi  ?&gt;', '2021-03-05 12:30:07', '2021-03-05 12:31:01'),
+(133, 34, 'Notula Rapat Kepanitian 4', '<p>Berikut merupakan notula&nbsp;Rapat Kepanitian 4&nbsp;kegiatan IT Mission#4</p>\r\n', '05032021123216.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:32:16', '2021-03-05 12:32:16'),
+(134, 34, 'LPJ Kegiatan IT Mission#4', '<p>Berikut merupakan file LPJ Kegiatan IT Mission#4</p>\r\n', '05032021123412.pdf', 'Willy Yogantara Sidhi', '2021-03-05 12:34:12', '2021-03-05 12:34:12'),
+(135, 27, 'Proker Bidang 1 HMJ TI 2020-2021', '<p>Dokumen ini memuat program kerja dari bidang 1 HMJ TI terkait pendidikan dan penalaran</p>\r\n', '05032021143339.pdf', 'Putu Zasya Eka Satya Nugraha', '2021-03-05 14:33:39', '2021-03-05 14:33:39'),
+(136, 27, 'Proker Bidang II HMJ TI 2020-2021', '<p>Dokumen ini memuat program kerja bidang 2 HMJ TI terkait minat dan bakat</p>\r\n', '05032021143513.pdf', 'Putu Zasya Eka Satya Nugraha', '2021-03-05 14:35:13', '2021-03-05 14:35:13'),
+(137, 27, 'Proker Bidang III HMJ TI 2020-2021', '<p>Dokumen ini memuat program kerja bidang 3 HMJ TI terkait kesejahteraan mahasiswa</p>\r\n', '05032021143620.pdf', 'Putu Zasya Eka Satya Nugraha', '2021-03-05 14:36:20', '2021-03-05 14:36:20'),
+(138, 27, 'Proker Bidang IV HMJ TI 2020-2021', '<p>Dokumen ini memuat program kerja bidang 4 HMJ TI terkait pengabdian pada masyarakat</p>\r\n', '05032021143749.pdf', 'Putu Zasya Eka Satya Nugraha', '2021-03-05 14:37:49', '2021-03-05 14:37:49'),
+(139, 27, 'Proker Bidang V HMJ TI 2020-2021', '<p>Dokumen ini memuat program kerja bidang 5 HMJ TI terkait teknologi</p>\r\n', '05032021143844.pdf', 'Putu Zasya Eka Satya Nugraha', '2021-03-05 14:38:44', '2021-03-05 14:38:44'),
+(140, 27, 'Proker Umum HMJ TI 2020-2021', '<p>Dokumen ini memuat program kerja HMJ TI 2020-2021</p>\r\n', '05032021143933.pdf', 'Putu Zasya Eka Satya Nugraha', '2021-03-05 14:39:33', '2021-03-05 14:39:33');
 
 -- --------------------------------------------------------
 
@@ -370,18 +412,20 @@ CREATE TABLE IF NOT EXISTS `s1_kegiatan_hmj` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`id_kegiatan_hmj`),
   KEY `id_hmj` (`id_hmj`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data untuk tabel `s1_kegiatan_hmj`
 --
 
 INSERT INTO `s1_kegiatan_hmj` (`id_kegiatan_hmj`, `id_hmj`, `nama_kegiatan`, `deskripsi_kegiatan`, `create_by`, `create_at`, `update_at`) VALUES
-(24, 16, 'TI Peduli Pencegahan Penyebaran COVID-19', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">Program Kerja ini merupakan program kerja yang dilaksanakan oleh bidang 4 HMJ TI Undiksha. TI Peduli Pencagahan Penyebaran COVID merupakan program kerja yang dilaksanakan HMJ TI Undiksha 2020-2021, program kerja ini dilaksanakan dengan cara membagikan masker dan hand sanitizer gratis kepada masyarakat di sekitaran Kota Singaraja. Acara ini berjalan dengan lancar</span></p>\n', 'Admin', '2020-09-01 20:18:23', '2020-09-01 20:18:23'),
+(24, 16, 'TI Peduli Pencegahan Penyebaran COVID-19', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">Program Kerja ini merupakan program kerja yang dilaksanakan oleh bidang 4 HMJ TI Undiksha. TI Peduli Pencagahan Penyebaran COVID merupakan program kerja yang dilaksanakan HMJ TI Undiksha 2020-2021, program kerja ini dilaksanakan dengan cara membagikan masker dan hand sanitizer gratis kepada masyarakat di sekitaran Kota Singaraja.</span></p>\n', 'Admin', '2020-09-01 20:18:23', '2020-09-01 20:18:23'),
 (25, 16, 'IT Mission #1', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">IT Mission #1 adalah kegiatan Webinar yang diadakan oleh Himpunan Mahasiswa Jurusan Teknik Informatika. IT Mission #1 ini diadakan pada tanggal 28 Juni 2020 melalui platform Zoom. Terdapat 3 pemateri utama pada IT Mission #1 ini, yakni Bapak Anditya, S.T, Bapak Ida Bagus Nyoman Pascima, S.Pd., M.Cs. dan Bapak I Made Edy Listartha, S.Kom., M.Kom. Kegiatan ini sudah berjalan dengan baik.</span></p>\r\n', 'I Gede Riyan Ardi Darmawan', '2020-09-01 20:18:59', '2020-09-06 20:26:16'),
 (26, 16, 'IT Mission #2', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">IT Mission #2 adalah kegiatan Webinar yang diadakan oleh Himpunan Mahasiswa Jurusan Teknik Informatika. IT Mission #2 ini diadakan pada tanggal 18 Agustus 2018 melalui platform Zoom. Pada IT Mission #2 ini, HMJ TI Undiksha bekerja sama dengan pihak DANA Wallet Indonesia. Terdapat 4 pemateri pada IT Mission #2 ini, dimana pemateri ini didatangkan langsung dari pihak DANA </span></p>\n', 'Admin', '2020-09-01 20:21:01', '2020-09-01 20:21:01'),
 (27, 16, 'Raker HMJ TI 2020-2021', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">Raker merupakan kegiatan wajib HMJ TI untuk menyosialisasikan Program Kerja selama satu tahun kepengurusan ke seluruh sivitas akademika di lingkungan Jurusan TI. Selain itu bertujuan untuk mengesahkan Program Kerja yang telah disusun. Dilaksanakan pada 4 Oktober 2020 melalui <em>platform</em> Zoom.  Kegiatan ini dihadiri oleh delegasi mahasiswa, ormawa, dosen, & pengurus HMJ TI 2020</span></p>\r\n', 'Putu Zasya Eka Satya Nugraha', '2020-12-15 23:34:50', '2020-12-15 23:34:50'),
-(29, 16, 'IT Mission #3', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">IT Mission #3 adalah kegiatan Webinar Nasional yang diadakan oleh Himpunan Mahasiswa Jurusan Teknik Informatika. IT Mission #3 ini diadakan pada tanggal 23 Januari 2021 melalui platform Zoom. Pada IT Mission #3 ini, HMJ TI Undiksha mengundang narasumber Made Adnyana Ole, beliau merupakan seorang sastrawan dan juga founder dari Tatkala.co. Kegiatan ini telah berjalan dengan lancar</span></p>\n', 'Budi Setiawan', '2021-03-03 13:23:05', '2021-03-03 13:26:34');
+(29, 16, 'IT Mission #3', '<p style="text-align:justify"><span style="color:hsl(0, 0%, 0%)">IT Mission #3 adalah kegiatan Webinar Nasional yang diadakan oleh Himpunan Mahasiswa Jurusan Teknik Informatika. IT Mission #3 ini diadakan pada tanggal 23 Januari 2021 melalui platform Zoom. Pada IT Mission #3 ini, HMJ TI Undiksha mengundang narasumber Made Adnyana Ole, beliau merupakan seorang sastrawan dan juga founder dari Tatkala.co. Kegiatan ini telah berjalan dengan lancar</span></p>\n', 'Budi Setiawan', '2021-03-03 13:23:05', '2021-03-03 13:26:34'),
+(33, 16, 'Integer #2', '<p style="text-align:justify"><span style="color:#000000">Integer atau Information Technology Grand Celebration merupakan perayaan hari ulang tahun dari Jurusan Teknik Informatika Universitas Pendidikan Ganesha. Pada kegiatan Integer ke-2 tahun 2020, kegiatan perayaan hari ulang tahun ini dirayakan secara daring dengan kepanitiaan yang berasal dari seluruh anggota HMJ dan rekrutan dari semester 2.</span></p>\r\n', 'Admin', '2021-03-04 19:01:45', '2021-03-04 19:01:45'),
+(34, 16, 'IT Mission #4', '<p style="text-align:justify"><span style="font-size:14px"><span style="color:#000000">IT Mission #4&nbsp;adalah kegiatan Webinar yang diadakan oleh Himpunan Mahasiswa Jurusan Teknik Informatika. IT Mission #4&nbsp;ini diadakan pada tanggal 24&nbsp;Januari 2021 melalui platform Zoom. Pada IT Mission #4&nbsp;ini, HMJ TI Undiksha mengundang narasumber Bapak I Gede Arna Jude Saskara, S.T., M.T&nbsp;beliau merupakan salah satu dosen di Jurusan Teknik Informatika</span></span></p>\r\n', 'Willy Yogantara Sidhi', '2021-03-05 11:58:30', '2021-03-05 12:45:05');
 
 -- --------------------------------------------------------
 
@@ -960,7 +1004,7 @@ CREATE TABLE IF NOT EXISTS `s5_kegiatan` (
 --
 
 INSERT INTO `s5_kegiatan` (`id_kegiatan`, `nama_kegiatan`, `deskripsi`, `waktu_mulai`, `waktu_selesai`, `mode`, `created_date`, `created_by`) VALUES
-(6, 'PEMIRA HMJ TI UNDIKSHA 2021', '<p xss=removed>Pemilihan Raya Mahasiswa (Pemira) merupakan sebuah mekanisme demokrasi kampus yang diselenggarakan di berbagai perguruan tinggi, termasuk di Universitas Pendidikan Ganesha. Pemira HMJ TI Undiksha bertujuan untuk meregenerasi kepengurusan HMJ TI Undiksha sebelumnya dengan kepengurusan yang baru melalui pemimpin yang baru pula.</p>\r\n', '2021-03-04 00:00:00', '2021-03-05 00:00:00', 2, '2021-03-03 00:03:32', 'Admin');
+(6, 'PEMIRA HMJ TI UNDIKSHA 2021', '<p xss=removed>Pemilihan Raya Mahasiswa (Pemira) merupakan sebuah mekanisme demokrasi kampus yang diselenggarakan di berbagai perguruan tinggi, termasuk di Universitas Pendidikan Ganesha. Pemira HMJ TI Undiksha bertujuan untuk meregenerasi kepengurusan HMJ TI Undiksha sebelumnya dengan kepengurusan yang baru melalui pemimpin yang baru pula.</p>\r\n', '2021-03-04 00:00:00', '2021-03-04 00:00:00', 2, '2021-03-03 00:03:32', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -989,16 +1033,16 @@ CREATE TABLE IF NOT EXISTS `s5_pemilih` (
   PRIMARY KEY (`id_pemilih`),
   KEY `fk_kegiatan_pemilih` (`id_kegiatan`),
   KEY `fk_peemilih_user` (`manage_by`(191))
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data untuk tabel `s5_pemilih`
 --
 
 INSERT INTO `s5_pemilih` (`id_pemilih`, `id_kegiatan`, `ip_address`, `browser`, `perangkat`, `nama_pemilih`, `email`, `nim`, `prodi`, `semester`, `username`, `token`, `token_valid_until`, `has_voting`, `block_time`, `manage_by`, `login_attempt`) VALUES
-(31, 6, '180.249.186.97', 'Firefox 86.0', 'Android', 'I Gede Riyan Ardi Darmawan', 'riyan@undiksha.ac.id', '1815091037', 'Sistem Informasi', 6, '1815091037@evote.com', '698kprnt5zw0', '2021-03-05 00:00:00', 0, '0000-00-00 00:00:00', 'Admin', 0),
 (32, 6, '103.76.173.199', 'Firefox 86.0', 'Windows 10', 'Vina Velina', 'dena@undiksha.ac.id', '1915051080', 'Pendidikan Teknik Informatika', 4, '1915051080@evote.com', 'ptcgysnhfq6r', '2021-03-05 00:00:00', 0, '0000-00-00 00:00:00', 'Admin', 0),
-(33, 6, '103.76.173.199', 'Firefox 86.0', 'Windows 10', 'Komang Dewi Sitha Noviyanti', 'dewi.sitha@undiksha.ac.id', '2015091042', 'Sistem Informasi', 2, '2015091042@evote.com', 'd72mt3kl6bn4', '2021-03-05 00:00:00', 0, '0000-00-00 00:00:00', 'Admin', 0);
+(33, 6, '103.76.173.199', 'Firefox 86.0', 'Windows 10', 'Komang Dewi Sitha Noviyanti', 'dewi.sitha@undiksha.ac.id', '2015091042', 'Sistem Informasi', 2, '2015091042@evote.com', 'd72mt3kl6bn4', '2021-03-05 00:00:00', 0, '0000-00-00 00:00:00', 'Admin', 0),
+(34, 6, '180.249.186.97', 'Firefox 86.0', 'Windows 10', 'I Gede Riyan Ardi Darmawan', 'riyan@undiksha.ac.id', '1815091037', 'Sistem Informasi', 6, '1815091037@evote.com', 'jbs9ft2xwynq', '2021-03-04 22:25:14', 0, '0000-00-00 00:00:00', 'Admin', 0);
 
 -- --------------------------------------------------------
 
@@ -1017,7 +1061,7 @@ CREATE TABLE IF NOT EXISTS `s5_pilihan` (
   KEY `fk_pilihan_pemilih` (`id_pemilih`),
   KEY `fk_pilihan_kegiatan` (`id_kegiatan`),
   KEY `fk_pilihan_kandidat` (`id_kandidat`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -1058,15 +1102,15 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$uHtl1dL57NuF7qFzZqUrneKqL2t4c5R6FJhQrEaBjYiRfvqnd755e', 'hmjtiundiksha@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1268889823, 1614757308, 1, 'Admin', '1815091037', 46, '081915656865'),
+(1, '127.0.0.1', 'administrator', '$2y$12$uHtl1dL57NuF7qFzZqUrneKqL2t4c5R6FJhQrEaBjYiRfvqnd755e', 'hmjtiundiksha@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1268889823, 1614867353, 1, 'Admin', '1815091037', 46, '081915656865'),
 (22, '127.0.0.1', NULL, '$2y$10$U22c6tiwhzlmtVXpgQkT8.ZNI.v.gYUPRNoQh/uiY2oDTYIvA6vba', 'irfan@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601478582, 1614421633, 1, 'IRFAN WALHIDAYAH', '1815091002', 38, '08983197636'),
 (23, '127.0.0.1', NULL, '$2y$10$UdZ.NWa/aTPtwQgR0MlO8./sUjlSPRpYuOQB8CsTtZT/cO0TWp9eS', 'jurnalistik@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601478638, 1608459579, 1, 'Sub Bidang Jurnalistik', '1815051083', 40, '081339289008'),
 (24, '127.0.0.1', NULL, '$2y$10$DAWjFjedaWxM7yQEoLhFueum.UMmxHelnKxrFvFzncohmqe.y/v1O', 'riyan@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601992246, 1614423783, 1, 'I Gede Riyan Ardi Darmawan', '1815091037', 44, '081915656865'),
-(25, '127.0.0.1', NULL, '$2y$10$68fvS2s8GGnZ/S.cJH8OxeLtn6laVEts7K0tilr6afF/qJYhPBcTq', 'willy@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601992447, 1614760569, 1, 'Willy Yogantara Sidhi', '1815091063', 43, '087853652474'),
+(25, '127.0.0.1', NULL, '$2y$10$68fvS2s8GGnZ/S.cJH8OxeLtn6laVEts7K0tilr6afF/qJYhPBcTq', 'willy@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601992447, 1614919459, 1, 'Willy Yogantara Sidhi', '1815091063', 43, '087853652474'),
 (26, '127.0.0.1', NULL, '$2y$10$t90cFNvkVrmnqhWHMSuj7OrSy6Q97DE7l2yXXVu7H3gwX9xGwZ7EC', 'primadwi84@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601992497, NULL, 1, 'Dwi Prima Handayani Putri', '1915101012', 45, '081246342145'),
 (27, '127.0.0.1', NULL, '$2y$10$Ei8Psz3K2AemekBhdei7cuaDT5Dwcldb47DrmfVqAnkycLjpE7b1e', 'komangdianary23@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601994775, NULL, 1, 'Komang Dian Ary Kristiadi', '1815051040', 45, '081339320140'),
 (28, '127.0.0.1', NULL, '$2y$10$SlIzdi2xRdhVBrSn21Peb.g..fA1V8KEEvV.7xhuc3W7imRqpu4dm', 'gustiaditya123@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601994837, NULL, 1, 'Gusti Aditya Trisna Murti', '1815051092', 45, '0895395013615'),
-(29, '127.0.0.1', NULL, '$2y$10$oX/8sr5k/L5vgZpJNeWeIuNhSC/OqQnuSU4fAOaeQV2qcit0QrhyK', 'zasyasatya@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601994963, 1609157119, 1, 'Putu Zasya Eka Satya Nugraha', '1915051024', 39, '081238824262'),
+(29, '127.0.0.1', NULL, '$2y$10$oX/8sr5k/L5vgZpJNeWeIuNhSC/OqQnuSU4fAOaeQV2qcit0QrhyK', 'zasyasatya@gmail.com', NULL, NULL, NULL, NULL, NULL, 'fe2a734f696233ada85ea114c4338c590215172b', '$2y$10$QSDXHk/pCbSf2JSE1IR1vePHl2bXWZSHGXE5AeulVaSK8Ge1usm3S', 1601994963, 1614925762, 1, 'Putu Zasya Eka Satya Nugraha', '1915051024', 39, '081238824262'),
 (30, '127.0.0.1', NULL, '$2y$10$HcFAFtNne78jsu.cy78Ix.yqZb2z6pnv3b2oB4cjwPI4ojcUMrCbq', 'anisamarta17@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601995022, NULL, 1, 'Ni Putu Anisa Marta Widyasari', '1915091024', 45, '081235170840'),
 (31, '127.0.0.1', NULL, '$2y$10$EcWpGLCa908k7FfAihqe2.Q3vjZtx7.UfIq4vL7zhhUiOuQ7pE0Wm', 'rifki@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601995120, NULL, 1, 'Rifki Nur Fauzi', '1815091048', 42, '08980138994'),
 (32, '127.0.0.1', NULL, '$2y$10$.PbI5DpKftREFzSKRj/zjOrlwLx.LeTueNni.he7fAKUeVxgQpKOK', 'erik@undiksha.ac.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1601995159, NULL, 1, 'Putu Erik Hendrawan', '1815051052', 41, '08980244454'),
@@ -1092,7 +1136,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
   KEY `fk_users_groups_users1_idx` (`user_id`),
   KEY `fk_users_groups_groups1_idx` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=137 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=140 ;
 
 --
 -- Dumping data untuk tabel `users_groups`
@@ -1100,14 +1144,14 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (24, 1, 1),
-(134, 22, 5),
+(138, 22, 2),
 (101, 23, 2),
-(133, 24, 5),
+(139, 24, 2),
 (135, 25, 2),
 (40, 26, 2),
 (41, 27, 2),
 (42, 28, 2),
-(136, 29, 5),
+(137, 29, 2),
 (44, 30, 2),
 (46, 31, 2),
 (47, 32, 2),

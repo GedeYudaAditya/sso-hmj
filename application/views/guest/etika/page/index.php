@@ -419,7 +419,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-sm-10 col-lg-8">
                 <div class="row price-plan-wrapper">
-                    <?php if(!empty($kegiatan)): ?>
+                    <?php if (!empty($kegiatan)) : ?>
                     <?php foreach ($kegiatan as $data) : ?>
                     <div class="col-12 col-md-6 mt-5">
 
@@ -433,12 +433,12 @@
                             </div>
                             <!-- Plan Thumb -->
                             <?php
-                                $saat_ini = date_create(date('Y-m-d H:i:s'));
-                                $kegiatan_mulai = date_create($data['waktu_mulai']);
-                                $kegiatan_selesai =  date_create($data['waktu_selesai']);
-                                $diff_1 = date_diff($saat_ini, $kegiatan_mulai);
-                                $diff_2 = date_diff($saat_ini, $kegiatan_selesai);
-                                if (new Datetime(date('Y-m-d H:i:s')) < new Datetime($data['waktu_mulai'])) : ?>
+                                    $saat_ini = date_create(date('Y-m-d H:i:s'));
+                                    $kegiatan_mulai = date_create($data['waktu_mulai']);
+                                    $kegiatan_selesai =  date_create($data['waktu_selesai']);
+                                    $diff_1 = date_diff($saat_ini, $kegiatan_mulai);
+                                    $diff_2 = date_diff($saat_ini, $kegiatan_selesai);
+                                    if (new Datetime(date('Y-m-d H:i:s')) < new Datetime($data['waktu_mulai'])) : ?>
                             <div class="alert alert-info" role="alert">
                                 Dimulai Dalam
                                 <?= $diff_1->d . " Hari " . $diff_1->h . " Jam " . $diff_1->i . " Menit" ?>
@@ -449,7 +449,7 @@
                                 <?= $diff_2->d . " Hari " . $diff_2->h . " Jam " . $diff_2->i . " Menit" ?>
                             </div>
                             <?php else : ?>
-                            <div class="alert alert-info" role="alert">
+                            <div class="alert alert-danger" role="alert">
                                 Sudah Berakhir, Sampai Jumpa Dikegiatan Berikutnya
                             </div>
                             <?php endif; ?>
@@ -479,14 +479,13 @@
                             <!-- Plan Button -->
 
                             <div class="plan-button">
-                                <a
-                                    href="<?= base_url() ?>etika/login_kegiatan/<?= base64_encode(base64_encode($data['id_kegiatan'])) ?>"><button
-                                        class="btn mt-4 mb-5">Lihat Detail</button></a>
+                                <a href="<?= base_url() ?>etika/voting_kegiatan"><button class="btn mt-4 mb-5">Lihat
+                                        Detail</button></a>
                             </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
-                    <?php else: ?>
+                    <?php else : ?>
                     <div class="col-lg-12 row justify-content-center">
                         <div class="col-img-waiting text-center">
                             <h3 class="text-gray font-italic">Wahh, belum waktunya pemilihan :(</h3>

@@ -63,7 +63,7 @@
                         <?= $diff_2->d . " Hari " . $diff_2->h . " Jam " . $diff_2->i . " Menit" ?>
                     </div>
                     <?php else : ?>
-                    <div class="alert alert-info" role="alert">
+                    <div class="alert alert-danger" role="alert">
                         Sudah Berakhir, Sampai Jumpa Dikegiatan Berikutnya
                     </div>
                     <?php endif; ?>

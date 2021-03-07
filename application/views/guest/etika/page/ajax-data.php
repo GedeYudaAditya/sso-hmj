@@ -122,6 +122,12 @@
 
 
 <?php else : ?>
+<?php
+    $tgl_system = strtotime($kegiatan[0]['waktu_selesai']);
+    $now = strtotime(date('Y-m-d H:i:s'));
+    $beda = $tgl_system - $now;
+    if ($beda >= 1800) :
+    ?>
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-10 col-lg-7">
@@ -134,6 +140,7 @@
                 </span>
                 <h2>Live Count</h2>
             </div>
+
         </div>
     </div>
     <div class="row">
@@ -187,19 +194,19 @@
 
                     <div id="form-diagram-kandidat">
                         <?php
-                            $arrs = array();
-                            for ($i = 1; $i <= $jml_kandidat; $i++) {
-                                array_push($arrs, $kandidat[$i]);
-                            }
-                            ?>
+                                $arrs = array();
+                                for ($i = 1; $i <= $jml_kandidat; $i++) {
+                                    array_push($arrs, $kandidat[$i]);
+                                }
+                                ?>
                         <?php
-                            $i = 0;
-                            foreach ($arrs as $arr) : ?>
+                                $i = 0;
+                                foreach ($arrs as $arr) : ?>
                         <input type="hidden" value="<?= $arr ?>" id="Diagram<?= $i++ ?>">
                         <?php
-                            endforeach;
-                            unset($arrs);
-                            ?>
+                                endforeach;
+                                unset($arrs);
+                                ?>
                         <input type="hidden" value="<?= $i ?>" id="count">
                     </div>
                     <div class="col-12">
@@ -227,5 +234,27 @@
             </div>
         </div>
     </div>
+    <h6 class="mt-5">Update Terakhir Pada : <?= date('H:i') ?> Wita - Sistem Etika HMJ TI Undiksha</h6>
 </div>
+<?php else : ?>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-7">
+            <!-- Section Heading -->
+            <div class="section-heading">
+                <span class="d-inline-block rounded-pill shadow-sm fw-5 px-4 py-2 mb-3">
+                    <i class="far fa-lightbulb text-primary mr-1"></i>
+                    <span class="text-primary">Go</span>
+                    Technology
+                </span>
+                <h2>Live Count</h2>
+            </div>
+
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <h5>Live Count Sudah Tidak Tersedia, Mohon Menunggu Hasil Akhir</h5>
+    </div>
+</div>
+<?php endif; ?>
 <?php endif; ?>

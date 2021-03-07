@@ -1094,6 +1094,7 @@ class Etika extends CI_Controller
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             if (isset($_POST['id_kegiatan'])) {
                 $id_kegiatan = $_POST['id_kegiatan'];
+                $this->data['kegiatan'] = $this->All_model->getAllKegiatanEtikaWhere($id_kegiatan);
                 $this->data['id_send'] = $_POST['id_send'];
                 $this->data['digSI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Sistem Informasi");
                 $this->data['digPTI'] = $this->All_model->getDiagramProdi($id_kegiatan, "Pendidikan Teknik Informatika");
@@ -1319,7 +1320,7 @@ class Etika extends CI_Controller
             $this->form_validation->set_rules('semester', 'Semester', 'required|integer');
             $this->form_validation->set_rules('prodi', 'Prodi', 'required');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-            if (new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
+            if (new DateTime(date('Y-m-d H:i:s')) >= new DateTime($cari[0]['waktu_mulai']) && new DateTime(date('Y-m-d H:i:s')) <= new DateTime($cari[0]['waktu_selesai'])) {
                 if ($this->form_validation->run() == FALSE) {
                     if (!empty($cari)) {
                         $this->load->view('guest/etika/master/header', $this->data);
@@ -1342,14 +1343,15 @@ class Etika extends CI_Controller
                         $cari_pemilih = $this->All_model->cariPemilihAktivasi($_POST, $prodi, $id_kegiatan);
                         $explode = explode('@', $_POST['email']);
                         if ($explode[1] == "undiksha.ac.id") {
-                            if ($this->All_model->cekEmailPemilihWhere($_POST['email'], $id_kegiatan) <= 0) {
-                                if (!empty($cari_pemilih)) {
-                                    $string = "0123456789bcdfghjklmnpqrstvwxyz";
-                                    $token = substr(str_shuffle($string), 0, 12);
-                                    // Token Akan Aktif selama 2 jam, jika ingin mengganti, ganti 120 menjadi menit yang diinginkan
-                                    // $time = date('Y-m-d H:i:s', time() + (60 * lama_token));
-                                    $time = $cari[0]['waktu_selesai'];
-                                    if ($cari_pemilih[0]['has_voting'] == 0 && empty($cari_pemilih[0]['token'])) {
+
+                            if (!empty($cari_pemilih)) {
+                                $string = "0123456789bcdfghjklmnpqrstvwxyz";
+                                $token = substr(str_shuffle($string), 0, 12);
+                                // Token Akan Aktif selama 2 jam, jika ingin mengganti, ganti 120 menjadi menit yang diinginkan
+                                // $time = date('Y-m-d H:i:s', time() + (60 * lama_token));
+                                $time = $cari[0]['waktu_selesai'];
+                                if ($cari_pemilih[0]['has_voting'] == 0 && empty($cari_pemilih[0]['token'])) {
+                                    if ($this->All_model->cekEmailPemilihWhere($_POST['email'], $id_kegiatan) <= 0) {
                                         // Content Email
                                         $data = [
                                             'identity' => $cari_pemilih[0]['email'],
@@ -1372,15 +1374,15 @@ class Etika extends CI_Controller
                                             redirect('etika/request_token/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                                         }
                                     } else {
-                                        $this->session->set_flashdata('gagal', 'Diaktivasi, Token Sudah Digenerate Sebelumnya, Silahkan Cek Inbox atau Spam pada Email');
+                                        $this->session->set_flashdata('gagal', 'Diaktivasi, Email Sudah Digunakan di Akun Lainnya');
                                         redirect('etika/request_token/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                                     }
                                 } else {
-                                    $this->session->set_flashdata('gagal', 'Diaktivasi, Gagal Menemukan Data Anda');
+                                    $this->session->set_flashdata('gagal', 'Diaktivasi, Token Sudah Digenerate Sebelumnya, Silahkan Cek Inbox atau Spam pada Email');
                                     redirect('etika/request_token/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                                 }
-                            }else {
-                                $this->session->set_flashdata('gagal', 'Diaktivasi, Email Sudah Digunakan');
+                            } else {
+                                $this->session->set_flashdata('gagal', 'Diaktivasi, Data Yang Dimasukkan Tidak Sesuai atau Hak Pilih Anda Belum Terdata');
                                 redirect('etika/request_token/' . base64_encode(base64_encode($id_kegiatan)), "refresh");
                             }
                         } else {
