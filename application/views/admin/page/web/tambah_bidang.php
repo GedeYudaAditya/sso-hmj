@@ -16,6 +16,11 @@
             <div class="card-body row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <form class="user" action="" method="post" enctype="multipart/form-data">
+                        <?php if (form_error('nama_bidang')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_bidang'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -33,6 +38,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('deskripsi_bidang')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('deskripsi_bidang'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -66,6 +76,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('nama_koordinator')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_koordinator'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">

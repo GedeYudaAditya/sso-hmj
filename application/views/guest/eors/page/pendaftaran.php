@@ -44,7 +44,7 @@
                             data-parent="#post-accordion">
                             <?= $kegiatan[0]['deskripsi'] ?>
                             <p style="text-align:justify">Adapun persyaratan agar dapat mengikuti
-                                kepanitiaan ini adalah</p>
+                                kegiatan ini adalah</p>
                             <button type="button" class="btn btn-primary mt-3 col-12" data-toggle="modal"
                                 data-target="#staticBackdrop">
                                 Persyaratan Pendaftaran Kegiatan
@@ -301,7 +301,7 @@
                                     <input type="checkbox" class="form-check-input" id="validator2" required>
                                     <label class="form-check-label" for="validator2">Saya siap mengikuti peraturan dan
                                         tata
-                                        tertib kegiatan serta berkomitmen sebagai panitia dalam menyukseskan kegiatan
+                                        tertib kegiatan serta berkomitmen menyukseskan kegiatan
                                         <?= $kegiatan[0]['nama_kegiatan'] ?></label>
                                 </div>
                                 <!-- Kirim -->

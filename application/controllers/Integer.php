@@ -28,7 +28,7 @@ class Integer extends CI_Controller
 	public function index()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$this->data['title'] = "Integer - Manajemen Kegiatan";
 			$this->data['active'] = "5";
@@ -54,7 +54,7 @@ class Integer extends CI_Controller
 	public function kegiatan()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$this->data['title'] = "Integer - Manajemen Kegiatan";
 			$this->data['active'] = "5";
@@ -80,7 +80,7 @@ class Integer extends CI_Controller
 	public function lomba()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$this->data['title'] = "Integer - Manajemen Lomba";
 			$this->data['active'] = "5";
@@ -107,7 +107,7 @@ class Integer extends CI_Controller
 	public function tambah_kegiatan()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$this->data['title'] = "Integer - Tambah Kegiatan";
 			$this->data['active'] = "5";
@@ -188,7 +188,7 @@ class Integer extends CI_Controller
 	public function hapus_data_integer($id = '')
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			if ($this->All_model->deleteSponsorWhere($id)) {
 				if ($this->All_model->deleteBeritaWhere($id)) {
@@ -222,7 +222,7 @@ class Integer extends CI_Controller
 	public function tambah_sponsor()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$this->data['title'] = "Integer - Tambah Sponsor";
 			$this->data['active'] = "5";
@@ -272,7 +272,7 @@ class Integer extends CI_Controller
 	public function hapus_data_sponsor_integer($id = '')
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			if ($this->All_model->deleteSponsor($id)) {
 				$this->session->set_flashdata('berhasil', 'Dihapus');
@@ -286,7 +286,7 @@ class Integer extends CI_Controller
 	public function tambah_tanggal()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$this->data['title'] = "Integer - Tambah Tanggal";
 			$this->data['active'] = "5";
@@ -319,7 +319,7 @@ class Integer extends CI_Controller
 	public function hapus_data_hari_integer($id = '')
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			if ($this->All_model->deleteHari($id)) {
 				$this->session->set_flashdata('berhasil', 'Dihapus');
@@ -333,7 +333,7 @@ class Integer extends CI_Controller
 	public function tambah_kegiatan_perhari()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$this->data['title'] = "Integer - Tambah Kegiatan Perhari";
 			$this->data['active'] = "5";
@@ -369,7 +369,7 @@ class Integer extends CI_Controller
 	public function hapus_data_detail_hari_integer($id = '')
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			if ($this->All_model->deleteDetailHari($id)) {
 				$this->session->set_flashdata('berhasil', 'Dihapus');
@@ -383,7 +383,7 @@ class Integer extends CI_Controller
 	public function set_kegiatan()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/index', 'refresh');
+			redirect('integer/index');
 		} else {
 			$this->data['title'] = "Integer - Tambah Kategori Lomba";
 			$this->data['active'] = "5";
@@ -429,7 +429,7 @@ class Integer extends CI_Controller
 	public function tambah_kategori_lomba()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$this->data['title'] = "Integer - Tambah Kategori Lomba";
 			$this->data['active'] = "5";
@@ -475,7 +475,7 @@ class Integer extends CI_Controller
 	public function hapus_data_kategori_lomba_integer($id = '')
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			if ($this->All_model->deleteKategoriLombaInteger($id)) {
 				$this->session->set_flashdata('berhasil', 'Dihapus');
@@ -489,7 +489,7 @@ class Integer extends CI_Controller
 	public function tambah_lomba()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$this->data['title'] = "Integer - Tambah Lomba";
 			$this->data['active'] = "5";
@@ -556,7 +556,7 @@ class Integer extends CI_Controller
 	public function edit_lomba($id_lomba = '')
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$this->data['title'] = "Integer - Edit Lomba";
 			$this->data['active'] = "5";
@@ -634,7 +634,7 @@ class Integer extends CI_Controller
 	public function hapus_data_lomba_integer($id = '')
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			if ($this->All_model->deleteLombaInteger($id)) {
 				$this->session->set_flashdata('berhasil', 'Dihapus');
@@ -648,7 +648,7 @@ class Integer extends CI_Controller
 	public function tambah_informasi()
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -741,7 +741,7 @@ class Integer extends CI_Controller
 	public function hapus_data_informasi($id = '')
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('integer/home', 'refresh');
+			redirect('integer/home');
 		} else {
 			if ($this->All_model->deleteBerita($id)) {
 				$this->session->set_flashdata('berhasil', 'Dihapus');

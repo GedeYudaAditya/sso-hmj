@@ -1625,9 +1625,9 @@ class All_model extends CI_Model
 	}
 	public function cariPemilihAktivasi($data, $prodi, $id_kegiatan)
 	{
-		return $this->db->where('semester=' . "'$data[semester]'")->where('nim=' . "'$data[nim]'")->where('prodi=' . "'$prodi'")->like(
-			'nama_pemilih',
-			$data['name']
+		return $this->db->where('semester=' . "'$data[semester]'")->where('nim=' . "'$data[nim]'")->where('prodi=' . "'$prodi'")->where(
+			'nama_pemilih =' .
+			"'$data[name]'"
 		)->where('id_kegiatan=' . $id_kegiatan)->get('s5_pemilih')->result_array();
 	}
 	public function countAllSudahMemilih($id_kegiatan)

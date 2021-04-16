@@ -67,6 +67,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('tema_integer')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('tema_integer'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -85,6 +90,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('nama_integer')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_integer'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -104,6 +114,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('deskripsi_integer')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('deskripsi_integer'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">

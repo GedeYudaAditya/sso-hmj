@@ -84,7 +84,7 @@
                                 <?php endif; ?>
                             </li>
                         </ul>
-                        <p class="text-justify mt-4"><?= $data['deskripsi'] ?></p>
+                        <div class="text-justify mt-4"><?= $data['deskripsi'] ?></div>
                         <div class="row justify-content-center">
                             <?php if (!empty($this->session->userdata('id_kegiatan')) && $this->session->userdata('id_kegiatan') == $data['id_kegiatan']) : ?>
                             <a

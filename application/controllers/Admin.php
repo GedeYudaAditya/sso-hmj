@@ -31,7 +31,7 @@ class Admin extends CI_Controller
 	{
 		// Cek apakah user tidak login
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			// Cek apakah user adalah admin
 			if ($this->ion_auth->is_admin()) {
@@ -65,7 +65,7 @@ class Admin extends CI_Controller
 	{
 		// Cek apakah user tidak login
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			// Cek apakah user adalah admin
 			if ($this->ion_auth->is_admin()) {
@@ -111,7 +111,7 @@ class Admin extends CI_Controller
 	{
 		// Cek apakah user login
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			// Cek apakah user adalah admin
 			if ($this->ion_auth->is_admin()) {
@@ -155,7 +155,7 @@ class Admin extends CI_Controller
 	{
 		// Apakah user login?
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			// Apakah user admin?
 			if ($this->ion_auth->is_admin()) {
@@ -189,7 +189,7 @@ class Admin extends CI_Controller
 	{
 		// Cek apakah user login
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			// Cek apakah user adalah admin?
 			if ($this->ion_auth->is_admin()) {
@@ -197,17 +197,17 @@ class Admin extends CI_Controller
 				if ($this->ion_auth_model->getAdmin($id) > 0) {
 					// Tampilkan pesan gagal
 					$this->session->set_flashdata('gagal', 'Dihapus, Anda tidak dapat menghapus level user Admin');
-					return redirect('admin', 'refresh');
+					return redirect('admin');
 				} else {
 					// Hapus user yang bukan admin
 					if ($this->ion_auth_model->hapusUser($id)) {
 						// Tampilkan pesan berhasil
 						$this->session->set_flashdata('berhasil', 'Dihapus');
-						return redirect('admin', 'refresh');
+						return redirect('admin');
 					} else {
 						// Tampilkan pesan gagal
 						$this->session->set_flashdata('gagal', 'Dihapus');
-						return redirect('admin', 'refresh');
+						return redirect('admin');
 					}
 				}
 			} else {
@@ -221,7 +221,7 @@ class Admin extends CI_Controller
 	{
 		// Cek apakah user login
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			// Cek apakah admin?
 			if ($this->ion_auth->is_admin()) {
@@ -267,7 +267,7 @@ class Admin extends CI_Controller
 	{
 		// Cek apakah user login
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			// Cek apakah admin
 			if ($this->ion_auth->is_admin()) {
@@ -314,7 +314,7 @@ class Admin extends CI_Controller
 	{
 		// Cek apakah user login
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			// Cek apakah admin
 			if ($this->ion_auth->is_admin()) {
@@ -322,11 +322,11 @@ class Admin extends CI_Controller
 				if ($this->All_model->hapusLanding($id_landing)) {
 					// Pesan Berhasil
 					$this->session->set_flashdata('berhasil', 'Dihapus');
-					return redirect('admin', 'refresh');
+					return redirect('admin');
 				} else {
 					// Pesan Gagal
 					$this->session->set_flashdata('gagal', 'Dihapus');
-					return redirect('admin', 'refresh');
+					return redirect('admin');
 				}
 			} else {
 				// Error 404
@@ -339,7 +339,7 @@ class Admin extends CI_Controller
 	{
 		// Cek apakah user login
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			// Cek apakah admin
 			if ($this->ion_auth->is_admin()) {
@@ -349,16 +349,16 @@ class Admin extends CI_Controller
 					if ($this->All_model->setMain($id_landing)) {
 						// Pesan Berhasil
 						$this->session->set_flashdata('berhasil', 'Disetel');
-						return redirect('admin', 'refresh');
+						return redirect('admin');
 					} else {
 						// Pesan Gagal
 						$this->session->set_flashdata('gagal', 'Disetel, Terjadi Masalah Server');
-						return redirect('admin', 'refresh');
+						return redirect('admin');
 					}
 				} else {
 					// Pesan Gagal
 					$this->session->set_flashdata('gagal', 'Disetel, Jumlah Tipe Main Pada Icon/Links Sudah Terpenuhi');
-					return redirect('admin', 'refresh');
+					return redirect('admin');
 				}
 			} else {
 				// Error 404
@@ -371,7 +371,7 @@ class Admin extends CI_Controller
 	{
 		// Cek login
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			// Cek apakah admin
 			if ($this->ion_auth->is_admin()) {
@@ -379,11 +379,11 @@ class Admin extends CI_Controller
 				if ($this->All_model->setOff($id_landing)) {
 					// Pesan Berhasil
 					$this->session->set_flashdata('berhasil', 'Disetel');
-					return redirect('admin', 'refresh');
+					return redirect('admin');
 				} else {
 					// Pesan Gagal
 					$this->session->set_flashdata('gagal', 'Disetel, Terjadi Masalah Server');
-					return redirect('admin', 'refresh');
+					return redirect('admin');
 				}
 			} else {
 				// Error 404
@@ -395,7 +395,7 @@ class Admin extends CI_Controller
 	public function backup_database()
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			if ($this->ion_auth->is_admin()) {
 				$id = $_SESSION['user_id'];
@@ -415,7 +415,7 @@ class Admin extends CI_Controller
 	public function proses_backup()
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			if ($this->ion_auth->is_admin()) {
 				// Load db util
@@ -438,7 +438,7 @@ class Admin extends CI_Controller
 	public function import_database()
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('login', 'refresh');
+			redirect('login');
 		} else {
 			if ($this->ion_auth->is_admin()) {
 				$id = $_SESSION['user_id'];

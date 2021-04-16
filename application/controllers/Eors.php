@@ -30,7 +30,7 @@ class Eors extends CI_Controller
     public function index()
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $id = $_SESSION['user_id'];
             $this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -47,7 +47,7 @@ class Eors extends CI_Controller
     public function tambah_kegiatan()
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $id = $_SESSION['user_id'];
             $this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -58,7 +58,7 @@ class Eors extends CI_Controller
             // All Validations
             $this->form_validation->set_rules('nama_kegiatan', 'Nama Kegiatan', 'required|max_length[100]');
             $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|max_length[1000]');
-            $this->form_validation->set_rules('persyaratan', 'Persyaratan', 'required|max_length[1500]');
+            $this->form_validation->set_rules('persyaratan', 'Persyaratan', 'required');
             $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
             $this->form_validation->set_rules('tanggal_selesai', 'Tanggal Selesai', 'required');
             $this->form_validation->set_rules('target_pendaftar', 'Target Pendaftar', 'required');
@@ -116,7 +116,7 @@ class Eors extends CI_Controller
     public function aktivasi($id_user = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             if ($this->All_model->getKegiatanEorsWhereNum($id_user) > 0) {
                 if ($this->All_model->editAktivasi($id_user)) {
@@ -134,7 +134,7 @@ class Eors extends CI_Controller
     public function nonaktivasi($id_user = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             if ($this->All_model->getKegiatanEorsWhereNum($id_user) > 0) {
                 if ($this->All_model->editNonaktivasi($id_user)) {
@@ -152,7 +152,7 @@ class Eors extends CI_Controller
     public function nonaktif_penilaian($id_user = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             if ($this->All_model->getKegiatanEorsWhereNum($id_user) > 0) {
                 if ($this->All_model->editNonaktifPenilaian($id_user)) {
@@ -170,7 +170,7 @@ class Eors extends CI_Controller
     public function aktif_penilaian($id_user = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             if ($this->All_model->getKegiatanEorsWhereNum($id_user) > 0) {
                 if ($this->All_model->editAktifPenilaian($id_user)) {
@@ -188,7 +188,7 @@ class Eors extends CI_Controller
     public function nonaktif_hasil($id_user = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             if ($this->All_model->getKegiatanEorsWhereNum($id_user) > 0) {
                 if ($this->All_model->editNonaktifHasil($id_user)) {
@@ -206,7 +206,7 @@ class Eors extends CI_Controller
     public function aktif_hasil($id_user = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             if ($this->All_model->getKegiatanEorsWhereNum($id_user) > 0) {
                 if ($this->All_model->editAktifHasil($id_user)) {
@@ -224,7 +224,7 @@ class Eors extends CI_Controller
     public function nonaktif_pengumuman($id_user = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             if ($this->All_model->getKegiatanEorsWhereNum($id_user) > 0) {
                 if ($this->All_model->editNonaktifPengumuman($id_user)) {
@@ -242,7 +242,7 @@ class Eors extends CI_Controller
     public function aktif_pengumuman($id_user = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             if ($this->All_model->getKegiatanEorsWhereNum($id_user) > 0) {
                 if ($this->All_model->editAktifPengumuman($id_user)) {
@@ -260,7 +260,7 @@ class Eors extends CI_Controller
     public function hapus_kegiatan($id_user = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             if ($this->All_model->getKegiatanEorsWhereNum($id_user) > 0) {
                 $nama = $this->All_model->getKegiatanEorsWhere($id_user);
@@ -304,7 +304,7 @@ class Eors extends CI_Controller
     public function administrator($data = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $id = $_SESSION['user_id'];
             $data_user_login = $this->ion_auth_model->getGroup($id);
@@ -344,7 +344,7 @@ class Eors extends CI_Controller
     public function tambah_sie($data = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $id = $_SESSION['user_id'];
             $this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -386,7 +386,7 @@ class Eors extends CI_Controller
     public function hapus_pendaftar($data = '', $id_user = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $id_kegiatan = $this->All_model->getKegiatanEorsWhereChar(urldecode($data));
             $id_kegiatan = $id_kegiatan[0]['id_kegiatan'];
@@ -409,7 +409,7 @@ class Eors extends CI_Controller
     public function tambah_peserta($data = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $id = $_SESSION['user_id'];
             $this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -422,16 +422,16 @@ class Eors extends CI_Controller
             $id_kegiatan = $data_kegiatan[0]['id_kegiatan'];
             $this->data['jabatan'] = $this->All_model->getAllPilihanWhere($id_kegiatan);
             // All Validations
-            $this->form_validation->set_rules('nim', 'Nama Sie', 'required');
-            $this->form_validation->set_rules('nama_lengkap', 'Nama Sie', 'required');
-            $this->form_validation->set_rules('angkatan', 'Nama Sie', 'required');
-            $this->form_validation->set_rules('jenis_kelamin', 'Nama Sie', 'required');
-            $this->form_validation->set_rules('agama', 'Nama Sie', 'required');
-            $this->form_validation->set_rules('alamat_asal', 'Nama Sie', 'required|max_length[1000]');
-            $this->form_validation->set_rules('alamat_sekarang', 'Nama Sie', 'required|max_length[1000]');
-            $this->form_validation->set_rules('email', 'Nama Sie', 'required');
-            $this->form_validation->set_rules('wa', 'Nama Sie', 'required');
-            $this->form_validation->set_rules('pil_wajib', 'Nama Sie', 'required');
+            $this->form_validation->set_rules('nim', 'Nim', 'required');
+            $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required');
+            $this->form_validation->set_rules('angkatan', 'Angkatan', 'required');
+            $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
+            $this->form_validation->set_rules('agama', 'Agama', 'required');
+            $this->form_validation->set_rules('alamat_asal', 'Alamat Asal', 'required|max_length[1000]');
+            $this->form_validation->set_rules('alamat_sekarang', 'Alamat Sekarang', 'required|max_length[1000]');
+            $this->form_validation->set_rules('email', 'Email', 'required');
+            $this->form_validation->set_rules('wa', 'Whatsapp', 'required');
+            $this->form_validation->set_rules('pil_wajib', 'Pilihan Wajib', 'required');
             if ($data_kegiatan[0]['informasi_pribadi'] == 1) {
                 $this->form_validation->set_rules('riwayat_kesehatan', 'Riwayat Kesehatan', 'required');
                 $this->form_validation->set_rules('hobi', 'Hobi', 'required');
@@ -544,7 +544,7 @@ class Eors extends CI_Controller
     public function hapus_sie($data = '', $id_pilihan = '', $id_jabatan = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $kegiatan = $this->All_model->getKegiatanEorsWhereChar(urldecode($data));
             $kegiatan = $kegiatan[0]['id_kegiatan'];
@@ -564,7 +564,7 @@ class Eors extends CI_Controller
     public function proses_penilaian()
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $data = $_POST['kegiatan'];
             $user = $_POST['user'];
@@ -598,7 +598,7 @@ class Eors extends CI_Controller
     public function proses_hasil_akhir()
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $data = $_POST['kegiatan'];
             $user = $_POST['user'];
@@ -614,7 +614,7 @@ class Eors extends CI_Controller
     public function detail_pendaftar($data = '', $pendaftar = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $id = $_SESSION['user_id'];
             $data_user_login = $this->ion_auth_model->getGroup($id);
@@ -648,7 +648,7 @@ class Eors extends CI_Controller
     public function unduh_data_sementara($data = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $data_kegiatan = $this->All_model->getKegiatanEorsWhereChar(urldecode($data));
             $id_kegiatan = $data_kegiatan[0]['id_kegiatan'];
@@ -673,7 +673,7 @@ class Eors extends CI_Controller
     public function unduh_data_akhir($data = '')
     {
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(eors)) {
-            redirect('eors/home', 'refresh');
+            redirect('eors/home');
         } else {
             $data_kegiatan = $this->All_model->getKegiatanEorsWhereChar(urldecode($data));
             $id_kegiatan = $data_kegiatan[0]['id_kegiatan'];
@@ -761,16 +761,16 @@ class Eors extends CI_Controller
         // END SETTING CHART PENDAFTARAN
 
         // All Validations
-        $this->form_validation->set_rules('nim', 'Nama Sie', 'required');
-        $this->form_validation->set_rules('nama_lengkap', 'Nama Sie', 'required');
-        $this->form_validation->set_rules('angkatan', 'Nama Sie', 'required');
-        $this->form_validation->set_rules('jenis_kelamin', 'Nama Sie', 'required');
-        $this->form_validation->set_rules('agama', 'Nama Sie', 'required');
-        $this->form_validation->set_rules('alamat_asal', 'Nama Sie', 'required|max_length[1000]');
-        $this->form_validation->set_rules('alamat_sekarang', 'Nama Sie', 'required|max_length[1000]');
-        $this->form_validation->set_rules('email', 'Nama Sie', 'required');
-        $this->form_validation->set_rules('wa', 'Nama Sie', 'required');
-        $this->form_validation->set_rules('pil_wajib', 'Nama Sie', 'required');
+        $this->form_validation->set_rules('nim', 'Nim', 'required');
+        $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required');
+        $this->form_validation->set_rules('angkatan', 'Angkatan', 'required');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
+        $this->form_validation->set_rules('agama', 'Agama', 'required');
+        $this->form_validation->set_rules('alamat_asal', 'Alamat Asal', 'required|max_length[1000]');
+        $this->form_validation->set_rules('alamat_sekarang', 'Alamat Sekarang', 'required|max_length[1000]');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('wa', 'Whatsapp', 'required');
+        $this->form_validation->set_rules('pil_wajib', 'Pilihan Wajib', 'required');
         if ($data_kegiatan[0]['informasi_pribadi'] == 1) {
             $this->form_validation->set_rules('riwayat_kesehatan', 'Riwayat Kesehatan', 'required');
             $this->form_validation->set_rules('hobi', 'Hobi', 'required');

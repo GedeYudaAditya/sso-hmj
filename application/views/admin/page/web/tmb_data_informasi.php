@@ -64,6 +64,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('video')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('video'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -103,6 +108,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('judul_informasi')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('judul_informasi'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -121,6 +131,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('konten')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('konten'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">

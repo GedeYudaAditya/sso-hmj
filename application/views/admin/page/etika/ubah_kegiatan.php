@@ -15,6 +15,11 @@
             <div class="card-body row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <form class="user" action="" method="POST" enctype="multipart/form-data">
+                        <?php if (form_error('nama_kegiatan')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_kegiatan'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -33,6 +38,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('deskripsi_etika')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('deskripsi_etika'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -50,6 +60,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('waktu_mulai')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('waktu_mulai'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -68,6 +83,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('waktu_selesai')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('waktu_selesai'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -94,7 +114,7 @@
                             $otomatis = "selected";
                         } else if ($kegiatan[0]['mode'] == "2") {
                             $semi_otomatis = "selected";
-                        }  else {
+                        } else {
                             $manual = "selected";
                         }
 

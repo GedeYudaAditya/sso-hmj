@@ -54,6 +54,11 @@
                             </div>
                         </div>
                         <?php } ?>
+                        <?php if (form_error('nim')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nim'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -73,6 +78,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('nama_lengkap')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_lengkap'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -160,6 +170,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('alamat_asal')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('alamat_asal'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -176,6 +191,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('alamat_sekarang')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('alamat_sekarang'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -193,6 +213,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('email')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('email'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -210,6 +235,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('wa')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('wa'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -289,6 +319,11 @@
                             </div>
                         </div>
                         <?php if ($kegiatan[0]['informasi_pribadi'] == 1) { ?>
+                        <?php if (form_error('riwayat_kesehatan')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('riwayat_kesehatan'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -306,6 +341,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('hobi')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('hobi'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -322,6 +362,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('motto_hidup')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('motto_hidup'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -340,6 +385,11 @@
                         </div>
                         <?php } ?>
                         <?php if ($kegiatan[0]['informasi_pendidikan'] == 1) { ?>
+                        <?php if (form_error('ipk')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('ipk'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -358,6 +408,16 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('nama_sd')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_sd'); ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php if (form_error('tahun_sd')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('tahun_sd'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -385,6 +445,16 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('nama_smp')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_smp'); ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php if (form_error('tahun_smp')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('tahun_smp'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -412,6 +482,16 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('nama_sma')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_sma'); ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php if (form_error('tahun_sma')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('tahun_sma'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">

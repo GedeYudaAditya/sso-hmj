@@ -22,7 +22,7 @@
                 <!-- Contact Box -->
                 <div class="contact-box bg-white text-center rounded p-4 p-sm-5 mt-5 mt-lg-0 shadow-lg">
                     <!-- Contact Form -->
-                    <form id="contact-form" method="POST" action="">
+                    <form id="contact-form" method="POST" action="<?= base_url() ?>etika/cek_hak_pilih">
                         <div class="contact-top">
                             <h3 class="contact-title">Cek Hak Pilih</h3>
                             <h5 class="text-secondary fw-3 py-3">Silahkan masukkan informasi berikut untuk

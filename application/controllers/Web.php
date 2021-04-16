@@ -31,7 +31,7 @@ class Web extends CI_Controller
 	public function index()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -51,7 +51,7 @@ class Web extends CI_Controller
 	public function berkas()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -71,7 +71,7 @@ class Web extends CI_Controller
 	public function tentang_hmj()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -99,7 +99,7 @@ class Web extends CI_Controller
 	public function edit_info()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -153,7 +153,7 @@ class Web extends CI_Controller
 	public function tambah_bidang()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -205,7 +205,7 @@ class Web extends CI_Controller
 	public function edit_bidang($id_bidang = '')
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -294,7 +294,7 @@ class Web extends CI_Controller
 	public function hapus_bidang($id = '')
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$hmj = $this->All_model->getBidangSelectWhere($id);
 			$hmj = $hmj[0]['nama_hmj'];
@@ -321,7 +321,7 @@ class Web extends CI_Controller
 	public function tambah_data_kepengurusan()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$id_file = "kepengurusan";
@@ -461,7 +461,7 @@ class Web extends CI_Controller
 	public function hapus_data_kepengurusan($id = '')
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$folder = $this->All_model->getKepengurusan($id);
 			$folder = $folder[0]['nama_hmj'];
@@ -494,7 +494,7 @@ class Web extends CI_Controller
 	public function tambah_kategori_berkas()
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -536,7 +536,7 @@ class Web extends CI_Controller
 	public function edit_kategori_berkas($id_user = '')
 	{
 		if (!$this->ion_auth->logged_in() || $this->ion_auth->is_admin()) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$id_berkas = "berkas";
@@ -591,7 +591,7 @@ class Web extends CI_Controller
 	public function hapus_kategori_berkas($id = '')
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$tujuan = $this->All_model->getKepengurusanHapus($id);
 			$tujuan = $tujuan[0]['nama_hmj'];
@@ -620,7 +620,7 @@ class Web extends CI_Controller
 	public function tambah_detail_berkas()
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -675,7 +675,7 @@ class Web extends CI_Controller
 	public function hapus_detail_berkas($id = '')
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$tujuan = $this->All_model->getKepengurusanHapusBerkas($id);
 			$tujuan = $tujuan[0]['nama_hmj'];
@@ -696,7 +696,7 @@ class Web extends CI_Controller
 	public function edit_detail_berkas($id_user = '')
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -803,7 +803,7 @@ class Web extends CI_Controller
 	public function informasi_hmj()
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group(group)) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -820,7 +820,7 @@ class Web extends CI_Controller
 	public function tambah_data_informasi()
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			$id = $_SESSION['user_id'];
 			$this->data['group'] = $this->ion_auth_model->getGroup($id);
@@ -952,7 +952,7 @@ class Web extends CI_Controller
 	public function hapus_data_informasi($id = '')
 	{
 		if (!$this->ion_auth->logged_in()) {
-			redirect('web/home', 'refresh');
+			redirect('web/home');
 		} else {
 			if ($this->All_model->deleteInformasi($id)) {
 				$this->session->set_flashdata('berhasil', 'Dihapus');

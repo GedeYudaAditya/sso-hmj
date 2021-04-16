@@ -22,7 +22,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Icon Kegiatan</div>
+                                                    Icon Kegiatan (*.jpg atau *.png maks 1 Mb)</div>
                                                 <input type="file" class="form-control form-control-user"
                                                     id="icon_kegiatan" name="icon_kegiatan" accept="image/*" required>
                                             </div>
@@ -31,6 +31,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('nama_kegiatan')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_kegiatan'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -49,6 +54,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('deskripsi')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('deskripsi'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -65,6 +75,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('persyaratan')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('persyaratan'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -81,6 +96,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('tanggal_mulai')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('tanggal_mulai'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -99,6 +119,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('tanggal_selesai')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('tanggal_selesai'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -117,6 +142,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('link_group')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('link_group'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -135,6 +165,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('target_pendaftar')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('target_pendaftar'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">

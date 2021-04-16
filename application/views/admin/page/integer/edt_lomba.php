@@ -60,6 +60,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('nama_lomba_integer')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_lomba_integer'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -78,6 +83,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('deskripsi_lomba_integer')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('deskripsi_lomba_integer'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -95,6 +105,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('tanggal_daftar_mulai')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('tanggal_daftar_mulai'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -114,6 +129,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('tanggal_daftar_selesai')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('tanggal_daftar_selesai'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -134,6 +154,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('pendaftaran_lomba_integer')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('pendaftaran_lomba_integer'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -178,7 +203,11 @@
                                 </div>
                             </div>
                         </div>
-
+                        <?php if (form_error('tanggal_kumpul_mulai')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('tanggal_kumpul_mulai'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="pengumpulan_proposal">
                             <div class="form-group">
                                 <div class="col-lg-12 mb-3">
@@ -201,6 +230,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php if (form_error('tanggal_kumpul_selesai')) : ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?php echo form_error('tanggal_kumpul_selesai'); ?>
+                            </div>
+                            <?php endif; ?>
                             <div class="form-group">
                                 <div class="col-lg-12 mb-3">
                                     <div class="card border-left-primary shadow h-100 py-2">
@@ -222,6 +256,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php if (form_error('pengumpulan_lomba_integer')) : ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?php echo form_error('pengumpulan_lomba_integer'); ?>
+                            </div>
+                            <?php endif; ?>
                             <div class="form-group">
                                 <div class="col-lg-12 mb-3">
                                     <div class="card border-left-primary shadow h-100 py-2">

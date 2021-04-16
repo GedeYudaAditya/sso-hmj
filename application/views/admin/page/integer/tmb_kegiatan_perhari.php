@@ -54,6 +54,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('nama_detail_hari_integer')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('nama_detail_hari_integer'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -73,6 +78,16 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('waktu_mulai_jam')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('waktu_mulai_jam'); ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php if (form_error('waktu_mulai_menit')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('waktu_mulai_menit'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -99,6 +114,16 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('waktu_akhir_jam')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('waktu_akhir_jam'); ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php if (form_error('waktu_akhir_menit')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('waktu_akhir_menit'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -125,6 +150,11 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (form_error('tempat_detail_hari_integer')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo form_error('tempat_detail_hari_integer'); ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="col-lg-12 mb-3">
                                 <div class="card border-left-primary shadow h-100 py-2">
